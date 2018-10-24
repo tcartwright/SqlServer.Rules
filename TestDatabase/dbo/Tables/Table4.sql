@@ -1,0 +1,9 @@
+﻿CREATE TABLE [Table4]
+(
+	[Id] INT CONSTRAINT [DF01_Table4] DEFAULT (NEXT VALUE FOR [dbo].[SequenceFoo]) NOT NULL PRIMARY KEY NONCLUSTERED, 
+    [name] VARCHAR(50) NOT NULL, 
+    [middle] VARCHAR(2) NOT NULL, 
+    [City] CHAR(30) NULL
+)
+
+GO

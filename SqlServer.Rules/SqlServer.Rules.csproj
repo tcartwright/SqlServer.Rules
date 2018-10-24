@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{352B071F-CE87-434D-9432-C118C6A9F523}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SqlServer.Rules</RootNamespace>
+    <AssemblyName>SqlServer.Rules</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ASF.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.x64.140.3881.1\lib\net46\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Utilities, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.x64.140.3881.1\lib\net46\Microsoft.Data.Tools.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.x64.140.3881.1\lib\net46\Microsoft.SqlServer.Dac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.x64.140.3881.1\lib\net46\Microsoft.SqlServer.Dac.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.TransactSql.ScriptDom, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.x64.140.3881.1\lib\net46\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.x64.140.3881.1\lib\net46\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseSqlCodeAnalysisRule.cs" />
+    <Compile Include="Design\AvoidIfInStoredProcRule.cs" />
+    <Compile Include="Design\CacheGetDateToVariable.cs" />
+    <Compile Include="Design\DoNotUseIdentityFunction.cs" />
+    <Compile Include="Design\UseParameterNamesWithProcsRule.cs" />
+    <Compile Include="Design\DoNotMixDMLWithDDLRule.cs" />
+    <Compile Include="Design\PredicateCompareRule.cs" />
+    <Compile Include="Design\MissingJoinPredicateRule.cs" />
+    <Compile Include="Design\ForeignKeysNeedIndexRule.cs" />
+    <Compile Include="Design\ProcedureContainsGrantRule.cs" />
+    <Compile Include="Design\InvalidDatabaseOptionsRule.cs" />
+    <Compile Include="Design\ObjectCreatedWithInvalidOptionsRule.cs" />
+    <Compile Include="Design\ObjectUsesDifferentCollationRule.cs" />
+    <Compile Include="Design\DoNotUseDeprecatedTypesRule.cs" />
+    <Compile Include="Design\DuplicateIndexesRule.cs" />
+    <Compile Include="Design\MismatchedColumnsRule.cs" />
+    <Compile Include="Design\ObjectTwoPartNameRule.cs" />
+    <Compile Include="Design\AvoidCHARTypeRule.cs" />
+    <Compile Include="Design\AliasTablesRule.cs" />
+    <Compile Include="Design\AvoidCHARINDEXRule.cs" />
+    <Compile Include="Design\HighNumberOfIndexesRule.cs" />
+    <Compile Include="Design\UseColumnListWithInsertsRule.cs" />
+    <Compile Include="Design\UseProperCollationInTempTables.cs" />
+    <Compile Include="Design\WrapStatementsWithTransactionRule.cs" />
+    <Compile Include="Design\AvoidCursorsRule.cs" />
+    <Compile Include="Design\AvoidExecuteRule.cs" />
+    <Compile Include="Design\DoNotUseRealOrFloatRule.cs" />
+    <Compile Include="Design\AvoidWidePKsRule.cs" />
+    <Compile Include="Design\AvoidHintsRule.cs" />
+    <Compile Include="Design\AvoidNumericOrderByRule.cs" />
+    <Compile Include="Design\AvoidORInQueriesRule.cs" />
+    <Compile Include="Design\AvoidSelectIntoRule.cs" />
+    <Compile Include="Design\AvoidSetRowcountRule.cs" />
+    <Compile Include="Design\AvoidViewJoinsRule.cs" />
+    <Compile Include="Design\DoNotUseNOLOCKRule.cs" />
+    <Compile Include="Design\WaitForRule.cs" />
+    <Compile Include="Design\ConsiderColumnPrefixRule.cs" />
+    <Compile Include="Design\ConsiderEXISTSInsteadOfInRule.cs" />
+    <Compile Include="Design\DeleteWithoutWhereRule.cs" />
+    <Compile Include="Design\EqualityCompareWithNULLRule.cs" />
+    <Compile Include="Design\FunctionTypeMismatchRule.cs" />
+    <Compile Include="Design\NoLengthVarcharRule.cs" />
+    <Compile Include="Design\NoPrecisionScaleRule.cs" />
+    <Compile Include="Design\RaiseErrorWithoutLogRule.cs" />
+    <Compile Include="Design\StartIdentity1000Rule.cs" />
+    <Compile Include="Design\TopWithoutOrderByRule.cs" />
+    <Compile Include="Design\TypesMissingParametersRule.cs" />
+    <Compile Include="Design\UnusedParameterRule.cs" />
+    <Compile Include="Design\UnusedVariablesRule.cs" />
+    <Compile Include="Design\UpdateWithoutWhereRule.cs" />
+    <Compile Include="Design\WrapStatementsWithTryCatchRule.cs" />
+    <Compile Include="Globals\Ignorables.cs" />
+    <Compile Include="Globals\ModelInfo.cs" />
+    <Compile Include="NamedTableView.cs" />
+    <Compile Include="Performance\AvoidCorrelatedSubqueriesRule.cs" />
+    <Compile Include="Performance\UseExistenceInsteadOfCountRule.cs" />
+    <Compile Include="ReferentialIntegrity\ForeignKeyInfo.cs" />
+    <Compile Include="ReferentialIntegrity\JoinInfo.cs" />
+    <Compile Include="ReferentialIntegrity\RIUtils.cs" />
+    <Compile Include="Naming\AvoidFNPrefixRule.cs" />
+    <Compile Include="Naming\UseTwoPartNamesRule.cs" />
+    <Compile Include="Naming\AvoidSPPrefixRule.cs" />
+    <Compile Include="Naming\GeneralNamingRules.cs" />
+    <Compile Include="Naming\NamingViolationRule.cs" />
+    <Compile Include="Performance\AvoidColumnCalcsRule.cs" />
+    <Compile Include="Performance\AvoidColumnFunctionsRule.cs" />
+    <Compile Include="Performance\AvoidFunctionsInActionQueries.cs" />
+    <Compile Include="Performance\AvoidNotInRule.cs" />
+    <Compile Include="Performance\AvoidOuterJoinsRule.cs" />
+    <Compile Include="Performance\AvoidTableVariableInJoinsRule.cs" />
+    <Compile Include="Performance\AvoidUpdatingPrimaryKeyColumnsRule.cs" />
+    <Compile Include="Performance\ConsiderIndexingInClauseColumnsRule.cs" />
+    <Compile Include="Performance\ConsiderRecompileQueryHintRule.cs" />
+    <Compile Include="Performance\CursorNotDeallocatedRule.cs" />
+    <Compile Include="Performance\CursorNotClosedRule.cs" />
+    <Compile Include="Performance\DataTypesOnBothSidesOfEqualityRule.cs" />
+    <Compile Include="Performance\AvoidNotEqualToRule.cs" />
+    <Compile Include="Performance\DoNotUseDistinctInAggregatesRule.cs" />
+    <Compile Include="Performance\AvoidEndsWithOrContainsRule.cs" />
+    <Compile Include="Design\AvoidSelectStarRule.cs" />
+    <Compile Include="Design\TableHasUniqueConstraintRule.cs" />
+    <Compile Include="Design\TableHasPrimaryKeyRule.cs" />
+    <Compile Include="Globals\Constants.cs" />
+    <Compile Include="Performance\AvoidReturningResultsFromTriggersRule.cs" />
+    <Compile Include="Performance\QueryHighJoinCountRule.cs" />
+    <Compile Include="Performance\SetNoCountOnRule.cs" />
+    <Compile Include="Performance\NestedViewRule.cs" />
+    <Compile Include="Performance\TableMissingClusteredIndexRule.cs" />
+    <Compile Include="Performance\ModifiedParameterRule.cs" />
+    <Compile Include="SqlServerRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="READ ME.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ASF.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SqlServer.Dac\SqlServer.Dac.csproj">
+      <Project>{958b2716-4e46-4498-a742-23dccf5ce22a}</Project>
+      <Name>SqlServer.Dac</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

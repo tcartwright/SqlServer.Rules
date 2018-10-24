@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TestDatabase", "TestDatabase.sqlproj", "{A5260DD7-2A33-4B51-9001-4E2CEDB9EA80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5260DD7-2A33-4B51-9001-4E2CEDB9EA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5260DD7-2A33-4B51-9001-4E2CEDB9EA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5260DD7-2A33-4B51-9001-4E2CEDB9EA80}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A5260DD7-2A33-4B51-9001-4E2CEDB9EA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5260DD7-2A33-4B51-9001-4E2CEDB9EA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5260DD7-2A33-4B51-9001-4E2CEDB9EA80}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 1
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName0 = TestDatabase.sqlproj
+		SccProjectName0 = .
+		SccLocalPath0 = .
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

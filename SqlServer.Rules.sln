@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules", "SqlServer.Rules\SqlServer.Rules.csproj", "{352B071F-CE87-434D-9432-C118C6A9F523}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3405B639-54DE-4180-80A1-3B8A22AD693D}"
+	ProjectSection(SolutionItems) = preProject
+		SQL Server Rules.xlsx = SQL Server Rules.xlsx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules.Generator", "SqlServer.Rules.Generator\SqlServer.Rules.Generator.csproj", "{FA176464-41C2-4EF5-8FBC-ADA435F33FAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules.SolutionGenerator", "SqlServer.Rules.SolutionGenerator\SqlServer.Rules.SolutionGenerator.csproj", "{29ADFA6B-292B-41EF-9279-1E58B700B134}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules.Report", "SqlServer.Rules.Report\SqlServer.Rules.Report.csproj", "{B8C13F50-FE33-4416-AA9B-9502F4C039F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{86E895C7-42B7-4334-889B-DF1C0D733B15}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Dac", "SqlServer.Dac\SqlServer.Dac.csproj", "{958B2716-4E46-4498-A742-23DCCF5CE22A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{352B071F-CE87-434D-9432-C118C6A9F523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352B071F-CE87-434D-9432-C118C6A9F523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352B071F-CE87-434D-9432-C118C6A9F523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352B071F-CE87-434D-9432-C118C6A9F523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA176464-41C2-4EF5-8FBC-ADA435F33FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA176464-41C2-4EF5-8FBC-ADA435F33FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA176464-41C2-4EF5-8FBC-ADA435F33FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA176464-41C2-4EF5-8FBC-ADA435F33FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29ADFA6B-292B-41EF-9279-1E58B700B134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29ADFA6B-292B-41EF-9279-1E58B700B134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29ADFA6B-292B-41EF-9279-1E58B700B134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29ADFA6B-292B-41EF-9279-1E58B700B134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8C13F50-FE33-4416-AA9B-9502F4C039F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C13F50-FE33-4416-AA9B-9502F4C039F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C13F50-FE33-4416-AA9B-9502F4C039F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C13F50-FE33-4416-AA9B-9502F4C039F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958B2716-4E46-4498-A742-23DCCF5CE22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958B2716-4E46-4498-A742-23DCCF5CE22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958B2716-4E46-4498-A742-23DCCF5CE22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958B2716-4E46-4498-A742-23DCCF5CE22A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67B59E89-8C35-419D-A49B-9C2C19584900}
+	EndGlobalSection
+EndGlobal
