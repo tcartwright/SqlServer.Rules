@@ -1,4 +1,4 @@
-#Project SqlServer.Rules
+# Project SqlServer.Rules
 This project implements the Static code analysis
 
 ## Dependencies
