@@ -29,11 +29,7 @@ namespace SqlServer.Rules.SolutionGenerator
         GeneralException
     }
 
-    //--b --d ".\Files" --s "..\..\..\..\..\SqlServer Projects\Benefits\Benefits.sln"
-    //--b --d ".\Files" --s "..\..\..\..\..\SqlServer Projects\CHCRepository\CHCRepository.sln"
-    //--b --d ".\Files" --s "..\..\..\..\..\SqlServer Projects\ChcChangeAdmin\ChcChangeAdmin.sln"
-    //--b --d ".\Files" --s "..\..\..\..\..\SqlServer Projects\HCRBlackBox\HCRBlackBox.sln"
-    //--b --d ".\Files" --s "..\..\..\TestDatabase\TestDatabase.sln"
+
     internal class Program
     {
         private static StringComparer _comparer = StringComparer.OrdinalIgnoreCase;

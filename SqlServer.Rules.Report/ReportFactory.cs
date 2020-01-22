@@ -30,9 +30,14 @@ namespace SqlServer.Rules.Report
             var sw = Stopwatch.StartNew();
 
             //load the dacpac
-            var model = TSqlModel.LoadFromDacpac(request.InputPath, new ModelLoadOptions() { LoadAsScriptBackedModel = true });
-            var factory = new CodeAnalysisServiceFactory();
-            var service = factory.CreateAnalysisService(model);
+            TSqlModel model = TSqlModel.LoadFromDacpac(
+                    request.InputPath
+                    ,new ModelLoadOptions() { 
+                        LoadAsScriptBackedModel = true,
+                        ModelStorageType = Microsoft.SqlServer.Dac.DacSchemaModelStorageType.Memory
+                    });
+            CodeAnalysisServiceFactory factory = new CodeAnalysisServiceFactory();
+            CodeAnalysisService service = factory.CreateAnalysisService(model);
 
             //surpress rules
             service.SetProblemSuppressor(request.Suppress);

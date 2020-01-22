@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules", "SqlServer.Rules\SqlServer.Rules.csproj", "{352B071F-CE87-434D-9432-C118C6A9F523}"
 EndProject
@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		key.snk = key.snk
 		LICENSE = LICENSE
 		README.md = README.md
-		SQL Server Rules.xlsx = SQL Server Rules.xlsx
+		SQL Server Rules.csv = SQL Server Rules.csv
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules.Generator", "SqlServer.Rules.Generator\SqlServer.Rules.Generator.csproj", "{FA176464-41C2-4EF5-8FBC-ADA435F33FAE}"
