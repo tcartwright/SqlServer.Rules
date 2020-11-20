@@ -1,10 +1,6 @@
 ﻿using CommandLine;
 using SqlServer.Rules.Report;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlServer.Rules.SolutionGenerator
 {
