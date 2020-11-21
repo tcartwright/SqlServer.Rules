@@ -81,6 +81,7 @@
     <Compile Include="Visitors\AlterProcedureVisitor.cs" />
     <Compile Include="Visitors\AlterTableVisitor.cs" />
     <Compile Include="Visitors\IBaseVisitor.cs" />
+    <Compile Include="Visitors\IndexDefinitionVisitor.cs" />
     <Compile Include="Visitors\ScalarSubqueryVisitor.cs" />
     <Compile Include="Visitors\ActionStatementVisitor.cs" />
     <Compile Include="Visitors\BaseVisitor.cs" />
