@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -83,6 +86,9 @@
     <PackageReference Include="CommandLineParser">
       <Version>1.9.71</Version>
     </PackageReference>
+    <PackageReference Include="DocumentFormat.OpenXml">
+      <Version>2.11.3</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>15.8.166</Version>
     </PackageReference>
@@ -98,8 +104,12 @@
     <PackageReference Include="Microsoft.Build.Utilities.Core">
       <Version>15.8.166</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Data.Tools.Msbuild">
+    <PackageReference Include="Microsoft.Data.Tools.Msbuild" VisualStudioVersion="true">
       <Version>10.0.61804.210</Version>
+      <IncludeAssets>all</IncludeAssets>
+      <ExcludeAssets>none</ExcludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+      <GeneratePathProperty>true</GeneratePathProperty>
     </PackageReference>
     <PackageReference Include="Microsoft.SqlServer.DacFx">
       <Version>150.4897.1</Version>
@@ -139,33 +149,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>md "$(TargetDir)Microsoft.Data.Tools.Msbuild"  &gt; nul 2&gt;&amp;1
-
-pushd "$(SolutionDir)\packages\Microsoft.Data.Tools.Msbuild*\lib\net46\"
-@echo COPYING %25cd%25
-copy /y "*.*" "$(TargetDir)Microsoft.Data.Tools.Msbuild\*.*"
-popd
-
-pushd "$(SolutionDir)\packages\Microsoft.Build*\lib\net46\"
-@echo COPYING %25cd%25
-copy /y "*.*" "$(TargetDir)Microsoft.Data.Tools.Msbuild\*.*"
-popd
-
-pushd "$(SolutionDir)\packages\Microsoft.Build.Framework*\lib\net46\"
-@echo COPYING %25cd%25
-copy /y "*.*" "$(TargetDir)Microsoft.Data.Tools.Msbuild\*.*"
-popd
-
-pushd "$(SolutionDir)\packages\Microsoft.Build.Tasks.Core*\lib\net46\"
-@echo COPYING %25cd%25
-copy /y "*.*" "$(TargetDir)Microsoft.Data.Tools.Msbuild\*.*"
-popd
-
-pushd "$(SolutionDir)\packages\Microsoft.Build.Engine*\lib\net46\"
-@echo COPYING %25cd%25
-copy /y "*.*" "$(TargetDir)Microsoft.Data.Tools.Msbuild\*.*"
-popd
-</PreBuildEvent>
+    <PreBuildEvent>@echo "COPYING: Missing Assets"
+copy /y "$(PkgMicrosoft_Data_Tools_Msbuild)\lib\net46\Microsoft.Data.Tools.Schema.SqlTasks.targets" $(OutputDir)
+copy /y "$(PkgMicrosoft_Data_Tools_Msbuild)\lib\net46\SqlPackage.exe.config" $(OutputDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

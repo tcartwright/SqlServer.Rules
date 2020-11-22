@@ -10,7 +10,7 @@ namespace SqlServer.Rules.SolutionGenerator
         [Option('s', "solution", Required = true, HelpText = "The solution to run the sql checks against.")]
         public String SolutionPath { get; set; }
 
-        [Option('b', "build", Required = false, HelpText = "Whether to build the solution before running the sql checks.")]
+        [Option('b', "build", Required = false, DefaultValue = false, HelpText = "Whether to build the solution before running the sql checks.")]
         public bool Build { get; set; }
 
         [Option('c', "config", Required = false, HelpText = "The build configuration to use when building the solution. Defaults to Release.")]
