@@ -45,6 +45,8 @@ So for Visual Studio 2017 with DAC version 150 the path might be
 ## Project Configuration
 
 - Once the rules are compiled and installed to the appropriate directory then you can open up your SSDT project and enable code analysis by following these instructions: https://docs.microsoft.com/en-us/sql/ssdt/database-project-settings?view=sql-server-ver15#bkmk_code_analysis
+- After code analysis is enabled perform a rebuild. Any of the rules that are broke will show up as build warnings.
+  - You can double click any of the warnings to be taken to the code location where the rule was broken at.
 - You can also optionally:
   - Enable / disable rules. 
   - Set certain rules as errors so they will actually throw build errors.
