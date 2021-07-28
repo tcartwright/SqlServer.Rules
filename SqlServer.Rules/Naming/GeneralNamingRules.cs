@@ -5,6 +5,7 @@ using Microsoft.SqlServer.Dac.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
 
 namespace SqlServer.Rules.Performance
 {
@@ -19,7 +20,8 @@ namespace SqlServer.Rules.Performance
         public const string RuleDisplayName = "General naming rules.";
 
 
-        public GeneralNamingRules() : base(ModelSchema.Table,
+        public GeneralNamingRules() : base(
+                ModelSchema.Table,
                 ModelSchema.View,
                 ModelSchema.ScalarFunction,
                 ModelSchema.TableValuedFunction,
@@ -73,30 +75,46 @@ namespace SqlServer.Rules.Performance
                     }
                     break;
                 case "index":
-                    if (!Regex.IsMatch(name, $@"^IX\d{{2}}_{tableName}$", RegexOptions.IgnoreCase))
+                    var idx = fragment as CreateIndexStatement;
+                    var re = $"^IX_{tableName}_.*";
+                    var naming = $"IX_{tableName}*";
+                    if (idx.Unique)
                     {
-                        problems.Add(new SqlRuleProblem($"Index '{name}' does not follow the company naming standard. Please use the name IX##_{tableName}.", sqlObj, fragment));
+                        re = $@"^UX_{tableName}_.*";
+                        naming = $"UX_{tableName}*";
+                    }
+
+                    if (!Regex.IsMatch(name, re, RegexOptions.IgnoreCase))
+                    {
+                        problems.Add(new SqlRuleProblem($"Index '{name}' does not follow the company naming standard. Please use a format that starts with {naming}.", sqlObj, fragment));
                     }
                     break;
                 case "foreignkeyconstraint":
-                    if (!Regex.IsMatch(name, $@"^FK\d{{2}}_{tableName}$", RegexOptions.IgnoreCase))
+                    //var fk = fragment as createke;
+                    var tableFk = ruleExecutionContext.SchemaModel.GetObject(ForeignKeyConstraint.TypeClass, sqlObj.Name, DacQueryScopes.All);
+                    var foreignTableName = tableFk.GetReferencedRelationshipInstances(ForeignKeyConstraint.ForeignTable, DacQueryScopes.All)
+                        .Select(x => x.ObjectName).ToList()
+                        .First().Parts.LastOrDefault();
+
+                    if (!Regex.IsMatch(name, $@"^FK_{tableName}_{foreignTableName}.*", RegexOptions.IgnoreCase))
                     {
-                        problems.Add(new SqlRuleProblem($"Foreign Key '{name}' does not follow the company naming standard. Please use the format FK##_{tableName}.", sqlObj, fragment));
+                        problems.Add(new SqlRuleProblem($"Foreign Key '{name}' does not follow the company naming standard. Please use a format that starts with FK_{tableName}_{foreignTableName}", sqlObj, fragment));
                     }
                     break;
                 case "checkconstraint":
-                    if (!Regex.IsMatch(name, $@"^CK\d{{2}}_{tableName}$", RegexOptions.IgnoreCase))
+                    if (!Regex.IsMatch(name, $@"^CK_{tableName}_.*", RegexOptions.IgnoreCase))
                     {
-                        problems.Add(new SqlRuleProblem($"Check Constraint '{name}' does not follow the company naming standard. Please use the format CK##_{tableName}*.", sqlObj, fragment));
+                        problems.Add(new SqlRuleProblem($"Check Constraint '{name}' does not follow the company naming standard. Please use a format that starts with CK_{tableName}*.", sqlObj, fragment));
                     }
                     break;
                 case "defaultconstraint":
                     var columnName = GetReferencedName(sqlObj, DefaultConstraint.TargetColumn, "Column");
                     //allow two formats for this one
-                    if (!Regex.IsMatch(name, $@"^DF(\d{{2}})?_{tableName}_{columnName}$|^DF\d{{2}}_{tableName}$", RegexOptions.IgnoreCase))
+                    if (!Regex.IsMatch(name, $@"^DF_{tableName}_{columnName}$", RegexOptions.IgnoreCase))
                     {
-                        problems.Add(new SqlRuleProblem($"Constraint '{name}' does not follow the company naming standard. Please use the name DF##_{tableName}.", sqlObj, fragment));
+                        problems.Add(new SqlRuleProblem($"Constraint '{name}' does not follow the company naming standard. Please use the name DF_{tableName}_{columnName}.", sqlObj, fragment));
                     }
+                    // ADD OTHER TYPES IF DESIRED IF YOU WANT THEM TO MATCH A SPECIFIC FORMAT
                     break;
             }
 
