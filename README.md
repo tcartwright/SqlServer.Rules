@@ -22,8 +22,8 @@ For example code see [here](https://github.com/microsoft/DACExtensions/tree/mast
     1) Open up the properties for the `SqlServer.Rules.SolutionGenerator` project
     1) Select the Debug tab
     1) Enter one of the following scenarios:
-       - To debug the test harness db: ```--build --reportDirectory ".\Files" --solution "..\..\..\TestDatabase\TestDatabase.sln"```
-        - To debug a Sql project: ```--build --reportDirectory ".\Files" --solution "{path}.sln"```
+      1) To debug the test harness db: ```--build --reportDirectory ".\Files" --solution "..\..\..\TestDatabase\TestDatabase.sln"```
+      1) To debug a Sql project: ```--build --reportDirectory ".\Files" --solution "{path}.sln"```
 1) Add a break point in the `SqlServer.Rules` project in any of the rules you wish to debug
 
 Note: if you need to debug the loading of the library see [here](/SqlServer.Rules/README.md)
