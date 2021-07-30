@@ -31,9 +31,6 @@ namespace SqlServer.Rules.Globals
 			if (scriptTokenStream == null) return false;
 
 			var baseRuleId = ruleId.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).Last();
-			var createToken = scriptTokenStream.FirstOrDefault(t => t.TokenType == TSqlTokenType.Create);
-			var createLine = createToken?.Line;
-
 			var ignoreRegex = $@"\bIGNORE\b.*\b{baseRuleId}\b";
 			var globalIgnoreRegex = $@"\bGLOBAL\b\s*\bIGNORE\b.*\b{baseRuleId}\b";
 
@@ -42,7 +39,7 @@ namespace SqlServer.Rules.Globals
 				where (t.TokenType == TSqlTokenType.SingleLineComment || t.TokenType == TSqlTokenType.MultilineComment)
 					&& (
 						((t.Line == lineNumber || t.Line == lineNumber - 1) && Regex.IsMatch(t.Text, ignoreRegex, RegexOptions.IgnoreCase))
-						|| (createLine > 0 && t.Line < createLine && Regex.IsMatch(t.Text, globalIgnoreRegex, RegexOptions.IgnoreCase))
+						|| (Regex.IsMatch(t.Text, globalIgnoreRegex, RegexOptions.IgnoreCase))
 					)
 				select t.Text;
 
