@@ -57,6 +57,7 @@
     <Compile Include="Misc.cs" />
     <Compile Include="Names.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScriptTokenStream.cs" />
     <Compile Include="Visitors\CreateOrAlterProcedureVisitor.cs" />
     <Compile Include="Visitors\CreateProcedureVisitor.cs" />
     <Compile Include="Visitors\AlterProcedureVisitor.cs" />
