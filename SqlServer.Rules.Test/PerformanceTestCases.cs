@@ -11,11 +11,8 @@ using System.Collections.Generic;
 namespace SqlServer.Rules.Tests
 {
     [TestClass]
-    public class RulesTestCases
+    public class PerformanceTestCases : TestCasesBase
     {
-        public const SqlServerVersion SqlVersion = SqlServerVersion.Sql120;
-        private StringComparer Comparer = StringComparer.OrdinalIgnoreCase;
-
         public TestContext TestContext { get; set; }
 
         [TestMethod]
@@ -37,8 +34,7 @@ namespace SqlServer.Rules.Tests
                         Assert.IsTrue(problems.Any(problem => Comparer.Equals(problem.SourceName, "nonsargable2.sql")));
 
                         Assert.IsTrue(problems.All(problem => Comparer.Equals(problem.Description, AvoidEndsWithOrContainsRule.Message)));
-
-                        Assert.AreEqual(problems[0].Severity, SqlRuleProblemSeverity.Warning);
+                        Assert.IsTrue(problems.All(problem => problem.Severity == SqlRuleProblemSeverity.Warning));
                     });
                 }
                 catch (AssertFailedException)
