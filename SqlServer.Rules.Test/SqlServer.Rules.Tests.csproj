@@ -94,21 +94,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestScripts\AvoidNonsargableLikePattern\nonsargable2.sql">
+    <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable2.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestScripts\AvoidNonsargableLikePattern\nonsargable_ignored.sql">
+    <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable_ignored.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestScripts\AvoidNonsargableLikePattern\sargable.sql">
+    <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\sargable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestScripts\AvoidNonsargableLikePattern\nonsargable.sql">
+    <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestScripts\_Setup\table1.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestScripts\Design\" />
+    <Folder Include="TestScripts\Naming\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
