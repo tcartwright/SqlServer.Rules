@@ -8,9 +8,10 @@ using Microsoft.SqlServer.Dac.CodeAnalysis;
 using System.Text;
 using System.Collections.Generic;
 
-namespace SqlServer.Rules.Tests
+namespace SqlServer.Rules.Tests.Performance
 {
     [TestClass]
+    [TestCategory("Performance")]
     public class PerformanceTestCases : TestCasesBase
     {
         public TestContext TestContext { get; set; }
@@ -20,7 +21,7 @@ namespace SqlServer.Rules.Tests
         {
             string testCases = "AvoidNonsargableLikePattern";
 
-            using (BaselineSetup test = new BaselineSetup(TestContext, testCases, new TSqlModelOptions(), SqlVersion))
+            using (var test = new BaselineSetup(TestContext, testCases, new TSqlModelOptions(), SqlVersion))
             {
                 try
                 {
