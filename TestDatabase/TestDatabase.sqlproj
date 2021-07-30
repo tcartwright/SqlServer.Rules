@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{a5260dd7-2a33-4b51-9001-4e2cedb9ea80}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -33,6 +33,7 @@
     <ArithAbort>False</ArithAbort>
     <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
     <QuotedIdentifier>False</QuotedIdentifier>
+    <ValidateCasingOnIdentifiers>False</ValidateCasingOnIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -56,8 +57,8 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <SqlCodeAnalysisRules>-Microsoft.Rules.Data.SR0001;-Microsoft.Rules.Data.SR0004;-Microsoft.Rules.Data.SR0005;-Microsoft.Rules.Data.SR0006;-Microsoft.Rules.Data.SR0007;-Microsoft.Rules.Data.SR0008;-Microsoft.Rules.Data.SR0009;-Microsoft.Rules.Data.SR0010;-Microsoft.Rules.Data.SR0011;-Microsoft.Rules.Data.SR0012;-Microsoft.Rules.Data.SR0013;-Microsoft.Rules.Data.SR0014;-Microsoft.Rules.Data.SR0015;-Microsoft.Rules.Data.SR0016</SqlCodeAnalysisRules>
-    <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
+    <SqlCodeAnalysisRules>-Microsoft.Rules.Data.SR0001;-Microsoft.Rules.Data.SR0004;-Microsoft.Rules.Data.SR0005;-Microsoft.Rules.Data.SR0006;-Microsoft.Rules.Data.SR0007;-Microsoft.Rules.Data.SR0008;-Microsoft.Rules.Data.SR0009;-Microsoft.Rules.Data.SR0010;-Microsoft.Rules.Data.SR0011;-Microsoft.Rules.Data.SR0012;-Microsoft.Rules.Data.SR0013;-Microsoft.Rules.Data.SR0014;-Microsoft.Rules.Data.SR0015;-Microsoft.Rules.Data.SR0016;-Rules.SRD0001;-Rules.SRD0002;-Rules.SRD0003;-Rules.SRD0004;-Rules.SRD0005;-Rules.SRD0006;-Rules.SRD0009;-Rules.SRD0010;-Rules.SRD0011;-Rules.SRD0012;-Rules.SRD0013;-Rules.SRD0014;-Rules.SRD0015;-Rules.SRD0016;-Rules.SRD0017;-Rules.SRD0018;-Rules.SRD0019;-Rules.SRD0020;-Rules.SRD0021;-Rules.SRD0024;-Rules.SRD0025;-Rules.SRD0026;-Rules.SRD0027;-Rules.SRD0028;-Rules.SRD0030;-Rules.SRD0031;-Rules.SRD0032;-Rules.SRD0033;-Rules.SRD0034;-Rules.SRD0035;-Rules.SRD0036;-Rules.SRD0038;-Rules.SRD0039;-Rules.SRD0041;-Rules.SRD0043;-Rules.SRD0044;-Rules.SRD0045;-Rules.SRD0046;-Rules.SRD0047;-Rules.SRD0050;-Rules.SRD0051;-Rules.SRD0052;-Rules.SRD0053;-Rules.SRD0055;-Rules.SRD0056;-Rules.SRD0057;-Rules.SRD0058;-Rules.SRD0060;-Rules.SRD0061;-Rules.SRD0062;-Rules.SRD0063;-Rules.SRD0064;-Rules.SRN0001;-Rules.SRN0002;-Rules.SRN0006;-Rules.SRN0007;-Rules.SRP0001;-Rules.SRP0002;-Rules.SRP0003;-Rules.SRP0004;-Rules.SRP0006;-Rules.SRP0007;-Rules.SRP0008;-Rules.SRP0009;-Rules.SRP0010;-Rules.SRP0011;-Rules.SRP0012;-Rules.SRP0013;-Rules.SRP0014;-Rules.SRP0015;-Rules.SRP0016;-Rules.SRP0017;-Rules.SRP0018;-Rules.SRP0020;-Rules.SRP0021;-Rules.SRP0022;-Rules.SRP0023;-Rules.SRP0024</SqlCodeAnalysisRules>
+    <RunSqlCodeAnalysis>False</RunSqlCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>

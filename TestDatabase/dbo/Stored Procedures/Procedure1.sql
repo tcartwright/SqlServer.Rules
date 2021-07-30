@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[Procedure1] -- IGNORE SRP0005
+﻿CREATE PROCEDURE [dbo].[Procedure1] 
 	@param1 int = 0,
 	@param2 float -- IGNORE SRD0016 
 WITH RECOMPILE 

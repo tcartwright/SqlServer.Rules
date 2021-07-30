@@ -28,7 +28,8 @@ namespace SqlServer.Rules.Test
         public BaselineSetup(TestContext testContext, string testName, TSqlModelOptions databaseOptions, SqlServerVersion sqlServerVersion) 
             : base(new List<Tuple<string,string>>(), databaseOptions, sqlServerVersion)
         {
-            ScriptsFolder = Path.Combine(GetBaseFolder(), TestScriptsFolder, testName);
+            var folder = Path.Combine(GetBaseFolder(), TestScriptsFolder);
+            ScriptsFolder = Directory.EnumerateDirectories(folder, testName, SearchOption.AllDirectories).FirstOrDefault();
             Assert.IsTrue(Directory.Exists(ScriptsFolder), $"Expected the test folder '{ScriptsFolder}' to exist");
 
             SetupFolder = Path.Combine(GetBaseFolder(), TestScriptsFolder, SetupScriptsFolder);
