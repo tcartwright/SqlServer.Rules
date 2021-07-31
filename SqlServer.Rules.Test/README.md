@@ -19,3 +19,5 @@ TestScripts
         |   nonsargable_ignored.sql
         |   sargable.sql
 ```
+
+**Important:** Any files that are placed in the _Setup directory are loaded and ran for **every** unit test.
