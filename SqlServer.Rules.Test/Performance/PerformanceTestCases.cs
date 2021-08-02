@@ -41,5 +41,31 @@ namespace SqlServer.Rules.Tests.Performance
             Assert.IsTrue(problems.All(problem => Comparer.Equals(problem.Description, AvoidNotEqualToRule.Message)));
             Assert.IsTrue(problems.All(problem => problem.Severity == SqlRuleProblemSeverity.Warning));
         }
+
+        [TestMethod]
+        public void TestAvoidCalcOnColumn()
+        {
+            var problems = GetTestCaseProblems("AvoidColumnCalcsRule", AvoidColumnCalcsRule.RuleId);
+
+            Assert.AreEqual(1, problems.Count, "Expected 1 problem to be found");
+
+            Assert.IsTrue(problems.Any(problem => Comparer.Equals(problem.SourceName, "calc_on_column.sql")));
+
+            Assert.IsTrue(problems.All(problem => Comparer.Equals(problem.Description, AvoidColumnCalcsRule.Message)));
+            Assert.IsTrue(problems.All(problem => problem.Severity == SqlRuleProblemSeverity.Warning));
+        }
+
+        [TestMethod]
+        public void TestAvoidColumnFunctionsRule()
+        {
+            var problems = GetTestCaseProblems("AvoidColumnFunctionsRule", AvoidColumnFunctionsRule.RuleId);
+
+            Assert.AreEqual(1, problems.Count, "Expected 1 problem to be found");
+
+            Assert.IsTrue(problems.Any(problem => Comparer.Equals(problem.SourceName, "func_on_column.sql")));
+
+            Assert.IsTrue(problems.All(problem => Comparer.Equals(problem.Description, AvoidColumnFunctionsRule.Message)));
+            Assert.IsTrue(problems.All(problem => problem.Severity == SqlRuleProblemSeverity.Warning));
+        }
     }
 }

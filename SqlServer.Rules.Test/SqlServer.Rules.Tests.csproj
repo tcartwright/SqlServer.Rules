@@ -96,6 +96,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestScripts\Performance\AvoidColumnFunctionsRule\func_on_column.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Performance\AvoidColumnFunctionsRule\sargable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Performance\AvoidColumnCalcsRule\calc_on_column.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Performance\AvoidColumnCalcsRule\sargable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable2.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
