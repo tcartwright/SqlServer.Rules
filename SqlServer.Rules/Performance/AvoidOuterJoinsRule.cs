@@ -8,37 +8,67 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-/*
- TIM C: NOTES:
-
-The rule checks for OUTER JOIN-s which could be replaced with EXISTS.
-Prefer use of EXISTS keyword for existence checks, unless performance issues are encountered. In these cases, it is better to resort to using a LEFT JOIN and null check.
-The traditional method of checking for row existence is to use a LEFT JOIN and checking the nullability of a LEFT JOIN'ed column in the WHERE clause. The problem with this method is that SQL Server needs to load all of the rows from the OUTER JOIN'ed table. In cases where the matched rows are significantly less than the total rows, it is unnecessary work for SQL Server.
-Another method of checking for existence is using the EXISTS predicate function. This is preferably to the LEFT JOIN method, since it allows SQL Server to find a row and quit (using a row count spool), avoiding unnecessary row loading.
-Of course, there is always a catch - using EXISTS() can incur a performance issue if the following are encountered:
-If there are joins in the EXISTS subquery, SQL Server will favor performing loop joins through the tables, hoping to find a row quickly. In certain cases, loop joins may be inefficient.
-If the SQL optimizer underestimates the rowcount from the table in the EXISTS subquery, the query plan may show an optimal plan but the query will perform much worse.
-
-SHOULD FLAG AS PROBLEM:
-    select a.*
-    from a 
-    left join b on a.id = b.id
-    where b.id is null 
-
-SHOULD NOT FLAG AS PROBLEM:
-    select a.*, b.*
-    from a 
-    left join b on a.id = b.id
-    where b.id is null 
-
-    select a.*, b.*
-    from a 
-    left join b on a.id = b.id
- 
- */
 
 namespace SqlServer.Rules.Performance
 {
+    /// <summary>
+    /// The rule checks for OUTER JOIN-s which could be replaced with EXISTS. Prefer use of EXISTS keyword for existence checks.
+    /// </summary>
+    /// <remarks>
+    ///   <para>Requirements: 
+    ///   <list type="table">
+    ///     <listheader>
+    ///       <term>Requirement</term>
+    ///       <description>Example</description>
+    ///     </listheader>
+    ///     <item><term>OUTER JOIN to relation</term><description><c>FROM a LEFT OUTER JOIN b</c> or <c>FROM a RIGHT JOIN b</c></description></item>
+    ///     <item><term>OUTER reference<c>b</c> <b>is not</b> referenced in SELECT </term><description> <c>SELECT a.*</c></description></item>
+    ///     <item><term>OUTER reference <b>has</b> an <c>IS NULL</c> filter on JOIN member</term><description><c>WHERE b.id IS NULL</c></description></item>
+    ///   </list>
+    ///   </para>
+    ///   <para>Description:
+    ///   The traditional method of checking for row existence is to use a LEFT JOIN and checking the null-ability of a LEFT JOIN'ed column in the WHERE clause. 
+    ///   This method causes SQL Server to load all of the rows from the OUTER JOIN'ed table. 
+    ///   In cases where the matched rows are significantly less than the total rows, it is unnecessary work for SQL Server.
+    ///   </para>
+    ///   <para>
+    ///   Alternatively checking for existence is using the EXISTS predicate function.
+    ///   This is preferably to the LEFT JOIN method, since it allows SQL Server to find a row and quit(using a row count spool), avoiding unnecessary row loading.
+    ///   </para>
+    ///   <para>
+    ///   Counter Indications:
+    ///   <list type="bullet">
+    ///     <item>If there are joins in the <c>EXISTS (subquery)</c>
+    ///      SQL Server will favor performing loop joins through the tables, hoping to find a row quickly. 
+    ///      In certain cases, loop joins may be inefficient.</item>
+    ///     <item>If the SQL optimizer underestimates the <c>rowcount</c> from the table in the <c>EXISTS (subquery)</c>
+    ///      The query plan may show an optimal plan but the query will perform much worse.
+    ///      In these cases, it is better to resort to using a LEFT JOIN and null check.</item>
+    ///   </list>
+    ///   </para>
+    /// </remarks>
+    /// <example>
+    ///   SHOULD FLAG AS PROBLEM:
+    ///   <code>
+    ///       SELECT a.*
+    ///       FROM a
+    ///       LEFT JOIN b ON a.id = b.id
+    ///       WHERE b.id IS NULL 
+    ///   </code>
+    ///   SHOULD NOT FLAG AS PROBLEM:
+    ///   <code>
+    ///       SELECT a.*, b.*
+    ///       FROM a
+    ///       LEFT JOIN b ON a.id = b.id
+    ///       WHERE b.id IS NULL  
+    ///   </code>
+    ///   <code>
+    ///       SELECT a.*, b.*
+    ///       FROM a
+    ///       LEFT JOIN b ON a.id = b.id
+    ///   </code>
+    /// </example>
+
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
