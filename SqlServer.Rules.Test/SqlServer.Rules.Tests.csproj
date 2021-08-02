@@ -108,6 +108,18 @@
     <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestScripts\Performance\AvoidNotEqualToRule\ansi_not_equal.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Performance\AvoidNotEqualToRule\alternate_not_equal.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Performance\AvoidNotEqualToRule\nonsargable_ignored.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Performance\AvoidNotEqualToRule\sargable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestScripts\_Setup\table1.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

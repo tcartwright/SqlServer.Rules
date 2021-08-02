@@ -27,5 +27,19 @@ namespace SqlServer.Rules.Tests.Performance
             Assert.IsTrue(problems.All(problem => Comparer.Equals(problem.Description, AvoidEndsWithOrContainsRule.Message)));
             Assert.IsTrue(problems.All(problem => problem.Severity == SqlRuleProblemSeverity.Warning));
         }
+
+        [TestMethod]
+        public void TestNotEqualToRule()
+        {
+            var problems = GetTestCaseProblems("AvoidNotEqualToRule", AvoidNotEqualToRule.RuleId);
+
+            Assert.AreEqual(2, problems.Count, "Expected 2 problem to be found");
+
+            Assert.IsTrue(problems.Any(problem => Comparer.Equals(problem.SourceName, "ansi_not_equal.sql")));
+            Assert.IsTrue(problems.Any(problem => Comparer.Equals(problem.SourceName, "alternate_not_equal.sql")));
+
+            Assert.IsTrue(problems.All(problem => Comparer.Equals(problem.Description, AvoidNotEqualToRule.Message)));
+            Assert.IsTrue(problems.All(problem => problem.Severity == SqlRuleProblemSeverity.Warning));
+        }
     }
 }
