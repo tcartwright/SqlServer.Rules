@@ -15,7 +15,7 @@ namespace SqlServer.Rules.Tests
         protected const SqlServerVersion SqlVersion = SqlServerVersion.Sql130;
         protected StringComparer Comparer = StringComparer.OrdinalIgnoreCase;
 
-        public TestContext TestContext { get; set; }
+        protected TestContext TestContext { get; set; }
 
         protected ReadOnlyCollection<SqlRuleProblem> GetTestCaseProblems(string testCases, string ruleId)
         {
