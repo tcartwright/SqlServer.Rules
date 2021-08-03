@@ -12,10 +12,10 @@ namespace SqlServer.Rules.Tests
     [TestClass]
     public class TestCasesBase
     {
-        protected const SqlServerVersion SqlVersion = SqlServerVersion.Sql130;
+        protected const SqlServerVersion SqlVersion = SqlServerVersion.Sql150;
         protected StringComparer Comparer = StringComparer.OrdinalIgnoreCase;
 
-        protected TestContext TestContext { get; set; }
+        public virtual TestContext TestContext { get; set; }
 
         protected ReadOnlyCollection<SqlRuleProblem> GetTestCaseProblems(string testCases, string ruleId)
         {
