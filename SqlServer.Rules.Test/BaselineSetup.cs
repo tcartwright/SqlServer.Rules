@@ -25,7 +25,7 @@ namespace SqlServer.Rules.Test
         protected string OutputFilePath { get; private set; }
         protected string BaselineFilePath { get; private set; }
 
-        public BaselineSetup(TestContext testContext, string testName, TSqlModelOptions databaseOptions, SqlServerVersion sqlServerVersion) 
+        public BaselineSetup(TestContext testContext, string testName, TSqlModelOptions databaseOptions, SqlServerVersion sqlServerVersion = SqlServerVersion.Sql150) 
             : base(new List<Tuple<string,string>>(), databaseOptions, sqlServerVersion)
         {
             var folder = Path.Combine(GetBaseFolder(), TestScriptsFolder);
