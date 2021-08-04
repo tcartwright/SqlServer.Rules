@@ -17,7 +17,7 @@ namespace SqlServer.Rules.Tests.Performance
         [TestMethod]
         public void TestNonSARGablePattern()
         {
-            var problems = GetTestCaseProblems("AvoidNonsargableLikePattern", AvoidEndsWithOrContainsRule.RuleId);
+            var problems = GetTestCaseProblems(nameof(AvoidEndsWithOrContainsRule), AvoidEndsWithOrContainsRule.RuleId);
 
             Assert.AreEqual(2, problems.Count, "Expected 2 problem to be found");
 

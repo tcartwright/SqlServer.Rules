@@ -18,7 +18,7 @@ namespace SqlServer.Rules.Tests.Performance
         [TestMethod]
         public void TestAvoidNotForReplication()
         {
-            var problems = GetTestCaseProblems("AvoidNotForReplication", AvoidNotForReplication.RuleId);
+            var problems = GetTestCaseProblems(nameof(AvoidNotForReplication), AvoidNotForReplication.RuleId);
 
             var expected = 4;
             Assert.AreEqual(expected, problems.Count, $"Expected {expected} problem(s) to be found");
