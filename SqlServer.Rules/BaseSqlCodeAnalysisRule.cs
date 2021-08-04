@@ -12,15 +12,40 @@ using System.Text.RegularExpressions;
 
 namespace SqlServer.Rules
 {
+	/// <summary>
+	/// The base code analysis rule for all other rules.
+	/// </summary>
+	/// <seealso cref="Microsoft.SqlServer.Dac.CodeAnalysis.SqlCodeAnalysisRule" />
 	public abstract class BaseSqlCodeAnalysisRule : SqlCodeAnalysisRule
 	{
+		/// <summary>
+		/// The programming schemas
+		/// </summary>
 		protected static readonly IList<ModelTypeClass> ProgrammingSchemas = new[] { ModelSchema.Procedure, ModelSchema.ScalarFunction, ModelSchema.TableValuedFunction };
+		/// <summary>
+		/// The programming and view schemas
+		/// </summary>
 		protected static readonly IList<ModelTypeClass> ProgrammingAndViewSchemas = new[] { ModelSchema.Procedure, ModelSchema.ScalarFunction, ModelSchema.TableValuedFunction, ModelSchema.View };
 
+		/// <summary>
+		/// The programming schema types
+		/// </summary>
 		protected static readonly Type[] ProgrammingSchemaTypes = new Type[] { typeof(CreateProcedureStatement), typeof(CreateFunctionStatement) };
+		/// <summary>
+		/// The programming and view schema types
+		/// </summary>
 		protected static readonly Type[] ProgrammingAndViewSchemaTypes = new Type[] { typeof(CreateProcedureStatement), typeof(CreateFunctionStatement), typeof(CreateViewStatement) };
 
+		/// <summary>
+		/// The comparer
+		/// </summary>
 		protected static StringComparer _comparer = StringComparer.InvariantCultureIgnoreCase;
+		/// <summary>
+		/// Gets the problems.
+		/// </summary>
+		/// <value>
+		/// The problems.
+		/// </value>
 		protected List<SqlRuleProblem> Problems { get; } = new List<SqlRuleProblem>();
 
 		#region built in function data types
@@ -152,7 +177,12 @@ namespace SqlServer.Rules
 
 		#endregion built in function data types
 
-		public StatementList GetStatementList(TSqlFragment fragment)
+		/// <summary>
+		/// Gets the statement list.
+		/// </summary>
+		/// <param name="fragment">The fragment.</param>
+		/// <returns></returns>
+		public static StatementList GetStatementList(TSqlFragment fragment)
 		{
 			var fragmentTypeName = fragment.GetType().Name;
 			var statementList = new StatementList();
@@ -170,9 +200,8 @@ namespace SqlServer.Rules
 					var func = (fragment as CreateFunctionStatement);
 					if (func == null) { return null; }
 
-					var returnType = func.ReturnType as SelectFunctionReturnType;
 					//this is an ITVF, and does not have a statement list, it has one statement in the return block...
-					if (func.StatementList == null && returnType != null)
+					if (func.StatementList == null && func.ReturnType is SelectFunctionReturnType returnType)
 					{
 						statementList.Statements.Add(returnType.SelectStatement);
 						return statementList;
@@ -189,33 +218,61 @@ namespace SqlServer.Rules
 			}
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="BaseSqlCodeAnalysisRule"/> class.
+		/// </summary>
+		/// <param name="supportedElementTypes">The supported element types.</param>
 		protected BaseSqlCodeAnalysisRule(IList<ModelTypeClass> supportedElementTypes)
 		{
 			SupportedElementTypes = supportedElementTypes;
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="BaseSqlCodeAnalysisRule"/> class.
+		/// </summary>
+		/// <param name="supportedElementTypes">The supported element types.</param>
 		protected BaseSqlCodeAnalysisRule(params ModelTypeClass[] supportedElementTypes)
 		{
 			SupportedElementTypes = supportedElementTypes;
 		}
 
-		protected string GetDataType(IntegerLiteral value)
+		/// <summary>
+		/// Gets the data type of the value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns></returns>
+		protected static string GetDataType(IntegerLiteral value)
 		{
 			return value.LiteralType.ToString();
 		}
 
-		protected string GetDataType(NumericLiteral value)
+		/// <summary>
+		/// Gets the data type of the value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns></returns>
+		protected static string GetDataType(NumericLiteral value)
 		{
 			return value.LiteralType.ToString();
 		}
 
-		protected string GetDataType(StringLiteral value)
+		/// <summary>
+		/// Gets the data type of the value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns></returns>
+		protected static string GetDataType(StringLiteral value)
 		{
 			if (value.IsNational) { return "nvarchar"; }
 			return "varchar";
 		}
 
-		protected string GetDataType(ScalarExpression value)
+		/// <summary>
+		/// Gets the data type of the value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns></returns>
+		protected static string GetDataType(ScalarExpression value)
 		{
 			if (value is IntegerLiteral exprInt)
 			{
@@ -244,10 +301,15 @@ namespace SqlServer.Rules
 			return null;
 		}
 
-		protected string GetDataType(ScalarExpression value, IList<DataTypeView> variables)
+		/// <summary>
+		/// Gets the data type of the value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <param name="variables">The variables.</param>
+		/// <returns></returns>
+		protected static string GetDataType(ScalarExpression value, IList<DataTypeView> variables)
 		{
-			var varRef = value as VariableReference;
-			if (varRef == null) { return GetDataType(value); }
+			if (!(value is VariableReference varRef)) { return GetDataType(value); }
 
 			var var1 = variables.FirstOrDefault(v => _comparer.Equals(v.Name, varRef.Name));
 			if (var1 != null) { return var1.DataType; }
@@ -255,16 +317,25 @@ namespace SqlServer.Rules
 			return string.Empty;
 		}
 
-		protected string GetDataType(TSqlObject sqlObj,
+		/// <summary>
+		/// Gets the data type of the value.
+		/// </summary>
+		/// <param name="sqlObj">The SQL object.</param>
+		/// <param name="query">The query.</param>
+		/// <param name="expression">The expression.</param>
+		/// <param name="variables">The variables.</param>
+		/// <param name="model">The model.</param>
+		/// <returns></returns>
+		protected static string GetDataType(TSqlObject sqlObj,
 			QuerySpecification query,
 			ScalarExpression expression,
 			IList<DataTypeView> variables, TSqlModel model = null)
 		{
 			if (expression == null) { return null; }
 
-			if (expression is ColumnReferenceExpression)
+			if (expression is ColumnReferenceExpression expression1)
 			{
-				return GetColumnDataType(sqlObj, query, (ColumnReferenceExpression)expression, model, variables);
+				return GetColumnDataType(sqlObj, query, expression1, model, variables);
 			}
 			else if (expression is StringLiteral stringLiteral)
 			{
@@ -370,7 +441,16 @@ namespace SqlServer.Rules
 		//    return null;
 		//}
 
-		protected string GetColumnDataType(TSqlObject sqlObj, QuerySpecification query, ColumnReferenceExpression column, TSqlModel model, IList<DataTypeView> variables)
+		/// <summary>
+		/// Gets the data type of the column.
+		/// </summary>
+		/// <param name="sqlObj">The SQL object.</param>
+		/// <param name="query">The query.</param>
+		/// <param name="column">The column.</param>
+		/// <param name="model">The model.</param>
+		/// <param name="variables">The variables.</param>
+		/// <returns></returns>
+		protected static string GetColumnDataType(TSqlObject sqlObj, QuerySpecification query, ColumnReferenceExpression column, TSqlModel model, IList<DataTypeView> variables)
 		{
 			TSqlObject referencedColumn = null;
 
@@ -472,22 +552,29 @@ namespace SqlServer.Rules
 			return null;
 		}
 
+		/// <summary>
+		/// Gets the referenced column.
+		/// </summary>
+		/// <param name="table">The table.</param>
+		/// <param name="columns">The columns.</param>
+		/// <param name="columnName">Name of the column.</param>
+		/// <returns></returns>
 		private static TSqlObject GetReferencedColumn(TableReference table, List<TSqlObject> columns, string columnName)
 		{
 			TSqlObject referencedColumn = null;
 
 			if (table == null) { return referencedColumn; }
 
-			if (table is NamedTableReference)
+			if (table is NamedTableReference reference)
 			{
-				Func<string, string, string, bool> compareNames = (string t1, string t2, string c) => 
+				Func<string, string, string, bool> compareNames = (string t1, string t2, string c) =>
 					(t1.Contains($"{t2}.[{c}]") || t1.Contains($"[{c}]") && !t1.Contains("#"));
-				var tableName = ((NamedTableReference)table).GetName().ToLower();
+				var tableName = reference.GetName().ToLower();
 				referencedColumn = columns.FirstOrDefault(c => compareNames(c.Name.GetName().ToLower(), tableName, columnName));
 			}
-			else if (table is VariableTableReference)
+			else if (table is VariableTableReference reference1)
 			{
-				var tableName = ((VariableTableReference)table).Variable.Name.ToLower();
+				var tableName = reference1.Variable.Name.ToLower();
 				referencedColumn = columns.FirstOrDefault(c => c.Name.GetName().ToLower().Contains($"[{tableName}].[{columnName}]"));
 			}
 			else
@@ -499,7 +586,14 @@ namespace SqlServer.Rules
 			return referencedColumn;
 		}
 
-		protected TSqlObject GetTableFromColumn(TSqlObject sqlObj, QuerySpecification query, ColumnReferenceExpression column)
+		/// <summary>
+		/// Gets the table from column.
+		/// </summary>
+		/// <param name="sqlObj">The SQL object.</param>
+		/// <param name="query">The query.</param>
+		/// <param name="column">The column.</param>
+		/// <returns></returns>
+		protected static TSqlObject GetTableFromColumn(TSqlObject sqlObj, QuerySpecification query, ColumnReferenceExpression column)
 		{
 			var tables = new List<NamedTableReference>();
 
@@ -530,7 +624,12 @@ namespace SqlServer.Rules
 		}
 
 
-		protected NumericProperties GetNumericProperties(NumericLiteral numericValue)
+		/// <summary>
+		/// Gets the numeric properties.
+		/// </summary>
+		/// <param name="numericValue">The numeric value.</param>
+		/// <returns></returns>
+		protected static NumericProperties GetNumericProperties(NumericLiteral numericValue)
 		{
 			return new NumericProperties
 			{
@@ -539,7 +638,12 @@ namespace SqlServer.Rules
 			};
 		}
 
-		protected NumericProperties GetNumericProperties(StringLiteral numericValue)
+		/// <summary>
+		/// Gets the numeric properties.
+		/// </summary>
+		/// <param name="numericValue">The numeric value.</param>
+		/// <returns></returns>
+		protected static NumericProperties GetNumericProperties(StringLiteral numericValue)
 		{
 			return new NumericProperties
 			{
@@ -549,11 +653,20 @@ namespace SqlServer.Rules
 		}
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
 	public struct NumericProperties
 	{
 		internal int Precision;
 		internal int Scale;
 
+		/// <summary>
+		/// Converts to string.
+		/// </summary>
+		/// <returns>
+		/// A <see cref="System.String" /> that represents this instance.
+		/// </returns>
 		public override string ToString()
 		{
 			return $"{Precision}, {Scale}";

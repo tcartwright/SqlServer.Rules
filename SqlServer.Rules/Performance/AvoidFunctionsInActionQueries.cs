@@ -12,6 +12,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -19,14 +25,33 @@ namespace SqlServer.Rules.Performance
         RuleScope = SqlRuleScope.Element)]
     public sealed class AvoidFunctionsInActionQueries : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRP0010";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Avoid the use of user defined functions with UPDATE/INSERT/DELETE statements. (Halloween Protection)";
+        /// <summary>
+        /// The message
+        /// </summary>
         public const string Message = RuleDisplayName;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AvoidFunctionsInActionQueries"/> class.
+        /// </summary>
         public AvoidFunctionsInActionQueries() : base(ProgrammingSchemas)
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();
@@ -48,7 +73,6 @@ namespace SqlServer.Rules.Performance
                 foreach (var functionCall in functionCallVisitor.NotIgnoredStatements(RuleId))
                 {
                     var createFunctionVisitor = new CreateFunctionVisitor();
-                    IList<ParseError> parseErrors;
                     TSqlFragment fnFragment;
 
                     var fnName = functionCall.GetName();
@@ -56,7 +80,7 @@ namespace SqlServer.Rules.Performance
                     if (modelFunction == null) { continue; }
 
                     //we need to parse the sql into a fragment, so we can use the visitors on it
-                    fnFragment = modelFunction.GetFragment(out parseErrors);
+                    fnFragment = modelFunction.GetFragment(out IList<ParseError> parseErrors);
                     fnFragment.Accept(createFunctionVisitor);
 
                     if (!createFunctionVisitor.Statements.Any(crfn => crfn.Options != null && crfn.Options.Any(o => o.OptionKind == FunctionOptionKind.SchemaBinding)))

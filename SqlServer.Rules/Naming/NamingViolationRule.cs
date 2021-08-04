@@ -7,13 +7,36 @@ using System.Collections.Generic;
 
 namespace SqlServer.Rules.Naming
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     public class NamingViolationRule : BaseSqlCodeAnalysisRule
     {
         private readonly string _RuleId;
+        /// <summary>
+        /// The message
+        /// </summary>
         protected readonly string Message;
+        /// <summary>
+        /// The bad characters
+        /// </summary>
         protected readonly string BadCharacters;
+        /// <summary>
+        /// The partial predicate
+        /// </summary>
         protected readonly Func<string, Predicate<string>> PartialPredicate;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NamingViolationRule"/> class.
+        /// </summary>
+        /// <param name="ruleId">The rule identifier.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="badPrefix">The bad prefix.</param>
+        /// <param name="appliesTo">The applies to.</param>
+        /// <param name="predicate">The predicate.</param>
         public NamingViolationRule(
             string ruleId,
             string message,
@@ -28,6 +51,13 @@ namespace SqlServer.Rules.Naming
             PartialPredicate = predicate;
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();

@@ -9,22 +9,47 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-	[ExportCodeAnalysisRule(RuleId,
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
+    [ExportCodeAnalysisRule(RuleId,
 		RuleDisplayName,
 		Description = RuleDisplayName,
 		Category = Constants.Design,
 		RuleScope = SqlRuleScope.Element)]
 	public sealed class AvoidIfInStoredProcRule : BaseSqlCodeAnalysisRule
 	{
-		public const string RuleId = Constants.RuleNameSpace + "SRD0063";
-		public const string RuleDisplayName = "Do not use IF statements containing queries in stored procedures.";
-		private const string Message = RuleDisplayName;
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
+        public const string RuleId = Constants.RuleNameSpace + "SRD0063";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
+        public const string RuleDisplayName = "Do not use IF statements containing queries in stored procedures.";
+        /// <summary>
+        /// The message
+        /// </summary>
+        public const string Message = RuleDisplayName;
 
-		public AvoidIfInStoredProcRule() : base(ModelSchema.Procedure)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AvoidIfInStoredProcRule"/> class.
+        /// </summary>
+        public AvoidIfInStoredProcRule() : base(ModelSchema.Procedure)
 		{
 		}
 
-		public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
+        public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
 		{
 			var problems = new List<SqlRuleProblem>();
 			var sqlObj = ruleExecutionContext.ModelElement;

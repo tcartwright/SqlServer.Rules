@@ -8,6 +8,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -15,15 +21,34 @@ namespace SqlServer.Rules.Performance
         RuleScope = SqlRuleScope.Element)]
     public sealed class UseExistenceInsteadOfCountRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRP0023";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "When checking for existence use EXISTS instead of COUNT";
+        /// <summary>
+        /// The message
+        /// </summary>
         public const string Message = RuleDisplayName;
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UseExistenceInsteadOfCountRule"/> class.
+        /// </summary>
         public UseExistenceInsteadOfCountRule() : base(ProgrammingSchemas)
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();

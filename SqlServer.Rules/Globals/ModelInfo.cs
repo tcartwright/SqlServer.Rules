@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SqlServer.Rules.Globals
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ModelInfo
     {
         /// <summary>
@@ -19,6 +22,7 @@ namespace SqlServer.Rules.Globals
         /// <returns>
         ///   <c>true</c> if [is white listed] [the specified SQL object]; otherwise, <c>false</c>.
         /// </returns>
+        /// <exception cref="ArgumentNullException">sqlObj</exception>
         public static bool IsWhiteListed(this TSqlObject sqlObj)
         {
             if (sqlObj == null) { throw new ArgumentNullException(nameof(sqlObj)); }
@@ -53,6 +57,12 @@ namespace SqlServer.Rules.Globals
             return null;
         }
 
+        /// <summary>
+        /// Gets the set variable.
+        /// </summary>
+        /// <param name="select">The select.</param>
+        /// <param name="variableName">Name of the variable.</param>
+        /// <returns></returns>
         public static string GetSetVariable(this SelectStatement select, string variableName)
         {
             if (select.QueryExpression is QuerySpecification query)
@@ -65,6 +75,11 @@ namespace SqlServer.Rules.Globals
             return null;
         }
 
+        /// <summary>
+        /// Gets the value.
+        /// </summary>
+        /// <param name="literal">The literal.</param>
+        /// <returns></returns>
         public static int GetValue(this IntegerLiteral literal)
         {
             var result = 0;
@@ -77,6 +92,12 @@ namespace SqlServer.Rules.Globals
             return result;
         }
 
+        /// <summary>
+        /// Gets the table column data types.
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <param name="list">The list.</param>
+        /// <param name="model">The model.</param>
         public static void GetTableColumnDataTypes(this TSqlStatement query, IDictionary<NamedTableView, IDictionary<string, DataTypeView>> list, TSqlModel model)
         {
             if (query == null) { return; }
@@ -103,6 +124,12 @@ namespace SqlServer.Rules.Globals
                 }
             }
         }
+        /// <summary>
+        /// Gets the columns and data types.
+        /// </summary>
+        /// <param name="table">The table.</param>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
         public static IDictionary<string, DataTypeView> GetColumnsAndDataTypes(this NamedTableReference table, TSqlModel model)
         {
             var ret = new Dictionary<string, DataTypeView>(StringComparer.InvariantCultureIgnoreCase);
@@ -120,6 +147,12 @@ namespace SqlServer.Rules.Globals
             return ret;
         }
 
+        /// <summary>
+        /// Gets the selects setting parameter value.
+        /// </summary>
+        /// <param name="selects">The selects.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns></returns>
         public static IEnumerable<SelectStatement> GetSelectsSettingParameterValue(this IEnumerable<SelectStatement> selects, string parameter)
         {
             if (!selects.Any() || string.IsNullOrWhiteSpace(parameter)) { yield break; }
@@ -135,6 +168,12 @@ namespace SqlServer.Rules.Globals
             yield break;
         }
 
+        /// <summary>
+        /// Gets the selects using parameter in where.
+        /// </summary>
+        /// <param name="selects">The selects.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns></returns>
         public static IEnumerable<SelectStatement> GetSelectsUsingParameterInWhere(this IEnumerable<SelectStatement> selects, string parameter)
         {
             if (!selects.Any() || string.IsNullOrWhiteSpace(parameter)) { yield break; }
@@ -158,6 +197,11 @@ namespace SqlServer.Rules.Globals
             yield break;
         }
 
+        /// <summary>
+        /// Gets the data type parameters.
+        /// </summary>
+        /// <param name="dataType">Type of the data.</param>
+        /// <returns></returns>
         public static IEnumerable<decimal> GetDataTypeParameters(this DataTypeReference dataType)
         {
             if (dataType == null) { return Enumerable.Empty<decimal>(); }

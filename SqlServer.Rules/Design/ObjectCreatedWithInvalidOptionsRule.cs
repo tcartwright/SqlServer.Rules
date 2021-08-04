@@ -9,6 +9,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -16,11 +22,26 @@ namespace SqlServer.Rules.Design
         RuleScope = SqlRuleScope.Element)]
     public sealed class ObjectCreatedWithInvalidOptionsRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRD0055";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "The object was created with invalid options.";
-        private const string Message = "The object was created with the invalid options: {0}.";
-        private const string MessageNoEffect = "The object was created with the invalid options: {0} but should have little to no effect upon behavior.";
+        /// <summary>
+        /// The message
+        /// </summary>
+        public const string Message = "The object was created with the invalid options: {0}.";
+        /// <summary>
+        /// The message no effect
+        /// </summary>
+        public const string MessageNoEffect = "The object was created with the invalid options: {0} but should have little to no effect upon behavior.";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectCreatedWithInvalidOptionsRule"/> class.
+        /// </summary>
         public ObjectCreatedWithInvalidOptionsRule() : base(ModelSchema.Table,
                 ModelSchema.Procedure,
                 ModelSchema.ScalarFunction,
@@ -30,6 +51,13 @@ namespace SqlServer.Rules.Design
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();
@@ -38,50 +66,37 @@ namespace SqlServer.Rules.Design
             if (sqlObj == null || sqlObj.IsWhiteListed())
                 return problems;
 
-            var fragment = ruleExecutionContext.ScriptFragment.GetFragment(
-                typeof(CreateTableStatement),
-                typeof(CreateProcedureStatement),
-                typeof(CreateFunctionStatement),
-                typeof(CreateTriggerStatement)
-            );
-            var objName = sqlObj.Name.GetName();
             var objType = sqlObj.ObjectType;
 
             ModelPropertyClass ansiNullsOption = null;
             ModelPropertyClass quotedIdentifierOption = null;
             var impactsFunctionality = false;
-            var objTypeName = string.Empty;
 
             if (objType == Table.TypeClass)
             {
                 impactsFunctionality = true;
                 ansiNullsOption = Table.AnsiNullsOn;
                 quotedIdentifierOption = Table.QuotedIdentifierOn;
-                objTypeName = "table";
             }
             else if (objType == ScalarFunction.TypeClass)
             {
                 ansiNullsOption = ScalarFunction.AnsiNullsOn;
                 quotedIdentifierOption = ScalarFunction.QuotedIdentifierOn;
-                objTypeName = "function";
             }
             else if (objType == TableValuedFunction.TypeClass)
             {
                 ansiNullsOption = TableValuedFunction.AnsiNullsOn;
                 quotedIdentifierOption = TableValuedFunction.QuotedIdentifierOn;
-                objTypeName = "function";
             }
             else if (objType == Procedure.TypeClass)
             {
                 ansiNullsOption = Procedure.AnsiNullsOn;
                 quotedIdentifierOption = Procedure.QuotedIdentifierOn;
-                objTypeName = "stored procedure";
             }
             else if (objType == DmlTrigger.TypeClass)
             {
                 ansiNullsOption = DmlTrigger.AnsiNullsOn;
                 quotedIdentifierOption = DmlTrigger.QuotedIdentifierOn;
-                objTypeName = "trigger";
             }
 
             var ansiNullsOn = sqlObj.GetProperty<bool>(ansiNullsOption);
