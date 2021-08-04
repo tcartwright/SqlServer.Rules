@@ -59,6 +59,7 @@
     <Compile Include="Design\AvoidIfInStoredProcRule.cs" />
     <Compile Include="Design\CacheGetDateToVariable.cs" />
     <Compile Include="Design\DoNotUseIdentityFunction.cs" />
+    <Compile Include="Design\AvoidNotForReplication.cs" />
     <Compile Include="Design\UseParameterNamesWithProcsRule.cs" />
     <Compile Include="Design\DoNotMixDMLWithDDLRule.cs" />
     <Compile Include="Design\PredicateCompareRule.cs" />
