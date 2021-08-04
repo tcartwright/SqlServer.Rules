@@ -115,16 +115,16 @@
     <Content Include="TestScripts\Design\AvoidNotForReplication\table2.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable2.sql">
+    <Content Include="TestScripts\Performance\AvoidEndsWithOrContainsRule\nonsargable2.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable_ignored.sql">
+    <Content Include="TestScripts\Performance\AvoidEndsWithOrContainsRule\nonsargable_ignored.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\sargable.sql">
+    <Content Include="TestScripts\Performance\AvoidEndsWithOrContainsRule\sargable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable.sql">
+    <Content Include="TestScripts\Performance\AvoidEndsWithOrContainsRule\nonsargable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestScripts\_Setup\table1.sql">
