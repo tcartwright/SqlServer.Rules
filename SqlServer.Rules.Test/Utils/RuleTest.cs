@@ -250,7 +250,7 @@ namespace SqlServer.Rules.Tests.Utils
         {
             foreach (Tuple<string, string> tuple in TestScripts)
             {
-                // Item1 = script, Item2 = (logicl) source file name
+                // Item1 = script, Item2 = (logical) source file name
                 model.AddOrUpdateObjects(tuple.Item1, tuple.Item2, new TSqlObjectOptions());
             }
         }
