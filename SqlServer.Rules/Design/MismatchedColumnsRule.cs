@@ -10,6 +10,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -17,14 +23,33 @@ namespace SqlServer.Rules.Design
         RuleScope = SqlRuleScope.Model)]
     public sealed class MismatchedColumnsRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRD0047";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Avoid using columns that match other columns by name, but are different in type or size.";
-        private const string Message = "Avoid using columns ({0}) that match other columns by name in the database, but are different in type or size.";
+        /// <summary>
+        /// The message
+        /// </summary>
+        public const string Message = "Avoid using columns ({0}) that match other columns by name in the database, but are different in type or size.";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MismatchedColumnsRule"/> class.
+        /// </summary>
         public MismatchedColumnsRule()
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();

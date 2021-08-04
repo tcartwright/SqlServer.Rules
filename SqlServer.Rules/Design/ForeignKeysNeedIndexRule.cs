@@ -10,6 +10,12 @@ using System;
 
 namespace SqlServer.Rules.Design
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -17,14 +23,33 @@ namespace SqlServer.Rules.Design
         RuleScope = SqlRuleScope.Element)]
     public sealed class ForeignKeysNeedIndexRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRD0004";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Columns on both sides of a foreign key should be indexed.";
-        private const string Message = "Columns on both sides of a foreign key should be indexed for performance reasons.";
+        /// <summary>
+        /// The message
+        /// </summary>
+        public const string Message = "Columns on both sides of a foreign key should be indexed for performance reasons.";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ForeignKeysNeedIndexRule"/> class.
+        /// </summary>
         public ForeignKeysNeedIndexRule() : base(ModelSchema.ForeignKeyConstraint)
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();

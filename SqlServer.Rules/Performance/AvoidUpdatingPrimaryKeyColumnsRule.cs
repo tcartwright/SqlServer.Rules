@@ -10,6 +10,12 @@ using SqlServer.Dac;
 
 namespace SqlServer.Rules.Performance
 {
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
 	[ExportCodeAnalysisRule(RuleId,
 		RuleDisplayName,
 		Description = RuleDisplayName,
@@ -17,14 +23,33 @@ namespace SqlServer.Rules.Performance
 		RuleScope = SqlRuleScope.Element)]
 	public sealed class AvoidUpdatingPrimaryKeyColumnsRule : BaseSqlCodeAnalysisRule
 	{
+		/// <summary>
+		/// The rule identifier
+		/// </summary>
 		public const string RuleId = Constants.RuleNameSpace + "SRP0017";
+		/// <summary>
+		/// The rule display name
+		/// </summary>
 		public const string RuleDisplayName = "Avoid updating columns that are part of the primary key.  (Halloween Protection)";
+		/// <summary>
+		/// The message
+		/// </summary>
 		public const string Message = RuleDisplayName;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="AvoidUpdatingPrimaryKeyColumnsRule"/> class.
+		/// </summary>
 		public AvoidUpdatingPrimaryKeyColumnsRule() : base(ProgrammingSchemas)
 		{
 		}
 
+		/// <summary>
+		/// Performs analysis and returns a list of problems detected
+		/// </summary>
+		/// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+		/// <returns>
+		/// The problems detected by the rule in the given element
+		/// </returns>
 		public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
 		{
 			var problems = new List<SqlRuleProblem>();
@@ -38,8 +63,7 @@ namespace SqlServer.Rules.Performance
 			fragment.Accept(updateVisitor);
 			foreach (var update in updateVisitor.NotIgnoredStatements(RuleId))
 			{
-				var target = update.UpdateSpecification.Target as NamedTableReference;
-				if (target == null || target.GetName().Contains("#")) { continue; }
+				if (!(update.UpdateSpecification.Target is NamedTableReference target) || target.GetName().Contains("#")) { continue; }
 
 				//we have an aliased table we need to find out what the real table is so we can look up its columns
 				if (update.UpdateSpecification.FromClause != null)

@@ -13,6 +13,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Naming
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -20,10 +26,22 @@ namespace SqlServer.Rules.Naming
         RuleScope = SqlRuleScope.Element)]
     public sealed class UseTwoPartNames : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRN0006";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Two part naming on objects is required.";
-        private const string Message = RuleDisplayName;
+        /// <summary>
+        /// The message
+        /// </summary>
+        public const string Message = RuleDisplayName;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UseTwoPartNames"/> class.
+        /// </summary>
         public UseTwoPartNames() : base(
             ModelSchema.Table,
             ModelSchema.View,
@@ -39,6 +57,13 @@ namespace SqlServer.Rules.Naming
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();

@@ -10,6 +10,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -17,10 +23,22 @@ namespace SqlServer.Rules.Design
         RuleScope = SqlRuleScope.Element)]
     public sealed class AvoidNotForReplication : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRD0065";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = Message;
+        /// <summary>
+        /// The message
+        /// </summary>
         public const string Message = "Avoid 'NOT FOR REPLICATION' unless this is the desired behavior and replication is in use.";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AvoidNotForReplication"/> class.
+        /// </summary>
         public AvoidNotForReplication() : base(
             ModelSchema.ForeignKeyConstraint,
             ModelSchema.CheckConstraint,
@@ -29,6 +47,13 @@ namespace SqlServer.Rules.Design
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();

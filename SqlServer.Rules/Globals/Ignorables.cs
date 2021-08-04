@@ -7,9 +7,19 @@ using System.Text.RegularExpressions;
 
 namespace SqlServer.Rules.Globals
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public static class Ignorables
 	{
 		#region ignorables
+		/// <summary>
+		/// Nots the ignored statements.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="visitor">The visitor.</param>
+		/// <param name="ruleId">The rule identifier.</param>
+		/// <returns></returns>
 		public static IEnumerable<T> NotIgnoredStatements<T>(this IVisitor<T> visitor, string ruleId) where T : TSqlFragment
 		{
 			IList<TSqlParserToken> scriptTokenStream = visitor.Statements.FirstOrDefault()?.ScriptTokenStream;
@@ -19,6 +29,14 @@ namespace SqlServer.Rules.Globals
 				   where ShouldNotIgnoreRule(scriptTokenStream, ruleId, s.StartLine)
 				   select s;
 		}
+		/// <summary>
+		/// Nots the ignored statements.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="visitor">The visitor.</param>
+		/// <param name="scriptTokenStream">The script token stream.</param>
+		/// <param name="ruleId">The rule identifier.</param>
+		/// <returns></returns>
 		public static IEnumerable<T> NotIgnoredStatements<T>(this IVisitor<T> visitor, IList<TSqlParserToken> scriptTokenStream, string ruleId) where T : TSqlFragment
 		{
 			return from s in visitor.Statements
@@ -26,6 +44,13 @@ namespace SqlServer.Rules.Globals
 				   select s;
 		}
 
+		/// <summary>
+		/// Shoulds the not ignore rule.
+		/// </summary>
+		/// <param name="scriptTokenStream">The script token stream.</param>
+		/// <param name="ruleId">The rule identifier.</param>
+		/// <param name="lineNumber">The line number.</param>
+		/// <returns></returns>
 		public static bool ShouldNotIgnoreRule(IList<TSqlParserToken> scriptTokenStream, string ruleId, int lineNumber)
 		{
 			if (scriptTokenStream == null) return false;

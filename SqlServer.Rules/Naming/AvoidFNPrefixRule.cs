@@ -4,6 +4,10 @@ using Microsoft.SqlServer.Dac.Model;
 
 namespace SqlServer.Rules.Naming
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="SqlServer.Rules.Naming.NamingViolationRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -11,9 +15,18 @@ namespace SqlServer.Rules.Naming
         RuleScope = SqlRuleScope.Element)]
     public sealed class AvoidFNPrefixRule : NamingViolationRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRN0001";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Avoid 'fn_' prefix when naming functions.";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AvoidFNPrefixRule"/> class.
+        /// </summary>
         public AvoidFNPrefixRule() : base(
             RuleId,
             RuleDisplayName,

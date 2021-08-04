@@ -11,6 +11,12 @@ using SqlServer.Dac;
 
 namespace SqlServer.Rules.Design
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -18,15 +24,37 @@ namespace SqlServer.Rules.Design
         RuleScope = SqlRuleScope.Element)]
     public sealed class MissingJoinPredicateRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRD0020";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "The query has issues with the join clause. It is either missing a backing foreign key or the join is missing one or more columns.";
-        private const string Message = "The query is missing one or more columns in the join clause. This may affect the results or may result in an unexpected row difference.";
-        private const string MessageNoJoin = "The query is using a join, but there is no backing foreign key to match the join.";
+        /// <summary>
+        /// The message
+        /// </summary>
+        public const string Message = "The query is missing one or more columns in the join clause. This may affect the results or may result in an unexpected row difference.";
+        /// <summary>
+        /// The message no join
+        /// </summary>
+        public const string MessageNoJoin = "The query is using a join, but there is no backing foreign key to match the join.";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MissingJoinPredicateRule"/> class.
+        /// </summary>
         public MissingJoinPredicateRule() : base(ProgrammingAndViewSchemas)
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();

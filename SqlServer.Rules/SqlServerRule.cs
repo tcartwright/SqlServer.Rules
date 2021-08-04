@@ -20,7 +20,7 @@
 //        public const string RuleId = Constants.RuleNameSpace + BaseRuleId;
 //		  public const string RuleId = Constants.RuleNameSpace + "SR";
 //        public const string RuleDisplayName = "";
-//        private const string Message = "";
+//        public const string Message = "";
 
 //        public $safeitemname$() : base(ModelSchema.???){}
 
