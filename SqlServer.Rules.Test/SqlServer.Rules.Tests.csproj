@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaselineSetup.cs" />
+    <Compile Include="Design\DesignTestCases.cs" />
     <Compile Include="RuleTestUtils.cs" />
     <Compile Include="TestCasesBase.cs" />
     <Compile Include="Utils\CommonConstants.cs" />
@@ -96,6 +97,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestScripts\Design\AvoidNotForReplication\dbo_table2_trigger_2.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Design\AvoidNotForReplication\dbo_table2_trigger_1_not_for_replication.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Design\AvoidNotForReplication\fk_table2_table1_2.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Design\AvoidNotForReplication\fk_table2_table1_1_not_for_replication.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Design\AvoidNotForReplication\table3.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\Design\AvoidNotForReplication\table2.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestScripts\Performance\AvoidNonsargableLikePattern\nonsargable2.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -113,9 +132,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Design\" />
     <Folder Include="Naming\" />
-    <Folder Include="TestScripts\Design\" />
     <Folder Include="TestScripts\Naming\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
