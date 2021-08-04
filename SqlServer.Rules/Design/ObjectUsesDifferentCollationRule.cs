@@ -9,6 +9,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -16,15 +22,37 @@ namespace SqlServer.Rules.Design
         RuleScope = SqlRuleScope.Element)]
     public sealed class ObjectUsesDifferentCollationRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRD0053";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Object has different collation than the rest of the database. Try to avoid using a different collation unless by design.";
-        private const string MessageColumn = "This column has a different collation than the rest of the database. Try to avoid using a different collation unless by design.";
-        private const string MessageDefault = "This default constraint has a different collation than the rest of the database. Try to avoid using a different collation unless by design.";
+        /// <summary>
+        /// The message column
+        /// </summary>
+        public const string MessageColumn = "This column has a different collation than the rest of the database. Try to avoid using a different collation unless by design.";
+        /// <summary>
+        /// The message default
+        /// </summary>
+        public const string MessageDefault = "This default constraint has a different collation than the rest of the database. Try to avoid using a different collation unless by design.";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectUsesDifferentCollationRule"/> class.
+        /// </summary>
         public ObjectUsesDifferentCollationRule() : base(ModelSchema.Table)
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             List<SqlRuleProblem> problems = new List<SqlRuleProblem>();
@@ -56,13 +84,6 @@ namespace SqlServer.Rules.Design
             problems.AddRange(defaultOffenders.Select(col => new SqlRuleProblem(MessageDefault, sqlObj, col.DefaultConstraint)));
 
             return problems;
-        }
-
-        private decimal GetDataTypeLength(ColumnDefinition col)
-        {
-            var dataType = col.DataType as SqlDataTypeReference;
-            if (dataType == null) { return 0; }
-            return dataType.GetDataTypeParameters().FirstOrDefault();
         }
     }
 }

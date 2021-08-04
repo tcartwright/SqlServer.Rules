@@ -9,6 +9,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -16,15 +22,34 @@ namespace SqlServer.Rules.Performance
         RuleScope = SqlRuleScope.Element)]
     public sealed class QueryHighJoinCountRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRP0018";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Query uses a high number of joins. ";
+        /// <summary>
+        /// The message
+        /// </summary>
         public const string Message = "Query uses {0} joins. This is a high number of joins and can lead to performance issues.";
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryHighJoinCountRule"/> class.
+        /// </summary>
         public QueryHighJoinCountRule() :  base(ProgrammingAndViewSchemas)
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();

@@ -8,6 +8,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -15,14 +21,33 @@ namespace SqlServer.Rules.Design
         RuleScope = SqlRuleScope.Element)]
     public sealed class DoNotUseRealOrFloatRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + "SRD0046";
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Do not use the real or float data types for parameters or columns as they are approximate value data types.";
-        private const string Message = RuleDisplayName;
+        /// <summary>
+        /// The message
+        /// </summary>
+        public const string Message = RuleDisplayName;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DoNotUseRealOrFloatRule"/> class.
+        /// </summary>
         public DoNotUseRealOrFloatRule() : base(ModelSchema.Table, ModelSchema.Procedure, ModelSchema.View)
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             List<SqlRuleProblem> problems = new List<SqlRuleProblem>();

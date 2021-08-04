@@ -11,8 +11,23 @@ using System.Threading.Tasks;
 
 namespace SqlServer.Rules.ReferentialIntegrity
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class RIUtils
     {
+        /// <summary>
+        /// Checks the index of for fk.
+        /// </summary>
+        /// <param name="table">The table.</param>
+        /// <param name="columnNames">The column names.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// table
+        /// or
+        /// columnNames
+        /// </exception>
+        /// <exception cref="ArgumentException">The parameter is not of type Table - table</exception>
         public static bool CheckForFkIndex(this TSqlObject table, IList<ObjectIdentifier> columnNames)
         {
             if (table == null) { throw new ArgumentNullException(nameof(table)); }
@@ -60,6 +75,13 @@ namespace SqlServer.Rules.ReferentialIntegrity
             });
         }
 
+        /// <summary>
+        /// Gets the table fk infos.
+        /// </summary>
+        /// <param name="table">The table.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">table</exception>
+        /// <exception cref="ArgumentException">The parameter is not of type Table - table</exception>
         public static IDictionary<string, ForeignKeyInfo> GetTableFKInfos(this TSqlObject table)
         {
             if (table == null) { throw new ArgumentNullException(nameof(table)); }
@@ -81,6 +103,13 @@ namespace SqlServer.Rules.ReferentialIntegrity
             return fks;
         }
 
+        /// <summary>
+        /// Gets the fk information.
+        /// </summary>
+        /// <param name="fk">The fk.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">fk</exception>
+        /// <exception cref="ArgumentException">The parameter is not of type ForeignKeyConstraint - fk</exception>
         public static ForeignKeyInfo GetFKInfo(this TSqlObject fk)
         {
             if (fk == null) { throw new ArgumentNullException(nameof(fk)); }
@@ -103,6 +132,12 @@ namespace SqlServer.Rules.ReferentialIntegrity
             };
         }
 
+        /// <summary>
+        /// Gets from clause join tables.
+        /// </summary>
+        /// <param name="from">From.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">from</exception>
         public static IList<JoinInfo> GetFromClauseJoinTables(this FromClause from)
         {
             if (from == null) { throw new ArgumentNullException(nameof(from)); }

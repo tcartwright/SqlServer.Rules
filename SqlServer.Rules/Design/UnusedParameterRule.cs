@@ -8,6 +8,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <FriendlyName></FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
@@ -15,15 +21,37 @@ namespace SqlServer.Rules.Design
         RuleScope = SqlRuleScope.Element)]
     public sealed class UnusedParameterRule : BaseSqlCodeAnalysisRule
     {
+        /// <summary>
+        /// The base rule identifier
+        /// </summary>
         public const string BaseRuleId = "SRD0016";
+        /// <summary>
+        /// The rule identifier
+        /// </summary>
         public const string RuleId = Constants.RuleNameSpace + BaseRuleId;
+        /// <summary>
+        /// The rule display name
+        /// </summary>
         public const string RuleDisplayName = "Input parameter never used. Consider removing the parameter or using it.";
-        private const string Message = "Input parameter '{0}' is never used. Consider removing the parameter or using it.";
+        /// <summary>
+        /// The message
+        /// </summary>
+        public const string Message = "Input parameter '{0}' is never used. Consider removing the parameter or using it.";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnusedParameterRule"/> class.
+        /// </summary>
         public UnusedParameterRule() : base(ProgrammingSchemas)
         {
         }
 
+        /// <summary>
+        /// Performs analysis and returns a list of problems detected
+        /// </summary>
+        /// <param name="ruleExecutionContext">Contains the schema model and model element to analyze</param>
+        /// <returns>
+        /// The problems detected by the rule in the given element
+        /// </returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             var problems = new List<SqlRuleProblem>();
