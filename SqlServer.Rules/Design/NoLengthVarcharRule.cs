@@ -1,7 +1,7 @@
-﻿using SqlServer.Rules.Globals;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Rules.Globals;
 
 namespace SqlServer.Rules.Design
 {

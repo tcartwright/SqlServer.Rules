@@ -1,4 +1,4 @@
-# Yet Another Ruleset for SQL Server DataTools
+# Yet Another Rule-set for SQL Server DataTools
 
 ## Overview
 
@@ -39,7 +39,7 @@ So for Visual Studio 2017 with DAC version 150 the path might be
 
 **NOTES:**
 
-- You will need to copy the binaries to every permutaion of Visual Studio version and dac version that you wish to use the rules for.  
+- You will need to copy the binaries to every permutation of Visual Studio version and dac version that you wish to use the rules for.  
 - When you have code analysis enabled and have compiled the project Visual Studio places a hard lock on the rule binaries. To updates them or remove them you will need to close Visual Studio.
 
 ## Project Configuration
@@ -48,5 +48,5 @@ So for Visual Studio 2017 with DAC version 150 the path might be
 - After code analysis is enabled perform a rebuild. Any of the rules that are broke will show up as build warnings.
   - You can double click any of the warnings to be taken to the code location where the rule was broken at.
 - You can also optionally:
-  - Enable / disable rules. 
+  - Enable / disable rules.
   - Set certain rules as errors so they will actually throw build errors.

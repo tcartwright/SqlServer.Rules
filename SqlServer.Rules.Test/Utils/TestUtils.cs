@@ -322,7 +322,7 @@ END
         /// <returns></returns>
         private static int GetLockTimeoutMS()
         {
-            // For now defaulting timout to 90 sec. This could be replaced with a better method for calculating a smart timeout
+            // For now defaulting timeout to 90 sec. This could be replaced with a better method for calculating a smart timeout
             // To have no timeout, use 0
             int timeoutMS = 90 * 1000;
 

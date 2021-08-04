@@ -11,6 +11,7 @@ namespace SqlServer.Rules.Design
     /// </summary>
     /// <FriendlyName></FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

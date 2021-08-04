@@ -16,6 +16,7 @@ namespace SqlServer.Rules.Performance
     /// </summary>
     /// <FriendlyName></FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
@@ -31,7 +32,7 @@ namespace SqlServer.Rules.Performance
         /// <summary>
         /// The rule display name
         /// </summary>
-        public const string RuleDisplayName = "Try to avoid using patterns that start with '%' when using the LIKE keyword if possible.  (Sargeable)";
+        public const string RuleDisplayName = "Try to avoid using patterns that start with '%' when using the LIKE keyword if possible.  (Sargable)";
         /// <summary>
         /// The message
         /// </summary>

@@ -16,6 +16,7 @@ namespace SqlServer.Rules.Performance
 	/// </summary>
 	/// <FriendlyName></FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
 	[ExportCodeAnalysisRule(RuleId,
 		RuleDisplayName,
@@ -31,7 +32,7 @@ namespace SqlServer.Rules.Performance
 		/// <summary>
 		/// The rule display name
 		/// </summary>
-		public const string RuleDisplayName = "Data types on both sides of an equality check should be the same in the where clause. (Sargeable)";
+		public const string RuleDisplayName = "Data types on both sides of an equality check should be the same in the where clause. (Sargable)";
 		/// <summary>
 		/// The message
 		/// </summary>
@@ -60,7 +61,7 @@ namespace SqlServer.Rules.Performance
 			try
 			{
 				var fragment = ruleExecutionContext.ScriptFragment.GetFragment(ProgrammingAndViewSchemaTypes);
-				//get the combined parameters and declare variables into one searchable list
+				//get the combined parameters and declare variables into one search-able list
 				var variablesVisitor = new VariablesVisitor();
 				fragment.AcceptChildren(variablesVisitor);
 				var variables = variablesVisitor.GetVariables();

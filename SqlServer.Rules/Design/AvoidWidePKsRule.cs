@@ -8,10 +8,11 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Avoid creating very wide primary keys with guids or (n)varchar as the first column in the index.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Avoid wide primary keys</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
