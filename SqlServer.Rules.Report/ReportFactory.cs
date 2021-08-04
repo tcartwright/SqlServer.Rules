@@ -148,7 +148,7 @@ namespace SqlServer.Rules.Report
                     {
                         Severity = r.Severity.ToString(),
                         Description = r.DisplayDescription,
-                        Category = $"{r.Namespace}.{r.Metadata.Category}", //as we are inclusing msft rules now too, we need to include the namespace in the category
+                        Category = $"{r.Namespace}.{r.Metadata.Category}", //as we are including msft rules now too, we need to include the namespace in the category
                         Id = r.ShortRuleId
                     }).Distinct(new IssueTypeComparer());
         }

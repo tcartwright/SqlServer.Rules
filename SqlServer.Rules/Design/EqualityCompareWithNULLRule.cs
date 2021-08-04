@@ -15,6 +15,7 @@ namespace SqlServer.Rules.Design
     /// </summary>
     /// <FriendlyName></FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
@@ -60,7 +61,7 @@ namespace SqlServer.Rules.Design
             {
                 var fragment = ruleExecutionContext.ScriptFragment.GetFragment(ProgrammingAndViewSchemaTypes);
 
-                //get the combined parameters and declare variables into one searchable list
+                //get the combined parameters and declare variables into one search-able list
                 var variablesVisitor = new VariablesVisitor();
                 fragment.AcceptChildren(variablesVisitor);
                 var variables = variablesVisitor.GetVariables();

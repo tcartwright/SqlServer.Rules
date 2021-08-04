@@ -44,6 +44,7 @@ namespace SqlServer.Rules.Performance
     /// </summary>
     /// <FriendlyName></FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
@@ -144,7 +145,7 @@ namespace SqlServer.Rules.Performance
                             continue;
                         }
 
-                        //no columns, now we need to look in the where clause for a null check againt this table.
+                        //no columns, now we need to look in the where clause for a null check against this table.
                         if (isnullVisitor.Statements.Any(nc =>
                         {
                             var col = nc.FirstExpression as ColumnReferenceExpression ?? nc.SecondExpression as ColumnReferenceExpression;

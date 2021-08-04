@@ -11,10 +11,11 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Avoid the use of SELECT *. This can cause more columns than desired to be returned, and can also cause issues if the order of the columns changes.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <FriendlyName>Avoid SELECT *</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

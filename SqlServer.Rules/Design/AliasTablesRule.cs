@@ -1,18 +1,19 @@
-﻿using SqlServer.Rules.Globals;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
 using SqlServer.Dac;
 using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
 	/// <summary>
-	/// 
+	/// When a query contains multiple tables it is a good practice to alias all tables used in the query.
 	/// </summary>
-	/// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+	/// <FriendlyName>Alias Tables Rule</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
 	[ExportCodeAnalysisRule(RuleId,
 		RuleDisplayName,

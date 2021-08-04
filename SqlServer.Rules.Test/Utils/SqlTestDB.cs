@@ -38,7 +38,7 @@ namespace SqlServer.Rules.Tests.Utils
 {
     /// <summary>
     /// TestDB manages a database that is used during unit testing.  It provides
-    /// services such as connection strings and attach/detatch of the DB from
+    /// services such as connection strings and attach/detach of the DB from
     /// the test database server
     /// </summary>
     public class SqlTestDB : IDisposable
@@ -359,7 +359,7 @@ namespace SqlServer.Rules.Tests.Utils
 
 
         /// <summary>
-        /// Cleaup the DB if it was restored during the testing process.  A restoredDB will
+        /// Cleanup the DB if it was restored during the testing process.  A restoredDB will
         /// removed from the server and then .mdf/ldf files deleted from disk
         /// </summary>
         /// <param name="reallyCleanUpDatabase">ReallyCleanUpDatabase.NotIfItCameFromABackupFile: means to

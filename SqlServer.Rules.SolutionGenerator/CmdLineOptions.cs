@@ -16,7 +16,7 @@ namespace SqlServer.Rules.SolutionGenerator
         [Option('c', "config", Required = false, HelpText = "The build configuration to use when building the solution. Defaults to Release.")]
         public string BuildConfiguration { get; set; } = "Release";
 
-        [Option('p', "platform", Required = false, HelpText = "The build configuration plaform to use when building the solution. Defaults to 'Any CPU'.")]
+        [Option('p', "platform", Required = false, HelpText = "The build configuration platform to use when building the solution. Defaults to 'Any CPU'.")]
         public string BuildPlatform { get; set; } = "Any CPU";
 
 

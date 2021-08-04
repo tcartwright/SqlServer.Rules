@@ -14,6 +14,7 @@ namespace SqlServer.Rules.Performance
     /// </summary>
     /// <FriendlyName></FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
@@ -29,7 +30,7 @@ namespace SqlServer.Rules.Performance
         /// <summary>
         /// The rule display name
         /// </summary>
-        public const string RuleDisplayName = "Try to avoid using not equal operator (<>,!=) in the WHERE clause if possible. (Sargeable)";
+        public const string RuleDisplayName = "Try to avoid using not equal operator (<>,!=) in the WHERE clause if possible. (Sargable)";
         /// <summary>
         /// The message
         /// </summary>

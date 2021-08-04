@@ -89,7 +89,7 @@ namespace SqlServer.Dac
 		/// <returns></returns>
 		public static TSqlFragment GetFragment(this SqlRuleExecutionContext ruleExecutionContext, bool forceParse = false)
 		{
-			//if forceparse is true, we dont care about the type, we want to parse the object so as to get the header comments as well
+			//if forceparse is true, we don't care about the type, we want to parse the object so as to get the header comments as well
 			if (!forceParse)
 			{
 				var fragment = ruleExecutionContext.ScriptFragment;
@@ -140,12 +140,12 @@ namespace SqlServer.Dac
 		public static TSqlFragment GetFragment(this TSqlFragment baseFragment, params Type[] typesToLookFor)
 		{
 			//for some odd reason, sometimes the fragments do not pass in properly to the rules.... 
-			//this function can reparse that frsagment into its true fragment, and not a sql script...
+			//this function can re-parse that fragment into its true fragment, and not a sql script...
 			if (!(baseFragment is TSqlScript)) { return baseFragment; }
 
 			var stmt = ((TSqlScript)baseFragment)?.Batches.FirstOrDefault()?.Statements.FirstOrDefault();
 			if (stmt == null) { return baseFragment; }
-			//we dont need to parse the fragment unless it is of type TSqlStatement or TSqlStatementSnippet.... just return the type it found
+			//we don't need to parse the fragment unless it is of type TSqlStatement or TSqlStatementSnippet.... just return the type it found
 			if (!(stmt.GetType() == typeof(TSqlStatement) || stmt.GetType() == typeof(TSqlStatementSnippet))) { return stmt; }
 
 			var tsqlParser = new TSql140Parser(true);
