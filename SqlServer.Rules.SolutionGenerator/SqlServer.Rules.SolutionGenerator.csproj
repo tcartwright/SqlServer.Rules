@@ -160,4 +160,9 @@ copy /y "$(PkgMicrosoft_Data_Tools_Msbuild)\lib\net46\SqlPackage.exe.config" $(O
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="RemoveSatelliteAssemblies" AfterTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Remove="@(ReferenceSatellitePaths)" />
+    </ItemGroup>
+  </Target>
 </Project>
