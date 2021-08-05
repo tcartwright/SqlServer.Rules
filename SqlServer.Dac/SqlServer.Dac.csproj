@@ -1,158 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{958B2716-4E46-4498-A742-23DCCF5CE22A}</ProjectGuid>
+    <TargetFramework>net472</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SqlServer.Dac</RootNamespace>
-    <AssemblyName>SqlServer.Dac</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup>
+    <SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Comparisons.cs" />
-    <Compile Include="DataTypeView.cs" />
-    <Compile Include="Fragments.cs" />
-    <Compile Include="Misc.cs" />
-    <Compile Include="Names.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScriptTokenStream.cs" />
-    <Compile Include="Visitors\CreateOrAlterProcedureVisitor.cs" />
-    <Compile Include="Visitors\CreateProcedureVisitor.cs" />
-    <Compile Include="Visitors\AlterProcedureVisitor.cs" />
-    <Compile Include="Visitors\AlterTableVisitor.cs" />
-    <Compile Include="Visitors\IBaseVisitor.cs" />
-    <Compile Include="Visitors\IndexDefinitionVisitor.cs" />
-    <Compile Include="Visitors\ScalarSubqueryVisitor.cs" />
-    <Compile Include="Visitors\ActionStatementVisitor.cs" />
-    <Compile Include="Visitors\BaseVisitor.cs" />
-    <Compile Include="Visitors\BinaryExpressionVisitor.cs" />
-    <Compile Include="Visitors\BooleanBinaryExpressionVisitor.cs" />
-    <Compile Include="Visitors\BooleanComparisonVisitor.cs" />
-    <Compile Include="Visitors\BooleanExpressionVisitor.cs" />
-    <Compile Include="Visitors\BooleanParenthesesExpressionVisitor.cs" />
-    <Compile Include="Visitors\CastCallVisitor.cs" />
-    <Compile Include="Visitors\CloseCursorVisitor.cs" />
-    <Compile Include="Visitors\ColumnDefinitionVisitor.cs" />
-    <Compile Include="Visitors\ColumnReferenceVisitor.cs" />
-    <Compile Include="Visitors\ConvertCallVisitor.cs" />
-    <Compile Include="Visitors\CreateFunctionVisitor.cs" />
-    <Compile Include="Visitors\CreateIndexStatementVisitor.cs" />
-    <Compile Include="Visitors\CreateLoginVisitor.cs" />
-    <Compile Include="Visitors\CreateRoleVisitor.cs" />
-    <Compile Include="Visitors\CreateTableVisitor.cs" />
-    <Compile Include="Visitors\CreateUserVisitor.cs" />
-    <Compile Include="Visitors\DataModificationStatementVisitor.cs" />
-    <Compile Include="Visitors\DataTypeReferenceVisitor.cs" />
-    <Compile Include="Visitors\DeallocateCursorVisitor.cs" />
-    <Compile Include="Visitors\DeclareVariableElementVisitor.cs" />
-    <Compile Include="Visitors\DeleteVisitor.cs" />
-    <Compile Include="Visitors\ExecutableStringListVisitor.cs" />
-    <Compile Include="Visitors\ExecuteVisitor.cs" />
-    <Compile Include="Visitors\FromClauseVisitor.cs" />
-    <Compile Include="Visitors\FunctionCallVisitor.cs" />
-    <Compile Include="Visitors\FunctionStatementBodyVisitor.cs" />
-    <Compile Include="Visitors\GlobalVariableExpressionVisitor.cs" />
-    <Compile Include="Visitors\GrantVisitor.cs" />
-    <Compile Include="Visitors\IfStatementVisitor.cs" />
-    <Compile Include="Visitors\InPredicateVisitor.cs" />
-    <Compile Include="Visitors\InsertStatementVisitor.cs" />
-    <Compile Include="Visitors\ISNULLVisitor.cs" />
-    <Compile Include="Visitors\IVisitor.cs" />
-    <Compile Include="Visitors\JoinVisitor.cs" />
-    <Compile Include="Visitors\LikePredicateVisitor.cs" />
-    <Compile Include="Visitors\MergeStatementVisitor.cs" />
-    <Compile Include="Visitors\NamedTableReferenceVisitor.cs" />
-    <Compile Include="Visitors\OpenCursorVisitor.cs" />
-    <Compile Include="Visitors\OrderByVisitor.cs" />
-    <Compile Include="Visitors\ParameterVisitor.cs" />
-    <Compile Include="Visitors\PredicateVisitor.cs" />
-    <Compile Include="Visitors\QueryHintVisitor.cs" />
-    <Compile Include="Visitors\QuerySpecificationVisitor.cs" />
-    <Compile Include="Visitors\QueryStatementVisitor.cs" />
-    <Compile Include="Visitors\RaiseErrorVisitor.cs" />
-    <Compile Include="Visitors\RowcountVisitor.cs" />
-    <Compile Include="Visitors\SchemaObjectNameVisitor.cs" />
-    <Compile Include="Visitors\SelectElementVisitor.cs" />
-    <Compile Include="Visitors\SelectScalarExpressionVisitor.cs" />
-    <Compile Include="Visitors\SelectStarExpressionVisitor.cs" />
-    <Compile Include="Visitors\SelectStatementVisitor.cs" />
-    <Compile Include="Visitors\SetVariableStatementVisitor.cs" />
-    <Compile Include="Visitors\SqlDataTypeReferenceVisitor.cs" />
-    <Compile Include="Visitors\StatementListVisitor.cs" />
-    <Compile Include="Visitors\StringLiteralVisitor.cs" />
-    <Compile Include="Visitors\TableDefinitionVisitor.cs" />
-    <Compile Include="Visitors\TableHintVisitor.cs" />
-    <Compile Include="Visitors\TableReferenceVisitor.cs" />
-    <Compile Include="Visitors\TableReferenceWithAliasVisitor.cs" />
-    <Compile Include="Visitors\ObjectTypeFilterEnum.cs" />
-    <Compile Include="Visitors\TableVariableVisitor.cs" />
-    <Compile Include="Visitors\TopRowFilterVisitor.cs" />
-    <Compile Include="Visitors\TransactionVisitor.cs" />
-    <Compile Include="Visitors\TryCatchVisitor.cs" />
-    <Compile Include="Visitors\TypesVisitor.cs" />
-    <Compile Include="Visitors\UpdateVisitor.cs" />
-    <Compile Include="Visitors\UseDatabaseVisitor.cs" />
-    <Compile Include="Visitors\VariableReferenceVisitor.cs" />
-    <Compile Include="Visitors\VariablesVisitor.cs" />
-    <Compile Include="Visitors\WaitForVisitor.cs" />
-    <Compile Include="Visitors\WhereClauseVisitor.cs" />
-  </ItemGroup>
   <ItemGroup>
     <None Include="..\key.snk">
       <Link>key.snk</Link>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.SqlServer.DacFx">
       <Version>150.4897.1</Version>
     </PackageReference>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
-  <Target Name="RemoveSatelliteAssemblies" AfterTargets="ResolveAssemblyReferences">
-    <ItemGroup>
-      <ReferenceCopyLocalPaths Remove="@(ReferenceSatellitePaths)" />
-    </ItemGroup>
-  </Target>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
