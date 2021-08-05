@@ -4,11 +4,11 @@ using System;
 
 namespace SqlServer.Rules.SolutionGenerator
 {
-    class CmdLineOptions
+    internal class CmdLineOptions
     {
 
         [Option('s', "solution", Required = true, HelpText = "The solution to run the sql checks against.")]
-        public String SolutionPath { get; set; }
+        public string SolutionPath { get; set; }
 
         [Option('b', "build", Required = false, DefaultValue = false, HelpText = "Whether to build the solution before running the sql checks.")]
         public bool Build { get; set; }
