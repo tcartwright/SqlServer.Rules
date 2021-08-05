@@ -1,5 +1,5 @@
-﻿using SqlServer.Dac;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
+﻿using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,8 +17,8 @@ namespace SqlServer.Dac.Visitors
             _functionNames = functionNames.ToList();
         }
         public IList<FunctionCall> Statements { get; } = new List<FunctionCall>();
-		public int Count { get { return this.Statements.Count; } }
-		public override void ExplicitVisit(FunctionCall node)
+        public int Count { get { return this.Statements.Count; } }
+        public override void ExplicitVisit(FunctionCall node)
         {
             if (!_functionNames.Any())
             {

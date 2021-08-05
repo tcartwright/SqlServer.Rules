@@ -1,9 +1,9 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Dac.Visitors;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -65,8 +65,8 @@ namespace SqlServer.Rules.Design
             var createTable = fragment as CreateTableStatement;
             //find the pk columns
             var pk = createTable.Definition.TableConstraints
-                .FirstOrDefault(c => 
-                    c.GetType() == typeof(UniqueConstraintDefinition) 
+                .FirstOrDefault(c =>
+                    c.GetType() == typeof(UniqueConstraintDefinition)
                     && ((UniqueConstraintDefinition)c).IsPrimaryKey);
             if (pk == null) { return problems; }
 
@@ -77,9 +77,9 @@ namespace SqlServer.Rules.Design
             var identityColumn = createTable.Definition.ColumnDefinitions
                 .FirstOrDefault(cd => pkColNames.Contains($"[{cd.ColumnIdentifier.Value.ToUpper()}]") && cd.IdentityOptions != null);
 
-            if(identityColumn == null) { return problems; }
+            if (identityColumn == null) { return problems; }
             //if the seed starts less than 1000, flag it
-            if(((IntegerLiteral)identityColumn.IdentityOptions.IdentitySeed)?.GetValue() < 1000)
+            if (((IntegerLiteral)identityColumn.IdentityOptions.IdentitySeed)?.GetValue() < 1000)
             {
                 problems.Add(new SqlRuleProblem(Message, sqlObj, identityColumn));
             }

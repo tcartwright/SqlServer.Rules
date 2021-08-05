@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SqlServer.Dac.Visitors
 {
-	public interface IVisitor<T> : IBaseVisitor where T : TSqlFragment
+    public interface IVisitor<T> : IBaseVisitor where T : TSqlFragment
     {
         IList<T> Statements { get; }
     }

@@ -6,8 +6,8 @@ namespace SqlServer.Dac.Visitors
     public class BooleanBinaryExpressionVisitor : BaseVisitor, IVisitor<BooleanBinaryExpression>
     {
         public IList<BooleanBinaryExpression> Statements { get; } = new List<BooleanBinaryExpression>();
-		public int Count { get { return this.Statements.Count; } }
-		public override void ExplicitVisit(BooleanBinaryExpression node)
+        public int Count { get { return this.Statements.Count; } }
+        public override void ExplicitVisit(BooleanBinaryExpression node)
         {
             Statements.Add(node);
         }

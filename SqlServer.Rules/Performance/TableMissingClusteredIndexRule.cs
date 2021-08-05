@@ -1,9 +1,9 @@
-﻿using SqlServer.Rules.Globals;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
+using SqlServer.Rules.Globals;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace SqlServer.Rules.Design
 {
@@ -55,14 +55,14 @@ namespace SqlServer.Rules.Design
             if (sqlObj == null || sqlObj.IsWhiteListed()) { return problems; }
 
             var indexes = sqlObj.GetChildren(DacQueryScopes.All)
-                .Where(x => 
-                    x.ObjectType == ModelSchema.Index 
+                .Where(x =>
+                    x.ObjectType == ModelSchema.Index
                     || x.ObjectType == ModelSchema.PrimaryKeyConstraint).ToList();
             if (!indexes.Any(i => IsClustered(i)))
             {
                 problems.Add(new SqlRuleProblem(Message, sqlObj));
             }
-            
+
             return problems;
         }
 
