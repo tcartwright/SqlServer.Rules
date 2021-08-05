@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SqlServer.Rules.SolutionGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "--build --reportDirectory \".\\Files\" --solution \"..\\..\\..\\..\\TestDatabase\\TestDatabase.sln\""
+    }
+  }
+}

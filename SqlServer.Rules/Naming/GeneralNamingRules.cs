@@ -88,7 +88,7 @@ namespace SqlServer.Rules.Performance
                 problems.Add(new SqlRuleProblem($"Name '{name}' contains invalid characters. Please only use alphanumerics and underscores.", sqlObj, fragment));
             }
 
-            string tableName = parentObj.Name.Parts.LastOrDefault();
+            var tableName = parentObj.Name.Parts.LastOrDefault();
             switch (objectType.ToLower())
             {
                 case "primarykeyconstraint":
@@ -144,7 +144,7 @@ namespace SqlServer.Rules.Performance
             return problems;
         }
 
-        private string GetReferencedName(TSqlObject sqlObj, ModelRelationshipClass relation = null, string typeToLookFor = "Table")
+        private static string GetReferencedName(TSqlObject sqlObj, ModelRelationshipClass relation = null, string typeToLookFor = "Table")
         {
             if (relation == null)
             {

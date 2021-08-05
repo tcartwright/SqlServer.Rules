@@ -22,7 +22,7 @@ namespace SqlServer.Rules.Globals
         /// <returns></returns>
         public static IEnumerable<T> NotIgnoredStatements<T>(this IVisitor<T> visitor, string ruleId) where T : TSqlFragment
         {
-            IList<TSqlParserToken> scriptTokenStream = visitor.Statements.FirstOrDefault()?.ScriptTokenStream;
+            var scriptTokenStream = visitor.Statements.FirstOrDefault()?.ScriptTokenStream;
             if (scriptTokenStream == null) { return visitor.Statements; }
 
             return from s in visitor.Statements
@@ -53,7 +53,10 @@ namespace SqlServer.Rules.Globals
         /// <returns></returns>
         public static bool ShouldNotIgnoreRule(IList<TSqlParserToken> scriptTokenStream, string ruleId, int lineNumber)
         {
-            if (scriptTokenStream == null) return false;
+            if (scriptTokenStream == null)
+            {
+                return false;
+            }
 
             var baseRuleId = ruleId.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).Last();
             var ignoreRegex = $@"\bIGNORE\b.*\b{baseRuleId}\b";
