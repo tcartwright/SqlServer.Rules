@@ -1,9 +1,5 @@
 name: lint
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]    
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
