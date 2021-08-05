@@ -6,8 +6,8 @@ namespace SqlServer.Dac.Visitors
     public class ColumnDefinitionVisitor : BaseVisitor, IVisitor<ColumnDefinition>
     {
         public IList<ColumnDefinition> Statements { get; } = new List<ColumnDefinition>();
-		public int Count { get { return this.Statements.Count; } }
-		public override void ExplicitVisit(ColumnDefinition node)
+        public int Count { get { return this.Statements.Count; } }
+        public override void ExplicitVisit(ColumnDefinition node)
         {
             Statements.Add(node);
         }

@@ -1,9 +1,9 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Dac.Visitors;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -67,8 +67,8 @@ namespace SqlServer.Rules.Performance
                 whereClause.Accept(booleanComparisonVisitor);
 
                 var offenders = booleanComparisonVisitor.NotIgnoredStatements(RuleId)
-                    .Where(c => 
-                        c.ComparisonType == BooleanComparisonType.NotEqualToBrackets 
+                    .Where(c =>
+                        c.ComparisonType == BooleanComparisonType.NotEqualToBrackets
                         || c.ComparisonType == BooleanComparisonType.NotEqualToExclamation);
 
                 var sqlObjName = ruleExecutionContext.GetObjectName(sqlObj);

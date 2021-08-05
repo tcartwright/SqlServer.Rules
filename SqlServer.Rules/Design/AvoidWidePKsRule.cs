@@ -1,7 +1,7 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
+using SqlServer.Dac;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 

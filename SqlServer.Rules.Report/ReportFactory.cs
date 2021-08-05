@@ -32,7 +32,8 @@ namespace SqlServer.Rules.Report
             //load the dacpac
             TSqlModel model = TSqlModel.LoadFromDacpac(
                     request.InputPath
-                    ,new ModelLoadOptions() { 
+                    , new ModelLoadOptions()
+                    {
                         LoadAsScriptBackedModel = true,
                         ModelStorageType = Microsoft.SqlServer.Dac.DacSchemaModelStorageType.Memory
                     });
@@ -89,7 +90,7 @@ namespace SqlServer.Rules.Report
                     var xPathDoc = new XPathDocument(outFileName);
                     var xslTransform = new XslCompiledTransform();
                     using (var xmlWriter = new XmlTextWriter(Path.Combine(outDir, $"{request.FileName}.html"), null))
-                    { 
+                    {
                         xslTransform.Load(xlstPath);
                         xslTransform.Transform(xPathDoc, null, xmlWriter);
                     }
@@ -187,9 +188,10 @@ namespace SqlServer.Rules.Report
         {
             var sb = new StringBuilder();
             sb.AppendLine("Issue Id,Message,Line/Offset,File Name");
-            foreach(var line in report.Issues)
+            foreach (var line in report.Issues)
             {
-                foreach (var issue in line.Issues) {
+                foreach (var issue in line.Issues)
+                {
                     sb.AppendLine($"\"{issue.TypeId}\",\"{issue.Message}\",\"{issue.Line}/{issue.Offset}\",\"{issue.File}\"");
                 }
             }

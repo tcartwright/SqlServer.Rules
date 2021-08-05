@@ -1,8 +1,8 @@
-﻿using SqlServer.Rules.Globals;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
 using SqlServer.Dac;
 using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 

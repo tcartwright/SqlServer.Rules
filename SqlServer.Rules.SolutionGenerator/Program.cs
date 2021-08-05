@@ -5,17 +5,17 @@ using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Execution;
 using Microsoft.Build.Framework;
+using Microsoft.Win32;
 using SqlServer.Rules.Report;
 using SqlServer.Rules.SolutionGenerator.Payloads;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Configuration;
-using Microsoft.Win32;
-using System.Diagnostics;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace SqlServer.Rules.SolutionGenerator
 {

@@ -25,6 +25,7 @@
 //</copyright>
 //------------------------------------------------------------------------------
 
+using Microsoft.SqlServer.Dac;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -32,7 +33,6 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using Microsoft.SqlServer.Dac;
 
 namespace SqlServer.Rules.Tests.Utils
 {

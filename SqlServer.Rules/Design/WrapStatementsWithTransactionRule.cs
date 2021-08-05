@@ -1,9 +1,9 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Dac.Visitors;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -72,7 +72,7 @@ namespace SqlServer.Rules.Design
 
             //eliminate rollbacks, and ensure all the action statements are wrapped inside the begin tran...commit tran
             var transactionStatements = transactionVisitor.Statements
-                .Where(st => st.GetType() == typeof(BeginTransactionStatement) 
+                .Where(st => st.GetType() == typeof(BeginTransactionStatement)
                     || st.GetType() == typeof(CommitTransactionStatement));
             var possibleOffenders = new List<DataModificationStatement>(actionStatementVisitor.Statements);
 

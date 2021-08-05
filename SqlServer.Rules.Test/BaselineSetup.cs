@@ -25,8 +25,8 @@ namespace SqlServer.Rules.Test
         protected string OutputFilePath { get; private set; }
         protected string BaselineFilePath { get; private set; }
 
-        public BaselineSetup(TestContext testContext, string testName, TSqlModelOptions databaseOptions, SqlServerVersion sqlServerVersion = SqlServerVersion.Sql150) 
-            : base(new List<Tuple<string,string>>(), databaseOptions, sqlServerVersion)
+        public BaselineSetup(TestContext testContext, string testName, TSqlModelOptions databaseOptions, SqlServerVersion sqlServerVersion = SqlServerVersion.Sql150)
+            : base(new List<Tuple<string, string>>(), databaseOptions, sqlServerVersion)
         {
             var folder = Path.Combine(GetBaseFolder(), TestScriptsFolder);
             ScriptsFolder = Directory.EnumerateDirectories(folder, testName, SearchOption.AllDirectories).FirstOrDefault();
@@ -65,7 +65,7 @@ namespace SqlServer.Rules.Test
 
         private void LoadTestScripts(string folder)
         {
-            if(!Directory.Exists(folder))
+            if (!Directory.Exists(folder))
             {
                 return;
             }
@@ -76,7 +76,7 @@ namespace SqlServer.Rules.Test
                                   where SqlExtension.Equals(file.Extension, StringComparison.OrdinalIgnoreCase)
                                   select file.FullName;
 
-            foreach(string scriptFile in scriptFilePaths)
+            foreach (string scriptFile in scriptFilePaths)
             {
                 try
                 {
@@ -84,7 +84,7 @@ namespace SqlServer.Rules.Test
                     TestScripts.Add(Tuple.Create(contents, Path.GetFileName(scriptFile)));
                     Console.WriteLine($"Test file '{scriptFile}' loaded successfully");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine($"Error reading from file {scriptFile} with message '{ex.Message}'");
                     Console.WriteLine("Execution will continue...");
@@ -99,7 +99,7 @@ namespace SqlServer.Rules.Test
 
             string loadedTestScriptFiles = ListScriptFilenames();
 
-            if(string.Compare(resultsString, baseline, false, System.Globalization.CultureInfo.CurrentCulture) != 0)
+            if (string.Compare(resultsString, baseline, false, System.Globalization.CultureInfo.CurrentCulture) != 0)
             {
                 StringBuilder failureMessage = new StringBuilder();
 
@@ -125,7 +125,7 @@ namespace SqlServer.Rules.Test
         {
             StringBuilder loadedTestScriptFiles = new StringBuilder();
 
-            foreach(var scriptInfo in TestScripts)
+            foreach (var scriptInfo in TestScripts)
             {
                 string scriptPath = scriptInfo.Item2;
                 loadedTestScriptFiles.AppendLine(scriptPath);

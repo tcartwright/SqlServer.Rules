@@ -1,9 +1,9 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Dac.Visitors;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,7 +57,7 @@ namespace SqlServer.Rules.Performance
             if (sqlObj == null || sqlObj.IsWhiteListed()) { return problems; }
 
             var fragment = ruleExecutionContext.ScriptFragment.GetFragment(
-                typeof(CreateProcedureStatement), 
+                typeof(CreateProcedureStatement),
                 typeof(CreateTriggerStatement));
             var visitor = new PredicateVisitor();
             fragment.Accept(visitor);

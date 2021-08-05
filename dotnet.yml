@@ -1,0 +1,34 @@
+name: .NET
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      
+    - name: Restore NuGet Packages
+      run: nuget restore SqlServer.Rules.sln
+      
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1
+      #with:
+      ## Folder location of where vswhere.exe is located if a self-hosted agent
+      #  vswhere-path: # optional
+      ## Version of Visual Studio to search; defaults to latest if not specified
+      #  vs-version: # optional
+      
+    - name: Build and Publish Web App
+      run: msbuild SqlServer.Rules.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      
