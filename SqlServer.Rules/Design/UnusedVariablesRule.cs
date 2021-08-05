@@ -1,8 +1,8 @@
-﻿using SqlServer.Rules.Globals;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
 using SqlServer.Dac;
 using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,15 +57,15 @@ namespace SqlServer.Rules.Design
 
 
             var fragment = ruleExecutionContext.ScriptFragment.GetFragment(ProgrammingSchemaTypes);
-            if(fragment.ScriptTokenStream == null) { return problems; }
+            if (fragment.ScriptTokenStream == null) { return problems; }
             var visitor = new DeclareVariableElementVisitor();
             fragment.Accept(visitor);
 
             var vars = from pp in visitor.Statements
-                        join t in fragment.ScriptTokenStream
-                            on new { Name = pp.VariableName.Value?.ToLower(), Type = TSqlTokenType.Variable }
-                            equals new { Name = t.Text?.ToLower(), Type = t.TokenType }
-                        select pp;
+                       join t in fragment.ScriptTokenStream
+                           on new { Name = pp.VariableName.Value?.ToLower(), Type = TSqlTokenType.Variable }
+                           equals new { Name = t.Text?.ToLower(), Type = t.TokenType }
+                       select pp;
 
             var unusedVars = vars.GroupBy(p => p.VariableName.Value?.ToLower()).Where(g => g.Count() == 1).Select(g => g.First());
 

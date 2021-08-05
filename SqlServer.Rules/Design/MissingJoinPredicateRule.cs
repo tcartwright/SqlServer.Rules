@@ -1,13 +1,13 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Diagnostics;
-using SqlServer.Rules.ReferentialIntegrity;
 using SqlServer.Dac;
+using SqlServer.Dac.Visitors;
+using SqlServer.Rules.Globals;
+using SqlServer.Rules.ReferentialIntegrity;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace SqlServer.Rules.Design
 {

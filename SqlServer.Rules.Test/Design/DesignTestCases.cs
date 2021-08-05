@@ -1,13 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.Dac.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SqlServer.Rules.Design;
+using SqlServer.Rules.Performance;
 using SqlServer.Rules.Test;
 using System;
-using System.Linq;
-using Microsoft.SqlServer.Dac.Model;
-using SqlServer.Rules.Performance;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
-using System.Text;
 using System.Collections.Generic;
-using SqlServer.Rules.Design;
+using System.Linq;
+using System.Text;
 
 namespace SqlServer.Rules.Tests.Performance
 {

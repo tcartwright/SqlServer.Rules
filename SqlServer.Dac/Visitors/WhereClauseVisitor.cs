@@ -6,8 +6,8 @@ namespace SqlServer.Dac.Visitors
     public class WhereClauseVisitor : BaseVisitor, IVisitor<WhereClause>
     {
         public IList<WhereClause> Statements { get; } = new List<WhereClause>();
-		public int Count { get { return this.Statements.Count; } }
-		public override void ExplicitVisit(WhereClause node)
+        public int Count { get { return this.Statements.Count; } }
+        public override void ExplicitVisit(WhereClause node)
         {
             Statements.Add(node);
         }

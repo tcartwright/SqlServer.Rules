@@ -1,9 +1,9 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Dac.Visitors;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -64,14 +64,13 @@ namespace SqlServer.Rules.Design
 
             var offenders = columnVisitor.Statements
                 .Where(col => col.DataType != null && col.DataType.Name != null)
-                .Select(col => new
-                {
+                .Select(col => new {
                     column = col,
                     name = col.ColumnIdentifier.Value,
                     type = col.DataType.Name.Identifiers.FirstOrDefault()?.Value
                 })
-                .Where(x => _comparer.Equals(x.type, "text") 
-                    || _comparer.Equals(x.type, "ntext") 
+                .Where(x => _comparer.Equals(x.type, "text")
+                    || _comparer.Equals(x.type, "ntext")
                     || _comparer.Equals(x.type, "image"));
 
             problems.AddRange(offenders.Select(col => new SqlRuleProblem(Message, sqlObj, col.column)));

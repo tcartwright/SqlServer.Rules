@@ -6,8 +6,8 @@ namespace SqlServer.Dac.Visitors
     public class SchemaObjectNameVisitor : BaseVisitor, IVisitor<SchemaObjectName>
     {
         public IList<SchemaObjectName> Statements { get; } = new List<SchemaObjectName>();
-		public int Count { get { return this.Statements.Count; } }
-		public override void ExplicitVisit(SchemaObjectName node)
+        public int Count { get { return this.Statements.Count; } }
+        public override void ExplicitVisit(SchemaObjectName node)
         {
             Statements.Add(node);
         }

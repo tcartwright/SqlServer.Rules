@@ -1,8 +1,8 @@
-﻿using SqlServer.Rules.Globals;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
 using SqlServer.Dac;
 using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Rules.Globals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,7 +65,7 @@ namespace SqlServer.Rules.Design
 
             foreach (var stmt in visitor.NotIgnoredStatements(RuleId))
             {
-                if(stmt.UpdateSpecification.WhereClause != null 
+                if (stmt.UpdateSpecification.WhereClause != null
                     || !(stmt.UpdateSpecification.Target is NamedTableReference)) { continue; }
 
                 var tableName = ((NamedTableReference)stmt.UpdateSpecification.Target).SchemaObject.Identifiers.Last().Value;
