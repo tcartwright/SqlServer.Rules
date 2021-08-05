@@ -1,7 +1,7 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
+using SqlServer.Dac;
+using SqlServer.Rules.Globals;
 using System;
 using System.Collections.Generic;
 
@@ -70,7 +70,7 @@ namespace SqlServer.Rules.Naming
             var name = ruleExecutionContext.GetObjectName(sqlObj, ElementNameStyle.SimpleName).ToLower();
             var fragment = ruleExecutionContext.GetFragment();
 
-            if (PartialPredicate(name)(BadCharacters) 
+            if (PartialPredicate(name)(BadCharacters)
                 && Ignorables.ShouldNotIgnoreRule(fragment.ScriptTokenStream, _RuleId, fragment.StartLine))
             {
                 problems.Add(new SqlRuleProblem(Message, sqlObj));

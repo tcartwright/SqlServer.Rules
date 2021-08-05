@@ -1,6 +1,6 @@
-﻿using SqlServer.Rules.Globals;
+﻿using Microsoft.SqlServer.Dac.Model;
 using SqlServer.Dac;
-using Microsoft.SqlServer.Dac.Model;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,7 +57,7 @@ namespace SqlServer.Rules.ReferentialIntegrity
         {
             var cols = new List<string>();
             var toCols = new List<string>();
-            foreach(var col in ColumnNames)     
+            foreach (var col in ColumnNames)
             {
                 cols.Add(col.Parts.Last());
             }

@@ -1,11 +1,11 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
 
 namespace SqlServer.Rules.Performance
 {

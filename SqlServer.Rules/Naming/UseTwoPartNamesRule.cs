@@ -2,11 +2,11 @@
  * TIM C: 1/19/2018 Commented this out AS the dacpac ALWAYS reports two part names even when the file is missing the schema. 
  */
 
-using SqlServer.Rules.Globals;
-using SqlServer.Dac;
 using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Rules.Globals;
 using System;
 using System.Collections.Generic;
 using System.Linq;

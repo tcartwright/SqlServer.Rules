@@ -1,9 +1,9 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Dac.Visitors;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,7 +61,7 @@ namespace SqlServer.Rules.Design
             var objName = sqlObj.Name.GetName();
 
             var indexes = sqlObj.GetReferencing(DacQueryScopes.All).Where(x => x.ObjectType == Index.TypeClass);
-            
+
             var count = indexes.Count();
             if (count > 15)
             {

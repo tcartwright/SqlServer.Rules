@@ -1,9 +1,9 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using SqlServer.Dac.Visitors;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Dac.Visitors;
+using SqlServer.Rules.Globals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,7 +71,7 @@ namespace SqlServer.Rules.Performance
                 var localOpenCursors = openCursorVisitor.Statements.Where(c => !c.Cursor.IsGlobal);
                 var localDeallocateCursors = deallocateCursorVisitor.Statements.Where(c => !c.Cursor.IsGlobal);
 
-                var unDeallocatedCursors = localOpenCursors.Where(c => 
+                var unDeallocatedCursors = localOpenCursors.Where(c =>
                     !localDeallocateCursors.Any(c2 => _comparer.Equals(c.Cursor.Name.Value, c2.Cursor.Name.Value)));
 
                 foreach (var cursor in unDeallocatedCursors)

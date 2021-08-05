@@ -1,8 +1,8 @@
-﻿using SqlServer.Rules.Globals;
-using SqlServer.Dac;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
+﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using SqlServer.Dac;
+using SqlServer.Rules.Globals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -56,8 +56,8 @@ namespace SqlServer.Rules.Design
 
             if (sqlObj == null || sqlObj.IsWhiteListed()) { return problems; }
             var fragment = ruleExecutionContext.ScriptFragment.GetFragment(
-                typeof(CreateTableStatement), 
-                typeof(CreateProcedureStatement), 
+                typeof(CreateTableStatement),
+                typeof(CreateProcedureStatement),
                 typeof(CreateViewStatement)
             );
 
