@@ -61,11 +61,13 @@ namespace SqlServer.Rules.Design
             var sqlObj = ruleExecutionContext.ModelElement;
 
             if (sqlObj == null || sqlObj.IsWhiteListed())
+            {
                 return problems;
+            }
 
             var obj = ruleExecutionContext.SchemaModel.GetObject(sqlObj.ObjectType, sqlObj.Name, DacQueryScopes.All);
 
-            bool notForReplication = false;
+            var notForReplication = false;
 
             if (sqlObj.ObjectType == ForeignKeyConstraint.TypeClass)
             {
@@ -83,7 +85,10 @@ namespace SqlServer.Rules.Design
             {
                 var createTable = ruleExecutionContext.ScriptFragment as CreateTableStatement;
                 var identityColumn = createTable.Definition.ColumnDefinitions.FirstOrDefault(cd => cd.IdentityOptions != null);
-                notForReplication = identityColumn.IdentityOptions.IsIdentityNotForReplication;
+                if (identityColumn != null)
+                {
+                    notForReplication = identityColumn.IdentityOptions.IsIdentityNotForReplication;
+                }
             }
 
             if (notForReplication)

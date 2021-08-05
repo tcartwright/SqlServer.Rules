@@ -17,6 +17,14 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Microsoft.Data.Tools.Schema.SqlTasks.targets">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sqlpackage.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System.configuration" />
     <Reference Include="System.Security" />
   </ItemGroup>
@@ -91,9 +99,4 @@
       <Version>5.0.0</Version>
     </PackageReference>
   </ItemGroup>
-  <PropertyGroup>
-    <PreBuildEvent>@echo "COPYING: Missing Assets"
-copy /y "$(PkgMicrosoft_Data_Tools_Msbuild)\lib\net46\Microsoft.Data.Tools.Schema.SqlTasks.targets" $(OutputDir)
-copy /y "$(PkgMicrosoft_Data_Tools_Msbuild)\lib\net46\SqlPackage.exe.config" $(OutputDir)</PreBuildEvent>
-  </PropertyGroup>
 </Project>
