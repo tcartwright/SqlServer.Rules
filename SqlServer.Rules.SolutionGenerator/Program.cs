@@ -32,7 +32,7 @@ namespace SqlServer.Rules.SolutionGenerator
 
     internal class Program
     {
-        private static StringComparer _comparer = StringComparer.OrdinalIgnoreCase;
+        private static readonly StringComparer _comparer = StringComparer.OrdinalIgnoreCase;
 
         private static int Main(string[] args)
         {
@@ -107,6 +107,7 @@ namespace SqlServer.Rules.SolutionGenerator
                 return (int)ErrorLevel.Success;
                 #endregion PROCESS THE RULES
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -114,6 +115,7 @@ namespace SqlServer.Rules.SolutionGenerator
                 Console.ResetColor();
                 return (int)ErrorLevel.GeneralException;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
             finally
             {
                 if (Debugger.IsAttached)
@@ -156,11 +158,13 @@ namespace SqlServer.Rules.SolutionGenerator
                     result.Projects.Add(proj);
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 result.Messages.Add(e.Message);
                 result.Result = CompletionResult.Failure;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             return result;
         }
