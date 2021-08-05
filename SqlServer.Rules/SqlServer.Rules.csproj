@@ -22,6 +22,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>false</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\key.snk">
