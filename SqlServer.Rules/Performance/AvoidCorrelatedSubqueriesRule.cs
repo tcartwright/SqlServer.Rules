@@ -9,11 +9,12 @@ using System.Linq;
 namespace SqlServer.Rules.Performance
 {
     /// <summary>
-    /// 
+    /// Avoid the use of correlated subqueries except for very small tables
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-    /// <IsIgnorable>false</IsIgnorable>
+    /// <FriendlyName>Correlated subquery</FriendlyName>
+    /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>https://en.wikipedia.org/wiki/Correlated_subquery</remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
