@@ -10,10 +10,8 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Local cursor not explicitly deallocated</summary>
+    /// <FriendlyName>Unfreed cursor</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />

@@ -8,12 +8,14 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <summary>Consider using EXISTS instead of COUNT</summary>
+    /// <FriendlyName>Enumerating for existence check</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// COUNT will iterate through every row in the table before returning the result whereas EXISTS
+    ///  will stop as soon as records are found.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

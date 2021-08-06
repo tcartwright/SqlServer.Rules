@@ -7,12 +7,11 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Views should not use other views as a data source</summary>
+    /// <FriendlyName>Nested Views</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>Views that use other views in their from cause are extremely inefficient and will result in non-optimal execution plans.</remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
