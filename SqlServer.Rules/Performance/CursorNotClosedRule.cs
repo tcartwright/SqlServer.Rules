@@ -10,12 +10,15 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Local cursor not closed</summary>
+    /// <FriendlyName>Dangling cursor</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks if any local cursor is closed until the end of the batch. Because when open,
+    /// the cursor still holds locks on referred-to-tables or views, you should explicitly close it
+    /// as soon as it is no longer needed.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

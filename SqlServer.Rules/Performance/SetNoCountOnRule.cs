@@ -9,12 +9,19 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <summary>SET NOCOUNT ON is recommended to be enabled in stored procedures and triggers</summary>
+    /// <FriendlyName>Noisy trigger</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// This rule scans triggers and stored procedures to ensure they SET NOCOUNT to ON at the
+    ///  beginning. Use SET NOCOUNT ON at the beginning of your SQL batches, stored procedures and
+    ///  triggers in production environments, as this prevents the sending of DONE_IN_PROC messages
+    ///  and suppresses messages like '(1 row(s) affected)' to the client for each statement in a
+    ///  stored procedure. For stored procedures that contain several statements that do not return
+    ///  much actual data, setting SET NOCOUNT to ON can provide a significant performance boost,
+    ///  because network traffic is greatly reduced.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
