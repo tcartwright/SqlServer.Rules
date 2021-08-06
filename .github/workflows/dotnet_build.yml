@@ -10,8 +10,6 @@ jobs:
   setup:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -22,6 +20,7 @@ jobs:
     needs: setup
  
     steps:
+    - uses: actions/checkout@v2
     # Format the output of dotnet format
     - name: Add dotnet-format problem matcher
       uses: xt0rted/dotnet-format-problem-matcher@v1
