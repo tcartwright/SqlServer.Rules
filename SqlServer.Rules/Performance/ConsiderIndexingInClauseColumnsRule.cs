@@ -10,12 +10,11 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Consider indexing the columns referenced by IN predicates in order to avoid table scans.</summary>
+    /// <FriendlyName>Un-indexed membership test</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>Consider indexing the columns referenced by IN predicates in order to avoid table scans</remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
