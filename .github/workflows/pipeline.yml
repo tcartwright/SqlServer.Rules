@@ -56,9 +56,6 @@ jobs:
     needs: build
 
     steps:  
-    - name: WhatDirAmI
-      shell: pwsh
-      run:  "Current DIR: $(Get-Location)"
     - name: Generate Docs
       shell: pwsh
       run: powershell .\.github\workflows\generate_docs.ps1 -path "${{ github.workspace }}"
