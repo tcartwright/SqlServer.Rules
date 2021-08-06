@@ -61,7 +61,7 @@ jobs:
       run:  "Current DIR: $(Get-Location)"
     - name: Generate Docs
       shell: pwsh
-      run: powershell .\workflows\generate_docs.ps1 -path "${{ github.workspace }}"
+      run: powershell .\.github\workflows\generate_docs.ps1 -path "${{ github.workspace }}"
     - name: Commit files  
       run: |
         git config --local user.name  ${{ github.actor }}
