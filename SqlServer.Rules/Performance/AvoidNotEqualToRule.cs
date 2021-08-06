@@ -10,11 +10,16 @@ using System.Linq;
 namespace SqlServer.Rules.Performance
 {
     /// <summary>
-    /// 
+    ///  Avoid using not equal operator (<>,!=) in the WHERE clause. (Sargeable) 
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <FriendlyName>Use of inequality</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for usage of the not equal operator in the WHERE clause as it result table
+    /// and index scans. Consider replacing the not equal operator with equals (=) or inequality
+    /// operators (>,>=,<,<=) if possible.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
