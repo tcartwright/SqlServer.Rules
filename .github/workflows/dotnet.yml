@@ -16,7 +16,7 @@ jobs:
       name: Checkout Code
       
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
+      uses: NuGet/setup-nuget@v1.0.5
       
     - name: Restore NuGet Packages
       run: nuget restore SqlServer.Rules.sln
