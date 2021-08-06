@@ -12,11 +12,16 @@ namespace SqlServer.Rules.Performance
 
 
     /// <summary>
-    /// 
+    /// Avoid using patterns that start with '%' with the LIKE keyword  (Sargeable)
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <FriendlyName>Unanchored string pattern</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// This rule checks for usage of wildcard characters at the beginning of a word while searching
+    /// using the LIKE keyword. Usage of wildcard characters at the beginning of a LIKE pattern
+    /// results in an index scan, which defeats the purpose of an index.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

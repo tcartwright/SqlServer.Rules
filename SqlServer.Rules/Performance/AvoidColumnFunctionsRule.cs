@@ -13,9 +13,13 @@ namespace SqlServer.Rules.Performance
     /// <summary>
     /// Avoid wrapping columns within a function in the WHERE clause. This affects sargability.
     /// </summary>
-    /// <FriendlyName>Avoid wrapping columns with functions in the where clause</FriendlyName>
+    /// <FriendlyName>Filtering on calculated value</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// When a WHERE clause column is wrapped inside a function, the query optimizer does not see
+    /// the column and if an index exists on the column, the index will not to be used.
+    /// <remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

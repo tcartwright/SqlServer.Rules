@@ -13,11 +13,15 @@ using System.Linq;
 namespace SqlServer.Rules.Performance
 {
     /// <summary>
-    /// 
+    /// Avoid the use of functions with UPDATE / INSERT  / DELETE statements. (Halloween Protection)
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <FriendlyName>Function in data modification</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// When a user defined function that does not use <c>SCHEMABINDING</c> is used in an action
+    /// query the data modifications have to be spooled to tempdb in a two step operation.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
