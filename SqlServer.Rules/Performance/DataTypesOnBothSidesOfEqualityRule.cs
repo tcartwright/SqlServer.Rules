@@ -12,11 +12,16 @@ using System.Linq;
 namespace SqlServer.Rules.Performance
 {
     /// <summary>
-    /// 
+    /// Data types on both sides of an equality check should be the same in the where clause.  (Sargeable)
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Equality test with mismatched types</FriendlyName>
     /// <IsIgnorable>false</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// When fields of different data types are joined on or compared, if they are not the same data
+    /// type, one type will be implicitly converted to the other type. Implicit conversion can lead
+    /// to data truncation and to performance issues appears in query filter.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
