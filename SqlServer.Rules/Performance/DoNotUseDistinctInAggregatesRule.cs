@@ -10,12 +10,16 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <summary>Avoid using DISTINCT keyword inside of aggregate functions.</summary>
+    /// <FriendlyName>Aggregate of unique set</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks all aggregate functions (except MIN and MAX) for using the DISTINCT keyword.
+    /// The using DISTINCT in aggregate function can often cause significant performance
+    /// degradation especially when used multiple times or with other aggregate functions in the
+    /// same select.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
