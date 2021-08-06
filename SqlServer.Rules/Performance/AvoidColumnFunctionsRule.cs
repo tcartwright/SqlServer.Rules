@@ -19,7 +19,7 @@ namespace SqlServer.Rules.Performance
     /// <remarks>
     /// When a WHERE clause column is wrapped inside a function, the query optimizer does not see
     /// the column and if an index exists on the column, the index will not to be used.
-    /// <remarks>
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
