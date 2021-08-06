@@ -50,3 +50,11 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Generate Docs
+      run: powershell .\workflows\generate_docs.ps1 -path "${{ github.workspace }}"
+    - name: Push changes  
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        force: true
+      
