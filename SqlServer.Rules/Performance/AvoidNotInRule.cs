@@ -9,12 +9,15 @@ using System.Linq;
 
 namespace SqlServer.Rules.Performance
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <summary>Avoid using NOT IN predicate in the WHERE clause.</summary>
+    /// <FriendlyName>Non-member test in predicate</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Using NOT IN predicate in the WHERE clause generally performs badly, because the SQL Server
+    /// optimizer has to use a TABLE SCAN instead of an INDEX SEEK even the filtering columns are
+    /// covered by index.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
