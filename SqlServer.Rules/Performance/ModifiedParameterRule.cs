@@ -10,12 +10,16 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <summary>Avoid modification of parameters in a stored procedure prior to use in a select query.</summary>
+    /// <FriendlyName>Manipulated parameter value</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// For best query performance, in some situations you'll need to avoid assigning a new
+    /// value to a parameter of a stored procedure within the procedure body, and then using the
+    /// parameter value in a query. The stored procedure and all queries in it are initially
+    /// compiled with the parameter value first passed in as a parameter to the query.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

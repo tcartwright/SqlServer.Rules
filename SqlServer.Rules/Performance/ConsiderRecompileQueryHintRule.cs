@@ -10,11 +10,33 @@ using System.Linq;
 namespace SqlServer.Rules.Performance
 {
     /// <summary>
-    /// 
+    /// Consider using <c>RECOMPILE</c> query hint instead of <c>WITH RECOMPILE</c> option 
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Procedure level recompile option</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
-	/// <ExampleMd></ExampleMd>
+	/// <ExampleMd>
+    ///    good:
+    ///     ```sql
+    ///     CREATE PROCEDURE dbo.my_proc
+    ///     BEGIN
+    ///         SELECT col_A, col_b 
+    ///         FROM some_complicated_set 
+    ///         WHERE some_complicated_filter = 1 
+    ///         OPTION(RECOMPILE)
+    ///     ```
+    /// 
+    ///    bad:
+    ///     ```sql
+    ///     CREATE PROCEDURE dbo.my_proc
+    ///     WITH RECOMPILE
+    ///     ```
+    /// </ExampleMd>
+    /// <remarks>
+    /// The rule checks that stored procedures do not use <c>WITH RECOMPILE</c> procedure option. The
+    /// <c>OPTION(RECOMPILE)</c> is the preferred method when a recompile is needed. The <c>WITH RECOMPILE</c>
+    /// procedure option instructs the Database Engine does not cache a plan for this procedure and
+    /// the procedure is compiled at run time.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
