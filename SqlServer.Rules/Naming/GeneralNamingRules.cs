@@ -10,12 +10,25 @@ using System.Text.RegularExpressions;
 namespace SqlServer.Rules.Performance
 {
     /// <summary>
-    /// 
+    /// General naming violation.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Name standard</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Multiple possible rule violations:
+    ///   <list type="bullet">
+    ///     <item> Name '{name}' starts with a number. </item>
+    ///     <item> Name '{name}' contains invalid characters. Please only use alphanumerics and underscores. </item>
+    ///     <item> Primary Key '{name}' does not follow the company naming standard. Please use the name PK_{tableName}. </item>
+    ///     <item> Index '{name}' does not follow the company naming standard. Please use the name IX##_{tableName}. </item>
+    ///     <item> Foreign Key '{name}' does not follow the company naming standard. Please use the format FK##_{tableName}. </item>
+    ///     <item> Check Constraint '{name}' does not follow the company naming standard. Please use the format CK_*. </item>
+    ///     <item> Constraint '{name}' does not follow the company naming standard. Please use the name DF_{tableName}_{columnName}. </item>
+    ///   </list>
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
+	/// <seealso cref="SqlServer.Rules.Naming.NamingViolationRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,
