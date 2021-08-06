@@ -8,14 +8,8 @@ using System.Collections.Generic;
 namespace SqlServer.Rules.Naming
 {
     /// <summary>
-    /// General naming violation.
+    ///  Base class for naming validations
     /// </summary>
-    /// <FriendlyName>Name standard</FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
-	/// <ExampleMd></ExampleMd>
-    /// <remarks>
-    /// Violates configure naming convention. Please see docs on setting naming patterns
-    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     public class NamingViolationRule : BaseSqlCodeAnalysisRule
     {
