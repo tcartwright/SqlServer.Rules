@@ -65,9 +65,10 @@ jobs:
       shell: powershell
       run: |
         Write-Output "Current path is $((get-location).Path);"
+        tree
     - name: Generate Docs
       shell: powershell
-      run: ${{ github.workspace }}\..\generate_docs.ps1 -path "${{ github.workspace }}"
+      run: ${{ github.workspace }}\generate_docs.ps1 -path "${{ github.workspace }}"
     - name: Commit files  
       run: |
         git config --local user.name  ${{ github.actor }}
