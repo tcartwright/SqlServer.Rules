@@ -45,7 +45,8 @@ jobs:
       run: .\.github\workflows\generate_docs.ps1 -path "${{ github.workspace }}"
     - name: Commit files  
       run: |
-        git config --global user.name  ${{ github.actor }}
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         git add ./docs
         git commit -m "Updating the repository docs folder"      
     - name: Push changes  
