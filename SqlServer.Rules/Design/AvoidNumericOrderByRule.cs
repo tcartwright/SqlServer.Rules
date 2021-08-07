@@ -12,7 +12,7 @@ namespace SqlServer.Rules.Design
     /// Avoid the use of column numbers in a where clause. If someone changes the select query without updating the column number, then the sorting could inadvertently change.
     /// </summary>
     /// <FriendlyName>Avoid ORDER BY with numbers</FriendlyName>
-    /// <IsIgnorable>false</IsIgnorable>
+    /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
