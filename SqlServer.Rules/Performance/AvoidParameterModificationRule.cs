@@ -26,7 +26,7 @@ namespace SqlServer.Rules.Design
         Description = RuleDisplayName,
         Category = Constants.Performance,
         RuleScope = SqlRuleScope.Element)]
-    public sealed class ModifiedParameterRule : BaseSqlCodeAnalysisRule
+    public sealed class AvoidParameterModificationRule : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The base rule identifier
@@ -46,9 +46,9 @@ namespace SqlServer.Rules.Design
         public const string Message = RuleDisplayName;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModifiedParameterRule"/> class.
+        /// Initializes a new instance of the <see cref="AvoidParameterModificationRule"/> class.
         /// </summary>
-        public ModifiedParameterRule() : base(ModelSchema.Procedure)
+        public AvoidParameterModificationRule() : base(ModelSchema.Procedure)
         {
         }
 

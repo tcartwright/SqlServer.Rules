@@ -8,6 +8,7 @@ name: .NET Pipeline
 # Linter - validates the code against the editorconfig and throws an error if any of the rules fail
 # Build - builds the dlls
 # Test - Runs the unit tests defined in the project
+# Remove Docs - Removes the docs folder in preperationf for it to be regenerated. So any deleted rules have their markdown removed.
 # Generate Docs - generates the rules for the docs by extracting that information from the rule attribute, and the xml comments
 # Tree Docs - purely a debuggin step to see what doc files were written by the powershell
 # Commit Docs - Commits any changes if there are any to the repo as the user Github Action
@@ -50,7 +51,14 @@ jobs:
     # RUN TESTS
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      
+
+    # REMOVE DOCS - TO REMOVE DELETED RULES
+    - name: Remove docs  
+      run: |
+        git rm -rf ./docs/Performance/
+        git rm -rf ./docs/Design/
+        git rm -rf ./docs/Naming/
+
     # GENERATE DOCS 
     - name: Generate Docs
       shell: powershell

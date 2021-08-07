@@ -26,7 +26,7 @@ namespace SqlServer.Rules.Design
         Description = RuleDisplayName,
         Category = Constants.Design,
         RuleScope = SqlRuleScope.Element)]
-    public sealed class UnusedParameterRule : BaseSqlCodeAnalysisRule
+    public sealed class ConsiderRemovingUnusedParameterRule : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
@@ -42,9 +42,9 @@ namespace SqlServer.Rules.Design
         public const string Message = "Input parameter '{0}' is never used. Consider removing the parameter or using it.";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnusedParameterRule"/> class.
+        /// Initializes a new instance of the <see cref="ConsiderRemovingUnusedParameterRule"/> class.
         /// </summary>
-        public UnusedParameterRule() : base(ProgrammingSchemas)
+        public ConsiderRemovingUnusedParameterRule() : base(ProgrammingSchemas)
         {
         }
 
