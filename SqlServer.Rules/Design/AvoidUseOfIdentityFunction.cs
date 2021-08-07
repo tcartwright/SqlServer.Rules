@@ -9,21 +9,13 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-<<<<<<< HEAD:SqlServer.Rules/Design/AvoidUseOfIdentityFunction.cs
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
-=======
-    /// <summary>Avoid using cursors.</summary>
-    /// <FriendlyName>Cursor Use</FriendlyName>
->>>>>>> Add XML Docs to Design Rule Classes (2):SqlServer.Rules/Design/DoNotUseIdentityFunction.cs
+    /// <summary>Use OUTPUT or SCOPE_IDENTITY() instead of @@IDENTITY</summary>
+    /// <FriendlyName>Unsafe identity retrieval</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
     /// <remarks>
-    /// The rule identifies CURSOR usage inside the code and notifies for cursor declarations.
-    /// Review your code and consider using a set-based solution instead of the cursor/iterative
-    /// solution for the given task.
+    /// The rule checks the code for using any of the `@@IDENTITY` function. When the queries use
+    /// parallel execution plans, the identity functions may return incorrect results.
     /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
