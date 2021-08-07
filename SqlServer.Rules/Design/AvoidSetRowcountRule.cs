@@ -12,7 +12,7 @@ namespace SqlServer.Rules.Design
     /// Do not use SET ROWCOUNT to restrict the number of rows. Use the TOP clause instead.
     /// </summary>
     /// <FriendlyName>Do not use SET ROWCOUNT</FriendlyName>
-    /// <IsIgnorable>false</IsIgnorable>
+    /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
@@ -62,7 +62,7 @@ namespace SqlServer.Rules.Design
             var visitor = new RowCountVisitor();
             fragment.Accept(visitor);
 
-            problems.AddRange(visitor.Statements.Select(o => new SqlRuleProblem(Message, sqlObj, o)));
+            problems.AddRange(visitor.NotIgnoredStatements(RuleId).Select(o => new SqlRuleProblem(Message, sqlObj, o)));
 
             return problems;
         }

@@ -13,7 +13,7 @@ namespace SqlServer.Rules.Performance
     /// Consider using <c>RECOMPILE</c> query hint instead of <c>WITH RECOMPILE</c> option 
     /// </summary>
     /// <FriendlyName>Procedure level recompile option</FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd>
     ///    good:
     ///     ```sql

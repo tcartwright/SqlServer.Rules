@@ -19,7 +19,7 @@ namespace SqlServer.Rules.Design
         Description = RuleDisplayName,
         Category = Constants.Design,
         RuleScope = SqlRuleScope.Element)]
-    public sealed class AvoidWidePKsRule : BaseSqlCodeAnalysisRule
+    public sealed class WidePKsRule : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
@@ -40,9 +40,9 @@ namespace SqlServer.Rules.Design
         private const string WideVarcharMessage = "Wide (n)varchar columns should not be used in primary keys.";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AvoidWidePKsRule"/> class.
+        /// Initializes a new instance of the <see cref="WidePKsRule"/> class.
         /// </summary>
-        public AvoidWidePKsRule() : base(ModelSchema.PrimaryKeyConstraint)
+        public WidePKsRule() : base(ModelSchema.PrimaryKeyConstraint)
         {
         }
 

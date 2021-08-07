@@ -13,7 +13,7 @@ namespace SqlServer.Rules.Design
     /// 
     /// </summary>
     /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,

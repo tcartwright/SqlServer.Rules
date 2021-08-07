@@ -22,7 +22,7 @@ namespace SqlServer.Rules.Design
         Description = RuleDisplayName,
         Category = Constants.Design,
         RuleScope = SqlRuleScope.Element)]
-    public sealed class AvoidNotForReplication : BaseSqlCodeAnalysisRule
+    public sealed class NotForReplication : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
@@ -38,9 +38,9 @@ namespace SqlServer.Rules.Design
         public const string Message = "Avoid 'NOT FOR REPLICATION' unless this is the desired behavior and replication is in use.";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AvoidNotForReplication"/> class.
+        /// Initializes a new instance of the <see cref="NotForReplication"/> class.
         /// </summary>
-        public AvoidNotForReplication() : base(
+        public NotForReplication() : base(
             ModelSchema.ForeignKeyConstraint,
             ModelSchema.CheckConstraint,
             ModelSchema.DmlTrigger,
