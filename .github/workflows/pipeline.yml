@@ -18,7 +18,9 @@ jobs:
     #  run: Write-Output "Hello workspace is - ${{ github.workspace }}"
     - name: Write Current Dir
       shell: powershell
-      run: Write-Output "Current path is $((get-location).Path); exit 1"
+      run: |
+        Set-Location ..
+        Write-Output "Current path is $((get-location).Path);"
 
   lint_csharp:
     runs-on: windows-latest
@@ -59,9 +61,13 @@ jobs:
     needs: build
 
     steps:  
+    - name: Write Current Dir
+      shell: powershell
+      run: |
+        Write-Output "Current path is $((get-location).Path);"
     - name: Generate Docs
       shell: powershell
-      run: .\generate_docs.ps1 -path "${{ github.workspace }}"
+      run: ..\generate_docs.ps1 -path "${{ github.workspace }}"
     - name: Commit files  
       run: |
         git config --local user.name  ${{ github.actor }}
