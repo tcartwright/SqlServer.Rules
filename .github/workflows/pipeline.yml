@@ -29,7 +29,6 @@ jobs:
       run: dotnet format --check --verbosity diagnostic
       
     # BUILD
-    - uses: actions/checkout@v2
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -43,6 +42,10 @@ jobs:
     - name: Generate Docs
       shell: powershell
       run: .\.github\workflows\generate_docs.ps1 -path "${{ github.workspace }}"
+    
+    - name: Write Docs Tree
+      run: tree /f .\docs
+
     - name: Commit files  
       run: |
         git config --local user.email "action@github.com"
