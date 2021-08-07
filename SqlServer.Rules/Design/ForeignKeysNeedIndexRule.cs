@@ -11,11 +11,17 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Consider indexing columns on both sides of a foreign key relationship.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Index on Foreign Key</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for not indexed foreign keys in the current database. Create an index on any
+    /// foreign key as the foreign keys are used in joins almost always benefit from having an index.
+    /// It is better to create indexes on all foreign keys, despite the possible overhead of
+    /// maintaining unneeded indexes than not to have index when needed.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

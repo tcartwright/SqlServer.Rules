@@ -10,11 +10,19 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// The SQL module was created with ANSI_NULLS and/or QUOTED_IDENTIFIER options set to OFF
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Object level option override</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks existing SQL modules which have ANSI_NULLS and/or QUOTED_IDENTIFIER settings
+    /// saved with value OFF. Consider reviewing the need for these options settings, and in case
+    /// they are not required, you should recreate the SQL module using a session that has both
+    /// these options set to ON. Even these settings may not currently relate performance problems,
+    /// they may prevent further performance optimizations, such as filtered indexes, indexes on
+    /// computed columns or indexed views.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
