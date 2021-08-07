@@ -1,4 +1,17 @@
-name: .NET Build Pipeline
+name: .NET Pipeline
+
+# Steps Information:
+
+# Setup .Net
+# Checkout
+# Install dotnet format - installs the dotnet format tool which will be used for the linting
+# Linter - validates the code against the editorconfig and throws an error if any of the rules fail
+# Build - builds the dlls
+# Test - Runs the unit tests defined in the project
+# Generate Docs - generates the rules for the docs by extracting that information from the rule attribute, and the xml comments
+# Tree Docs - purely a debuggin step to see what doc files were written by the powershell
+# Commit Docs - Commits any changes if there are any to the repo as the user Github Action
+# Push Docs - pushes the commit if there is one to the repo
 
 on:
   push:
@@ -34,7 +47,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     
-      # RUN TESTS
+    # RUN TESTS
     - name: Test
       run: dotnet test --no-build --verbosity normal
       
@@ -43,15 +56,19 @@ jobs:
       shell: powershell
       run: .\.github\workflows\generate_docs.ps1 -path "${{ github.workspace }}"
     
+    # TREE DOCS - JUST TO GIVE A VISUAL OF THE FILES GENERATED FOR DEBUG PURPOSES
     - name: Write Docs Tree
       run: tree /f .\docs
 
+    # COMMIT DOCS - ONLY IF THERE ARE FILE CHANGES
     - name: Commit files  
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add ./docs
         git diff-index --quiet HEAD || git commit -m "Updating the repository docs folder"   
+    
+    # PUSH DOCS
     - name: Push changes  
       uses: ad-m/github-push-action@master
       with:
