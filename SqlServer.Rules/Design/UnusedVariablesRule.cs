@@ -9,9 +9,9 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Variable declared but never referenced or assigned.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Unused variable</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
