@@ -12,11 +12,21 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Make sure you have all the columns for the JOIN relationship as conditions in the ON clause
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Incomplete or missing JOIN predicate</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// <list type="bullet">
+    /// <item>It is either missing a backing foreign key or the join is missing one or more columns.
+    /// The rule checks the T-SQL code for queries having joined tables and missing join a predicate
+    /// for one of the tables. </item>
+    /// <item>It identifies the joined table sources which do not have any column
+    /// referenced neither in the join conditions nor in the WHERE clause. Without a join predicate,
+    /// the query result will include the Cartesian product of all rows.</item>
+    /// </list>
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
