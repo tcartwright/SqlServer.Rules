@@ -6,8 +6,15 @@ using SqlServer.Rules.Globals;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Do not use VARCHAR or NVARCHAR data types without specifying length.
     /// </summary>
+    /// <FriendlyName>Unspecified type length</FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Without specifying the length SQL Server will either assign a default length or determine
+    /// the length for you (if casting a variable).
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.Design.TypesMissingParametersRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

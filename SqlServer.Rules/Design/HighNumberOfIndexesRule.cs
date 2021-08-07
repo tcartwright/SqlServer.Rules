@@ -10,11 +10,15 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Excessive number of indexes on table found
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Excessive indexes on table</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Having too many indexes on a table can cause performance issues with action queries as each
+    /// time an action query is run all associated indexes need to be updated as well.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

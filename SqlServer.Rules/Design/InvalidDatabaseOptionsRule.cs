@@ -10,11 +10,26 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Please review ANSI, arithmetic, concat, and identifier options
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Invalid database configured options</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The database is configured with invalid options. 
+    /// Many of these options can have an adverse affect as well as affect performance.
+    /// <br/>
+    /// Recommended: 
+    /// <list type="table">
+    ///   <listheader><term>Option</term><description>State</description></listheader>
+    ///   <item><term>ANSI_NULLS</term><description>OFF</description></item>
+    ///   <item><term>ANSI_PADDING</term><description>OFF</description></item>
+    ///   <item><term>ANSI_WARNINGS</term><description>OFF</description></item>
+    ///   <item><term>ARITHABORT</term><description>OFF</description></item>
+    ///   <item><term>CONCAT_NULL_YIELDS_NULL</term><description>OFF</description></item>
+    ///   <item><term>QUOTED_IDENTIFIER</term><description>OFF</description></item>
+    /// </list>
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
