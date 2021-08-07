@@ -8,12 +8,12 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Do not use the real or float data types as they are approximate value data types.</summary>
+    /// <FriendlyName>Use of approximate data type</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// <c>REAL</c> and <c>FLOAT</c> do not store accurate values. They store <b>Approximate</b> values.
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
