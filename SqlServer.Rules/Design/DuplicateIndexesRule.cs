@@ -9,12 +9,17 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Index has exact duplicate or overlapping index. Combine indexes to reduce over-head </summary>
+    /// <FriendlyName>Duplicate/Overlapping Index</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule matches exact duplicating or partially duplicating indexes. The exact duplicating
+    /// indexes must have the same key columns in the same order, and the same included columns but
+    /// in any order. These indexes are sure targets for elimination. The overlapping indexes share
+    /// the same leading key columns, but the included columns are ignored. These types of indexes
+    /// are probable dead indexes walking.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
