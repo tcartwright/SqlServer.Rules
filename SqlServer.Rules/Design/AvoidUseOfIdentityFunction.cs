@@ -9,12 +9,14 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Use OUTPUT or SCOPE_IDENTITY() instead of @@IDENTITY</summary>
+    /// <FriendlyName>Unsafe identity retrieval</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks the code for using any of the `@@IDENTITY` function. When the queries use
+    /// parallel execution plans, the identity functions may return incorrect results.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

@@ -10,9 +10,9 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Object has different collation than the rest of the database.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Explicit collation other</FriendlyName>
 	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
