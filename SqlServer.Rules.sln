@@ -43,6 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{4263
 	ProjectSection(SolutionItems) = preProject
 		Admin Scripts\Windows\BuildSolution.bat = Admin Scripts\Windows\BuildSolution.bat
 		Admin Scripts\Windows\BuildSolution.ps1 = Admin Scripts\Windows\BuildSolution.ps1
+		Admin Scripts\Windows\Generate-MarkdownDocs.ps1 = Admin Scripts\Windows\Generate-MarkdownDocs.ps1
 		Admin Scripts\Windows\Install.bat = Admin Scripts\Windows\Install.bat
 		Admin Scripts\Windows\Install.ps1 = Admin Scripts\Windows\Install.ps1
 	EndProjectSection
