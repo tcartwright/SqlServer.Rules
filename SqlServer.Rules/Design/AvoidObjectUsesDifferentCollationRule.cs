@@ -13,7 +13,7 @@ namespace SqlServer.Rules.Design
     /// 
     /// </summary>
     /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
@@ -21,7 +21,7 @@ namespace SqlServer.Rules.Design
         Description = RuleDisplayName,
         Category = Constants.Design,
         RuleScope = SqlRuleScope.Element)]
-    public sealed class ObjectUsesDifferentCollationRule : BaseSqlCodeAnalysisRule
+    public sealed class AvoidObjectUsesDifferentCollationRule : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
@@ -41,9 +41,9 @@ namespace SqlServer.Rules.Design
         public const string MessageDefault = "This default constraint has a different collation than the rest of the database. Try to avoid using a different collation unless by design.";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ObjectUsesDifferentCollationRule"/> class.
+        /// Initializes a new instance of the <see cref="AvoidObjectUsesDifferentCollationRule"/> class.
         /// </summary>
-        public ObjectUsesDifferentCollationRule() : base(ModelSchema.Table)
+        public AvoidObjectUsesDifferentCollationRule() : base(ModelSchema.Table)
         {
         }
 

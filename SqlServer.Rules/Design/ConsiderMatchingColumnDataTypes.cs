@@ -14,7 +14,7 @@ namespace SqlServer.Rules.Design
     /// 
     /// </summary>
     /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
@@ -22,7 +22,7 @@ namespace SqlServer.Rules.Design
         Description = RuleDisplayName,
         Category = Constants.Design,
         RuleScope = SqlRuleScope.Model)]
-    public sealed class MismatchedColumnsRule : BaseSqlCodeAnalysisRule
+    public sealed class ConsiderMatchingColumnDataTypes : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
@@ -38,9 +38,9 @@ namespace SqlServer.Rules.Design
         public const string Message = "Avoid using columns ({0}) that match other columns by name in the database, but are different in type or size.";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MismatchedColumnsRule"/> class.
+        /// Initializes a new instance of the <see cref="ConsiderMatchingColumnDataTypes"/> class.
         /// </summary>
-        public MismatchedColumnsRule()
+        public ConsiderMatchingColumnDataTypes()
         {
         }
 

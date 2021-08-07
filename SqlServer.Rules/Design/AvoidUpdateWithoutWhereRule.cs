@@ -10,36 +10,40 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// UPDATE statement without row limiting conditions.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <FriendlyName>Unbounded UPDATE</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule looks for <c>UPDATE</c> statements not having a <c>WHERE</c> clause. Consider
+    /// reviewing your code to avoid unintentionally updating all the records in the table.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
     RuleDisplayName,
     Description = RuleDisplayName,
     Category = Constants.Design,
     RuleScope = SqlRuleScope.Element)]
-    public sealed class DeleteWithoutWhereRule : BaseSqlCodeAnalysisRule
+    public sealed class AvoidUpdateWithoutWhereRule : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
         /// </summary>
-        public const string RuleId = Constants.RuleNameSpace + "SRD0017";
+        public const string RuleId = Constants.RuleNameSpace + "SRD0018";
         /// <summary>
         /// The rule display name
         /// </summary>
-        public const string RuleDisplayName = "DELETE statement without row limiting conditions.";
+        public const string RuleDisplayName = "UPDATE statement without row limiting conditions.";
         /// <summary>
         /// The message
         /// </summary>
         public const string Message = RuleDisplayName;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteWithoutWhereRule"/> class.
+        /// Initializes a new instance of the <see cref="AvoidUpdateWithoutWhereRule"/> class.
         /// </summary>
-        public DeleteWithoutWhereRule() : base(ProgrammingSchemas)
+        public AvoidUpdateWithoutWhereRule() : base(ProgrammingSchemas)
         {
         }
 
@@ -59,21 +63,21 @@ namespace SqlServer.Rules.Design
                 return problems;
 
             var fragment = ruleExecutionContext.ScriptFragment.GetFragment(ProgrammingSchemaTypes);
-            var visitor = new DeleteVisitor();
+            var visitor = new UpdateVisitor();
 
             fragment.Accept(visitor);
 
             foreach (var stmt in visitor.NotIgnoredStatements(RuleId))
             {
-                if (stmt.DeleteSpecification.WhereClause != null
-                    || !(stmt.DeleteSpecification.Target is NamedTableReference)) { continue; }
+                if (stmt.UpdateSpecification.WhereClause != null
+                    || !(stmt.UpdateSpecification.Target is NamedTableReference)) { continue; }
 
-                var tableName = ((NamedTableReference)stmt.DeleteSpecification.Target).SchemaObject.Identifiers.Last().Value;
+                var tableName = ((NamedTableReference)stmt.UpdateSpecification.Target).SchemaObject.Identifiers.Last().Value;
 
-                if (stmt.DeleteSpecification.FromClause != null)
+                if (stmt.UpdateSpecification.FromClause != null)
                 {
                     var tableVisitor = new TableReferenceVisitor();
-                    stmt.DeleteSpecification.FromClause.Accept(tableVisitor);
+                    stmt.UpdateSpecification.FromClause.Accept(tableVisitor);
 
                     var table = tableVisitor.Statements.OfType<NamedTableReference>()
                         .FirstOrDefault(t => _comparer.Equals(t.Alias?.Value, tableName));
