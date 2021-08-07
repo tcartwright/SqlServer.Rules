@@ -9,11 +9,19 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// The RAISERROR statement with severity above 18 and requires WITH LOG clause.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Error handling requires SA permissions</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks RAISERROR statements for having severity above 18 and not having a 
+    /// <c>WITH LOG</c> clause. Error severity levels greater than 18 can only be specified by
+    /// members of the sysadmin role, using the WITH LOG option. Severity levels from 0 through 18
+    /// can be specified by any user. Severity levels from 19 through 25 can only be specified by
+    /// members of the sysadmin fixed server role or users with <c>ALTER TRACE</c> permissions.
+    /// For severity levels from 19 through 25, the <c>WITH LOG</c> option is required.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

@@ -10,11 +10,15 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Wrap multiple action statements within a transaction
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Non-transactional body</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    ///  Not wrapping multiple action statements in a transaction inside a stored procedure
+    ///  can lead to malformed data if only some of the queries succeed.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
