@@ -14,11 +14,16 @@ using System.Linq;
 namespace SqlServer.Rules.Naming
 {
     /// <summary>
-    /// 
+    /// Using two part naming on objects [Schema].[Name] is recommended
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Use of default schema</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Without specifying the schema in the CREATE script will cause SQL Server to try to assign
+    /// the correct schema which will default to the current users default schema and may or may
+    /// not be dbo.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
