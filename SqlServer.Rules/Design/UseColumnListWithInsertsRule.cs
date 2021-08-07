@@ -10,11 +10,16 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Always use a column list in INSERT statements.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Implicit column list</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// When inserting into a table or view it is recommended that the target column list be
+    /// explicitly specified. This results in more maintainable code and helps in avoiding problems
+    /// when the table structure changes (like adding or dropping a column).
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

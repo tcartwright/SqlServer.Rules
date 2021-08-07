@@ -8,11 +8,16 @@ using System.Collections.Generic;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// TOP clause used in a query without an ORDER BY clause. Add order by clause to make selection predictable.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>TOP without an ORDER BY</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// This rule checks for usages of TOP in queries without an ORDER BY clause. 
+    /// It is generally recommended to specify sort criteria when using TOP clause. Otherwise, the
+    /// results produced will be plan dependent and may lead to undesired behavior.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

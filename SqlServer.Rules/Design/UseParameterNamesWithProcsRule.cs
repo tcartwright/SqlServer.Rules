@@ -10,11 +10,15 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Always use parameter names when calling stored procedures
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Ordinal parameters used</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks EXECUTE statements for stored procedure not being called with named
+    /// parameters, but with parameters by position.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
