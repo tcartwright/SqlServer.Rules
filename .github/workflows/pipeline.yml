@@ -50,7 +50,7 @@ jobs:
     
     # RUN TESTS
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --configuration Release --verbosity normal
 
     # REMOVE DOCS - TO REMOVE DELETED RULES
     - name: Remove docs  
