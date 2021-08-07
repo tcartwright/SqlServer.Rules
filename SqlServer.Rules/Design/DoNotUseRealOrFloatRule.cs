@@ -14,6 +14,7 @@ namespace SqlServer.Rules.Design
 	/// <ExampleMd></ExampleMd>
     /// <remarks>
     /// <c>REAL</c> and <c>FLOAT</c> do not store accurate values. They store <b>Approximate</b> values.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
