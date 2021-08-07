@@ -19,7 +19,7 @@ namespace SqlServer.Rules.Design
     /// When inserting into a table or view it is recommended that the target column list be
     /// explicitly specified. This results in more maintainable code and helps in avoiding problems
     /// when the table structure changes (like adding or dropping a column).
-    ///
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
