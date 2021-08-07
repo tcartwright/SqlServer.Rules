@@ -7,9 +7,9 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Tables should have a primary key
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Missing primary key</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />

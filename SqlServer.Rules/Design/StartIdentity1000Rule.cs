@@ -10,12 +10,13 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Start identity columns used in a primary key with a seed of 1000
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Low identity seed value</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
+    /// <remarks>Seed values below 1000 have had issues with replication on some versions of SQL Server</remarks>
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,

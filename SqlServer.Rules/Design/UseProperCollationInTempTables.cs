@@ -10,11 +10,15 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Temp table not configured with <c>COLLATION</c> options
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Implicit collation</FriendlyName>
     /// <IsIgnorable>false</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Create SQL Server temporary tables with the correct collation or use database default as the
+    /// tempdb having a different collation than the database can cause issues and or data instability.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
