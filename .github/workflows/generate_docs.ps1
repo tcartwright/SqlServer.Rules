@@ -13,7 +13,7 @@ if (!(Test-Path -Path $docs -PathType Container)) {
     New-Item $docs -ItemType Directory | out-null
 }
 
-#Write dummy file to docs folder
+#Write dummy file to docs folder again
 #"#Hello World! The time is now: $(Get-Date -Format "h:mm:ss tt")" | Out-File -FilePath "$($docs)\README.MD" -Force -Encoding ascii 
 "#Hello World!" | Out-File -FilePath "$($docs)\README.MD" -Force -Encoding ascii 
 
