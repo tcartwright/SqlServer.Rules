@@ -8,12 +8,12 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Tables should have a natural key
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
-	/// <ExampleMd></ExampleMd>
-	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
+    /// <FriendlyName>Missing natural key</FriendlyName>
+    /// <IsIgnorable>false</IsIgnorable>
+    /// <ExampleMd></ExampleMd>
+    /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
         Description = RuleDisplayName,

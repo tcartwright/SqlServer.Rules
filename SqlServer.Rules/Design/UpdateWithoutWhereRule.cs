@@ -10,11 +10,15 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// UPDATE statement without row limiting conditions.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
+    /// <FriendlyName>Unbounded UPDATE</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule looks for <c>UPDATE</c> statements not having a <c>WHERE</c> clause. Consider
+    /// reviewing your code to avoid unintentionally updating all the records in the table.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
     RuleDisplayName,
