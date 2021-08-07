@@ -54,7 +54,7 @@ jobs:
     # GENERATE DOCS 
     - name: Generate Docs
       shell: powershell
-      run: .\.github\workflows\generate_docs.ps1 -path "${{ github.workspace }}"
+      run: .\.github\workflows\generate_docs.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ github.workspace }}\SqlServer.Rules\bin\Debug\net472\"
     
     # TREE DOCS - JUST TO GIVE A VISUAL OF THE FILES GENERATED FOR DEBUG PURPOSES
     - name: Write Docs Tree
