@@ -3,33 +3,39 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules", "SqlServer.Rules\SqlServer.Rules.csproj", "{352B071F-CE87-434D-9432-C118C6A9F523}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Rules", "SqlServer.Rules\SqlServer.Rules.csproj", "{352B071F-CE87-434D-9432-C118C6A9F523}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3405B639-54DE-4180-80A1-3B8A22AD693D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		generate_docs.ps1 = generate_docs.ps1
 		key.snk = key.snk
 		LICENSE = LICENSE
 		README.md = README.md
 		SQL Server Rules.csv = SQL Server Rules.csv
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules.Generator", "SqlServer.Rules.Generator\SqlServer.Rules.Generator.csproj", "{FA176464-41C2-4EF5-8FBC-ADA435F33FAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Rules.Generator", "SqlServer.Rules.Generator\SqlServer.Rules.Generator.csproj", "{FA176464-41C2-4EF5-8FBC-ADA435F33FAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules.SolutionGenerator", "SqlServer.Rules.SolutionGenerator\SqlServer.Rules.SolutionGenerator.csproj", "{29ADFA6B-292B-41EF-9279-1E58B700B134}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Rules.SolutionGenerator", "SqlServer.Rules.SolutionGenerator\SqlServer.Rules.SolutionGenerator.csproj", "{29ADFA6B-292B-41EF-9279-1E58B700B134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules.Report", "SqlServer.Rules.Report\SqlServer.Rules.Report.csproj", "{B8C13F50-FE33-4416-AA9B-9502F4C039F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Rules.Report", "SqlServer.Rules.Report\SqlServer.Rules.Report.csproj", "{B8C13F50-FE33-4416-AA9B-9502F4C039F7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{86E895C7-42B7-4334-889B-DF1C0D733B15}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Dac", "SqlServer.Dac\SqlServer.Dac.csproj", "{958B2716-4E46-4498-A742-23DCCF5CE22A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Dac", "SqlServer.Dac\SqlServer.Dac.csproj", "{958B2716-4E46-4498-A742-23DCCF5CE22A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServer.Rules.Tests", "SqlServer.Rules.Test\SqlServer.Rules.Tests.csproj", "{54816BB2-6952-4573-BA7C-B387D86D5425}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Rules.Tests", "SqlServer.Rules.Test\SqlServer.Rules.Tests.csproj", "{54816BB2-6952-4573-BA7C-B387D86D5425}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server_workflows", "server_workflows", "{92A87DE7-84CC-4565-A924-14B7E42CF980}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
