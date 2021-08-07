@@ -37,6 +37,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin Scripts", "Admin Scripts", "{9B7DA20C-6191-4102-B2A9-F8100AD66FD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{42637764-8B6D-4211-81AE-617833721BF8}"
+	ProjectSection(SolutionItems) = preProject
+		Admin Scripts\Windows\BuildSolution.bat = Admin Scripts\Windows\BuildSolution.bat
+		Admin Scripts\Windows\BuildSolution.ps1 = Admin Scripts\Windows\BuildSolution.ps1
+		Admin Scripts\Windows\Generate-MarkdownDocs.ps1 = Admin Scripts\Windows\Generate-MarkdownDocs.ps1
+		Admin Scripts\Windows\Install.bat = Admin Scripts\Windows\Install.bat
+		Admin Scripts\Windows\Install.ps1 = Admin Scripts\Windows\Install.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +81,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{42637764-8B6D-4211-81AE-617833721BF8} = {9B7DA20C-6191-4102-B2A9-F8100AD66FD9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67B59E89-8C35-419D-A49B-9C2C19584900}

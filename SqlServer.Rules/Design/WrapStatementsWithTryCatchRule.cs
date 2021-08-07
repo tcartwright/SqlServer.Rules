@@ -10,11 +10,17 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Wrap TRY..CATCH around multiple data manipulation statements.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Expected error handeling</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for SELECT INTO,INSERT,DELETE and UPDATE statements which are neither 
+    /// inside <c>TRY..CATCH</c> block. This check is important, because, by default, SQL Server
+    /// will not rollback all the previous changes within a transaction if a particular statement
+    /// fails and setting <c>XACT_ABORT</c> is not ON.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
