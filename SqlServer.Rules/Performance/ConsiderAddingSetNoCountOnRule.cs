@@ -28,7 +28,7 @@ namespace SqlServer.Rules.Performance
         Description = RuleDisplayName,
         Category = Constants.Performance,
         RuleScope = SqlRuleScope.Element)]
-    public sealed class SetNoCountOnRule : BaseSqlCodeAnalysisRule
+    public sealed class ConsiderAddingSetNoCountOnRule : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
@@ -44,9 +44,9 @@ namespace SqlServer.Rules.Performance
         public const string Message = RuleDisplayName;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SetNoCountOnRule"/> class.
+        /// Initializes a new instance of the <see cref="ConsiderAddingSetNoCountOnRule"/> class.
         /// </summary>
-        public SetNoCountOnRule() : base(ModelSchema.Procedure, ModelSchema.DmlTrigger)
+        public ConsiderAddingSetNoCountOnRule() : base(ModelSchema.Procedure, ModelSchema.DmlTrigger)
         {
         }
 

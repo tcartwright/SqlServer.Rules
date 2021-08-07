@@ -18,7 +18,7 @@ namespace SqlServer.Rules.Tests.Performance
         [TestMethod]
         public void TestAvoidNotForReplication()
         {
-            var problems = GetTestCaseProblems(nameof(AvoidNotForReplication), AvoidNotForReplication.RuleId);
+            var problems = GetTestCaseProblems(nameof(NotForReplication), NotForReplication.RuleId);
 
             var expected = 4;
             Assert.AreEqual(expected, problems.Count, $"Expected {expected} problem(s) to be found");
@@ -27,7 +27,7 @@ namespace SqlServer.Rules.Tests.Performance
             Assert.IsTrue(problems.Any(problem => Comparer.Equals(problem.SourceName, "fk_table2_table1_1_not_for_replication.sql")));
             Assert.IsTrue(problems.Count(problem => Comparer.Equals(problem.SourceName, "table3.sql")) == 2);
 
-            Assert.IsTrue(problems.All(problem => Comparer.Equals(problem.Description, AvoidNotForReplication.Message)));
+            Assert.IsTrue(problems.All(problem => Comparer.Equals(problem.Description, NotForReplication.Message)));
             Assert.IsTrue(problems.All(problem => problem.Severity == SqlRuleProblemSeverity.Warning));
         }
     }

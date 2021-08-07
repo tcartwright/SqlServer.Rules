@@ -12,7 +12,7 @@ namespace SqlServer.Rules.Design
     /// 
     /// </summary>
     /// <FriendlyName></FriendlyName>
-    /// <IsIgnorable>false</IsIgnorable>
+    /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
@@ -20,7 +20,7 @@ namespace SqlServer.Rules.Design
         Description = RuleDisplayName,
         Category = Constants.Design,
         RuleScope = SqlRuleScope.Element)]
-    public class CacheGetDateToVariable : BaseSqlCodeAnalysisRule
+    public class ConsiderCachingGetDateToVariable : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
@@ -38,9 +38,9 @@ namespace SqlServer.Rules.Design
         private readonly List<string> FunctionNames = new List<string> { "getdate", "sysdatetime" };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CacheGetDateToVariable"/> class.
+        /// Initializes a new instance of the <see cref="ConsiderCachingGetDateToVariable"/> class.
         /// </summary>
-        public CacheGetDateToVariable() : base(ProgrammingSchemas)
+        public ConsiderCachingGetDateToVariable() : base(ProgrammingSchemas)
         {
         }
 

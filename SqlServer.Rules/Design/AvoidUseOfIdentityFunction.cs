@@ -13,7 +13,7 @@ namespace SqlServer.Rules.Design
     /// 
     /// </summary>
     /// <FriendlyName></FriendlyName>
-    /// <IsIgnorable>false</IsIgnorable>
+    /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
@@ -21,7 +21,7 @@ namespace SqlServer.Rules.Design
         Description = RuleDisplayName,
         Category = Constants.Design,
         RuleScope = SqlRuleScope.Element)]
-    public class DoNotUseIdentityFunction : BaseSqlCodeAnalysisRule
+    public class AvoidUseOfIdentityFunction : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
@@ -37,9 +37,9 @@ namespace SqlServer.Rules.Design
         public const string Message = RuleDisplayName;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DoNotUseIdentityFunction"/> class.
+        /// Initializes a new instance of the <see cref="AvoidUseOfIdentityFunction"/> class.
         /// </summary>
-        public DoNotUseIdentityFunction() : base(ModelSchema.Procedure, ModelSchema.ScalarFunction, ModelSchema.TableValuedFunction, ModelSchema.DmlTrigger)
+        public AvoidUseOfIdentityFunction() : base(ModelSchema.Procedure, ModelSchema.ScalarFunction, ModelSchema.TableValuedFunction, ModelSchema.DmlTrigger)
         {
         }
 
