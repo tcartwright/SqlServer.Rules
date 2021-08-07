@@ -54,7 +54,10 @@ jobs:
 
     # REMOVE DOCS - TO REMOVE DELETED RULES
     - name: Remove docs  
-      run: git rm -rf ./docs
+      run: |
+        git rm -rf ./docs/Performance/
+        git rm -rf ./docs/Design/
+        git rm -rf ./docs/Naming/
 
     # GENERATE DOCS 
     - name: Generate Docs
