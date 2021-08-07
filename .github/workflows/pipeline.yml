@@ -54,7 +54,7 @@ jobs:
 
     # REMOVE DOCS - TO REMOVE DELETED RULES
     - name: Remove docs  
-      run: git rm ./docs
+      run: git rm -rf ./docs
 
     # GENERATE DOCS 
     - name: Generate Docs
