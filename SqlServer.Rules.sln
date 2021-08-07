@@ -10,7 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		generate_docs.ps1 = generate_docs.ps1
 		key.snk = key.snk
 		LICENSE = LICENSE
 		README.md = README.md
@@ -32,8 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Dac", "SqlServer.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Rules.Tests", "SqlServer.Rules.Test\SqlServer.Rules.Tests.csproj", "{54816BB2-6952-4573-BA7C-B387D86D5425}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server_workflows", "server_workflows", "{92A87DE7-84CC-4565-A924-14B7E42CF980}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{92A87DE7-84CC-4565-A924-14B7E42CF980}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\generate_docs.ps1 = .github\workflows\generate_docs.ps1
 		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
 	EndProjectSection
 EndProject
