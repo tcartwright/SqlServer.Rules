@@ -1,4 +1,5 @@
 ﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
 using SqlServer.Dac;
 using SqlServer.Dac.Visitors;
@@ -9,36 +10,36 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// Do not use SET ROWCOUNT to restrict the number of rows. Use the TOP clause instead.
+    /// 
     /// </summary>
-    /// <FriendlyName>Do not use SET ROWCOUNT</FriendlyName>
+    /// <FriendlyName></FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
-    RuleDisplayName,
-    Description = RuleDisplayName,
-    Category = Constants.Design,
-    RuleScope = SqlRuleScope.Element)]
-    public sealed class AvoidSetRowcountRule : BaseSqlCodeAnalysisRule
+        RuleDisplayName,
+        Description = RuleDisplayName,
+        Category = Constants.Design,
+        RuleScope = SqlRuleScope.Element)]
+    public class AvoidUseOfIdentityFunction : BaseSqlCodeAnalysisRule
     {
         /// <summary>
         /// The rule identifier
         /// </summary>
-        public const string RuleId = Constants.RuleNameSpace + "SRD0036";
+        public const string RuleId = Constants.RuleNameSpace + "SRD0056";
         /// <summary>
         /// The rule display name
         /// </summary>
-        public const string RuleDisplayName = "Do not use SET ROWCOUNT to restrict the number of rows.";
+        public const string RuleDisplayName = "Use OUTPUT or SCOPE_IDENTITY() instead of @@IDENTITY.";
         /// <summary>
         /// The message
         /// </summary>
         public const string Message = RuleDisplayName;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AvoidSetRowcountRule"/> class.
+        /// Initializes a new instance of the <see cref="AvoidUseOfIdentityFunction"/> class.
         /// </summary>
-        public AvoidSetRowcountRule() : base(ProgrammingSchemas)
+        public AvoidUseOfIdentityFunction() : base(ModelSchema.Procedure, ModelSchema.ScalarFunction, ModelSchema.TableValuedFunction, ModelSchema.DmlTrigger)
         {
         }
 
@@ -54,15 +55,16 @@ namespace SqlServer.Rules.Design
             var problems = new List<SqlRuleProblem>();
             var sqlObj = ruleExecutionContext.ModelElement;
 
-            if (sqlObj == null || sqlObj.IsWhiteListed())
+            if (sqlObj == null)
                 return problems;
 
-            var fragment = ruleExecutionContext.ScriptFragment.GetFragment(ProgrammingSchemaTypes);
+            var fragment = ruleExecutionContext.ScriptFragment.GetFragment(typeof(CreateProcedureStatement), typeof(CreateFunctionStatement), typeof(CreateTriggerStatement));
 
-            var visitor = new RowCountVisitor();
+            var visitor = new GlobalVariableExpressionVisitor("@@identity");
+
             fragment.Accept(visitor);
 
-            problems.AddRange(visitor.NotIgnoredStatements(RuleId).Select(o => new SqlRuleProblem(Message, sqlObj, o)));
+            problems.AddRange(visitor.NotIgnoredStatements(RuleId).Select(s => new SqlRuleProblem(Message, sqlObj, s)));
 
             return problems;
         }
