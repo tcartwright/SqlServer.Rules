@@ -10,11 +10,21 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Do not use WAITFOR DELAY/TIME statement in stored procedures, functions, and triggers.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Forced delay</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for WAITFOR statement with DELAY or TIME being used inside:
+    /// <list type="bullet"> 
+    ///     <item>stored procedure</item>
+    ///     <item>function</item>
+    ///     <item>trigger</item>
+    /// </list>
+    /// The WAITFOR statement blocks the execution until a specified time or time interval is reached.
+    /// This is not typically wanted in a OLTP system unless for a very specific reason.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
