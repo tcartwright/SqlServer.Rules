@@ -10,7 +10,7 @@ param (
 $docs = [System.IO.Path]::Combine($path, "docs")
 
 if (!(Test-Path -Path $docs -PathType Container)) {
-    New-Item $docs -ItemType Directory 
+    New-Item $docs -ItemType Directory | out-null
 }
 
 #Write dummy file to docs folder
