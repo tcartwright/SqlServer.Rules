@@ -11,11 +11,16 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// The arguments of the function <c>ISNULL</c> are not of the same datatype.
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Possible side-effects implicit cast </FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks and warns if <c>ISNULL</c> function arguments do not have same data type.
+    /// Consider the possible truncation which may result when the second parameter of the function
+    /// is implicitly converted to the type of the first parameter.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

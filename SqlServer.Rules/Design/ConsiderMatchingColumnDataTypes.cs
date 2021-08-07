@@ -11,11 +11,16 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Avoid using columns that match other columns by name, but are different in type or size
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Ambiguous column name across design</FriendlyName>
 	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Columns are found in multiple tables that match by name but differ by either type or size.
+    /// If the columns truly have different meanings, they should differ by name as well or they
+    /// should match in datatype and size.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

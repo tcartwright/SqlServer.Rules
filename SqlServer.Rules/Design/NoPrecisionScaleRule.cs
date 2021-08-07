@@ -6,8 +6,17 @@ using SqlServer.Rules.Globals;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Do not use DECIMAL or NUMERIC data types without specifying precision and scale.
     /// </summary>
+    /// <FriendlyName>Unspecified precision or scale </FriendlyName>
+	/// <IsIgnorable>false</IsIgnorable>
+	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks the T-SQL code for use <c>DECIMAL</c> or <c>NUMERIC</c> data types without
+    /// specifying length. Avoid defining columns, variables, and parameters using 
+    /// <c>DECIMAL</c> or <c>NUMERIC</c> data types without specifying precision, and scale. If no
+    /// precision and scale are provided, SQL Server will use its default size <c>NUMERIC(18, 0)</c>.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.Design.TypesMissingParametersRule" />
     [ExportCodeAnalysisRule(RuleId,
     RuleDisplayName,

@@ -10,11 +10,15 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// Use fully qualified object names in SELECT, UPDATE, DELETE, MERGE and EXECUTE statements. [schema].[name]
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Object not schema qualified</FriendlyName>
     /// <IsIgnorable>false</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// There is a minor performance cost with not using two part names. Each time sql server runs
+    /// across a one part name it has to look up the associated schema to the object.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
