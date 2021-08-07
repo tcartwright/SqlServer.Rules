@@ -10,11 +10,26 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// The comparison expression always evaluates to TRUE or FALSE
     /// </summary>
-    /// <FriendlyName></FriendlyName>
-	/// <IsIgnorable>false</IsIgnorable>
-	/// <ExampleMd></ExampleMd>
+    /// <FriendlyName>Expression reducible to constaint</FriendlyName>
+	/// <IsIgnorable>true</IsIgnorable>
+	/// <ExampleMd>
+    /// Catches:
+    /// ```sql
+    /// FROM a
+    /// JOIN b ON a.id = b.a_id AND 4 &lt; 3 + 2 
+    /// ```
+    /// 
+    /// equivalent to 
+    /// ```sql
+    /// FROM a
+    /// JOIN b ON a.id = b.a_id /* true */
+    /// ```
+    /// </ExampleMd>
+    /// <remarks>
+    /// Checks join and where clause predicates for predicates that will always evaluate to true/false.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

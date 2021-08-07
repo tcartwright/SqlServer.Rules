@@ -1,4 +1,4 @@
-﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
 using SqlServer.Dac;
@@ -10,11 +10,26 @@ using System.Linq;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// 
+    /// The procedure grants itself permissions. Possible missing GO command
     /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <FriendlyName>Permission change in stored procedure</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
-	/// <ExampleMd></ExampleMd>
+	/// <ExampleMd>
+    ///    ```sql
+    ///     CREATE PROCEDURE dbo.my_proc 
+    ///     AS
+    ///         SELECT some_columns, some_calc 
+    ///         FROM some_set
+    ///         WHERE 1=0
+    ///         /* GO; */ /* &lt; you might want one of these */
+    ///         GRANT exec to some_one
+    ///    ```
+    /// </ExampleMd>
+    /// <remarks>
+    /// The rule checks for stored procedures, changing its own permissions. It is possible that a
+    /// GO end of batch signaling command is missing and the statements in the script following the
+    /// procedure are included in the procedure body.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
