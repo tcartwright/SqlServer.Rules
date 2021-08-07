@@ -8,12 +8,21 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
+<<<<<<< HEAD:SqlServer.Rules/Design/ConsiderCachingGetDateToVariable.cs
     /// <summary>
     /// 
     /// </summary>
     /// <FriendlyName></FriendlyName>
+=======
+    /// <summary>Use variable reference to cache multiple calls to GETDATE or SYSDATETIME</summary>
+    /// <FriendlyName>Multiple calls to non-stable functions</FriendlyName>
+>>>>>>> Add XML Docs to Design Rule Classes (3):SqlServer.Rules/Design/CacheGetDateToVariable.cs
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The value of `GETDATE` or `SYSDATETIME` can alter during the course of executing a series
+    /// of queries providing unexpected results.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

@@ -11,9 +11,15 @@ namespace SqlServer.Rules.Design
     /// <summary>
     /// Avoid the use of HINTS to enforce a particular behavior in your code.
     /// </summary>
-    /// <FriendlyName>Avoid Use of HINTS</FriendlyName>
+    /// <FriendlyName>Use of Query Hint</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for usage of query hints, table hints or join hints in the SELECT, UPDATE,
+    /// DELETE, MERGE and INSERT statements. Because the SQL Server query optimizer typically 
+    /// selects the best execution plan for a query, it is recommended to be use hints only as a
+    /// last resort by experienced developers and database administrators.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

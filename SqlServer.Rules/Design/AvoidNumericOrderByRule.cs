@@ -8,12 +8,17 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// Avoid the use of column numbers in a where clause. If someone changes the select query without updating the column number, then the sorting could inadvertently change.
-    /// </summary>
-    /// <FriendlyName>Avoid ORDER BY with numbers</FriendlyName>
+    /// <summary>Avoid the use of column numbers in a where clause. If someone changes the select
+    ///  query without updating the column number, then the sorting could inadvertently change.</summary>
+    /// <FriendlyName>Order by with ordinal references</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for `ORDER BY` clauses which reference select list column using the column
+    /// number instead of the column name. The column numbers in the `ORDER BY` clause as it impairs
+    /// the readability of the SQL statement. Further, changing the order of columns in the `SELECT`
+    /// list has no impact on the `ORDER BY` when the columns are referred by names instead of numbers.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

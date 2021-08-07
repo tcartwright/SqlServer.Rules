@@ -14,6 +14,11 @@ namespace SqlServer.Rules.Design
     /// <FriendlyName>Avoid Cursors</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule identifies CURSOR usage inside the code and notifies for cursor declarations. 
+    /// Review your code and consider using a set-based solution instead of the cursor/iterative
+    /// solution for the given task.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

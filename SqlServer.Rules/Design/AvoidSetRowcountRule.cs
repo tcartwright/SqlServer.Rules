@@ -11,9 +11,17 @@ namespace SqlServer.Rules.Design
     /// <summary>
     /// Do not use SET ROWCOUNT to restrict the number of rows. Use the TOP clause instead.
     /// </summary>
-    /// <FriendlyName>Do not use SET ROWCOUNT</FriendlyName>
+    /// <FriendlyName>Depreciated result limiting</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for usage of the SET ROWCOUNT setting. It is recommended to use the TOP
+    /// clause or the new in SQL 2012 FETCH keyword instead of SET ROWCOUNT as it will not be
+    /// supported in the future versions of SQL Server for INSERT,UPDATE and DELETE statements. In
+    /// addition to that is being phased out, the SET ROWCOUNT has another problem - when a ROWCOUNT
+    /// is set and there is INSERT, UPDATE, DELETE or MERGE statements which fire a trigger, all the
+    /// statements in the trigger will have the same row limit applied.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
     RuleDisplayName,

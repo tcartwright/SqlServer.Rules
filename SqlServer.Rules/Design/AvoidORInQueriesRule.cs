@@ -15,6 +15,13 @@ namespace SqlServer.Rules.Design
     /// <FriendlyName>Avoid use of OR in where clause</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks SELECT, UPDATE and DELETE statements for use of the OR operator in their
+    /// filtering clauses. Often, the OR operator can confuse SQL Server and prevent it from coming
+    /// up with a good query plan. Check the Query Plan and look for undesirable behavior such as
+    /// index scans or table spools. If a seek is performed, check to make sure that is it seeking
+    /// on all of the intended columns, rather than performing a WHERE filter on columns that should otherwise be seek-able. This is the pattern: (@param is null or column=@param) or slightly different: (@param=0 or column=@param)
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

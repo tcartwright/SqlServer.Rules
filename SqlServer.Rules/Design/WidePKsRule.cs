@@ -7,12 +7,16 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// Avoid creating very wide primary keys with guids or (n)varchar as the first column in the index.
-    /// </summary>
+    /// <summary>Avoid creating very wide primary keys with guids or (n)varchar as the first column in the index.</summary>
     /// <FriendlyName>Avoid wide primary keys</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Consider moving the clustered index to a different column or consider using
+    /// `NEWSEQUENTIALID()` system function for generating sequential unique identifiers. The native
+    /// uniqueidentifier, and large varchar data types are not suitable for clustered indexing,
+    /// because they cause terrible page splits because their values can be completely random.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

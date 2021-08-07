@@ -9,12 +9,14 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>DELETE statement without row limiting conditions.</summary>
+    /// <FriendlyName>Unbounded DELETE</FriendlyName>
 	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule looks for DELETE statements not having a WHERE clause. Consider reviewing your
+    /// code to avoid unintentionally losing all the rows in the table.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
     RuleDisplayName,

@@ -12,9 +12,13 @@ namespace SqlServer.Rules.Design
     /// <summary>
     /// Avoid the use of long (N)CHAR types in tables. Use (N)VARCHAR instead.
     /// </summary>
-    /// <FriendlyName>Avoid long CHAR types</FriendlyName>
+    /// <FriendlyName>Long fixed size string</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remark>
+    /// Usage of the char column datatype for lengthy variable type data can cause extra storage
+    /// to be needed, and for extra processing to remove trailing whitespace.
+    /// </remark>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

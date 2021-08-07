@@ -9,12 +9,15 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// Avoid wrapping sql statements in stored procedures with IF statements. Consider extracting the nested sql statements to their own stored procedure.
-    /// </summary>
-    /// <FriendlyName>Avoid wrapping SQL in IF statement</FriendlyName>
+    /// <summary>Avoid wrapping sql statements in stored procedures with IF statements.
+    /// Consider extracting the nested sql statements to their own stored procedure.</summary>
+    /// <FriendlyName>Conditional branch in Stored Procedure</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// IF statements that are wrapped around queries can change the execution plan and can cause
+    /// issues with a plan being cached that is not optimal for all code branches.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

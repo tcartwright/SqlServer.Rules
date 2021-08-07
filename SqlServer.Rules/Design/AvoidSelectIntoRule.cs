@@ -8,12 +8,15 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// Avoid using SELECT INTO to create temp tables or table variables. Create these tables normally using a DECLARE or CREATE statement.
-    /// </summary>
+    /// <summary>Avoid using SELECT INTO to create temp tables or table variables. Create these
+    /// tables normally using a DECLARE or CREATE statement.</summary>
     /// <FriendlyName>Avoid SELECT INTO temp or table variables</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for `SELECT INTO` statement being used. Consider replacing the `SELECT INTO`
+    /// statement with explicit table creation and then use the `INSERT INTO` statement.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

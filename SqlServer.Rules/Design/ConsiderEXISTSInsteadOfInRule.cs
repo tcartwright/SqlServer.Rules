@@ -8,12 +8,15 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Consider using EXISTS predicate instead of IN predicate.</summary>
+    /// <FriendlyName>Pre-enumerated set membership</FriendlyName>
 	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule check T-SQL code for `IN` predicate using a sub-query as they can be replaced by 
+    /// `EXISTS` predicate. Using `EXISTS` predicate is often considered better than `IN` predicate,
+    /// especially when `NOT IN` predicate is used.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
     RuleDisplayName,

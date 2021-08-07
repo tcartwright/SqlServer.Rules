@@ -13,9 +13,16 @@ namespace SqlServer.Rules.Design
     /// <summary>
     /// Avoid the use of SELECT *. This can cause more columns than desired to be returned, and can also cause issues if the order of the columns changes.
     /// </summary>
-    /// <FriendlyName>Avoid SELECT *</FriendlyName>
+    /// <FriendlyName>Unrestricted column list</FriendlyName>
 	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// This rule checks stored procedures, functions, views and triggers for use of '*' in column
+    /// lists of SELECT statements. Though use of '*' is convenient, it may lead to less
+    /// maintainable applications. Changes to table or view definitions may cause errors or
+    /// performance decrease. Using the proper column names takes less load on the database,
+    /// decreases network traffic and hence can greatly improve performance.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

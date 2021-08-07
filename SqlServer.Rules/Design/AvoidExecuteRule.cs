@@ -11,11 +11,16 @@ using System.Text.RegularExpressions;
 namespace SqlServer.Rules.Design
 {
     /// <summary>
-    /// Avoid EXEC and EXECUTE with string literals or VARCHAR variables. Use parameterized sp_executesql instead.
+    /// Avoid EXEC and EXECUTE with string literals or VARCHAR variables. Use parameterized
+    /// `sp_executesql` instead.
     /// </summary>
-    /// <FriendlyName>Avoid EXEC or EXECUTE</FriendlyName>
+    /// <FriendlyName>Use of dynamic SQL</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// Use of dynamic code with EXEC can fall prey to sql injection attacks, and also does not
+    /// save the execution plan in the cache which causes a query recompile every time.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
     RuleDisplayName,

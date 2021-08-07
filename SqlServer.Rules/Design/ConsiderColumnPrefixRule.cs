@@ -9,12 +9,16 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Consider prefixing column names with table name or table alias.</summary>
+    /// <FriendlyName>Ambiguous column reference</FriendlyName>
 	/// <IsIgnorable>true</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks SELECT,UPDATE and DELETE statements which use more than one table source
+    /// and reference columns which are not prefixed with table name or table alias. Consider
+    /// prefixing column names with table name or alias in order to improve readability and avoid
+    /// ambiguity.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

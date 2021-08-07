@@ -9,12 +9,17 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <FriendlyName></FriendlyName>
+    /// <summary>Do not mix DML with DDL statements. Group DDL statements at the beginning of
+    /// procedures followed by DML statements</summary>
+    /// <FriendlyName>Mixed DDL and DML</FriendlyName>
 	/// <IsIgnorable>false</IsIgnorable>
 	/// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks stored procedures, triggers and functions for having a DDL statements mixed
+    /// between DML statements. If DDL operations are performed within a procedure or batch, the
+    /// procedure or batch is recompiled when it encounters the first subsequent DML operation
+    /// affecting the table involved in the DDL.
+    /// </remarks>
 	/// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,

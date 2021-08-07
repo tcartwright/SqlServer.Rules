@@ -9,12 +9,16 @@ using System.Linq;
 
 namespace SqlServer.Rules.Design
 {
-    /// <summary>
-    /// Avoid joining tables with views. 
-    /// </summary>
-    /// <FriendlyName>Avoid joining tables with views</FriendlyName>
+    /// <summary>Avoid joining with views.</summary>
+    /// <FriendlyName>Join with a derived set</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
+    /// <remarks>
+    /// The rule checks for joining with views as this may have performance implication when used
+    /// without having good knowledge of the underlying tables and may lead to unnecessary joins. 
+    /// Although views are useful for many reasons, they hide the underlying sources and may mislead
+    /// unacquainted developers and produce redundant joins.
+    /// </remarks>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
     [ExportCodeAnalysisRule(RuleId,
         RuleDisplayName,
