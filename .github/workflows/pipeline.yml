@@ -58,7 +58,7 @@ jobs:
     steps:  
     - name: Generate Docs
       shell: pwsh
-      run: powershell ".\generate_docs.ps1" -path "${{ github.workspace }}"
+      run: powershell ". .\generate_docs.ps1" -path "${{ github.workspace }}"
     - name: Commit files  
       run: |
         git config --local user.name  ${{ github.actor }}
