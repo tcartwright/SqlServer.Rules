@@ -51,8 +51,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add ./docs
-        git commit -m "Updating the repository docs folder"   
-        exit 0
+        git diff-index --quiet HEAD || git commit -m "Updating the repository docs folder"   
     - name: Push changes  
       uses: ad-m/github-push-action@master
       with:
