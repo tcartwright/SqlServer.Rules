@@ -58,7 +58,7 @@ jobs:
       
   gen-docs:
     runs-on: windows-latest
-    needs: build
+    #needs: build
 
     steps:  
     - name: Write Current Dir
