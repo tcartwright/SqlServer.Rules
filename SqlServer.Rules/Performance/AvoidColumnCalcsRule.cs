@@ -10,7 +10,7 @@ namespace SqlServer.Rules.Performance
     /// <summary>
     /// Avoid the use of calculations on columns in the where clause.
     /// </summary>
-    /// <FriendlyName>Avoid Column Calulations</FriendlyName>
+    /// <FriendlyName>Avoid Column Calculations</FriendlyName>
     /// <IsIgnorable>true</IsIgnorable>
     /// <ExampleMd></ExampleMd>
     /// <seealso cref="SqlServer.Rules.BaseSqlCodeAnalysisRule" />
