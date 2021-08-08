@@ -34,6 +34,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{92A87DE7-84CC-4565-A924-14B7E42CF980}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\generate_docs.ps1 = .github\workflows\generate_docs.ps1
+		.github\workflows\get_project_outputs.ps1 = .github\workflows\get_project_outputs.ps1
 		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
 	EndProjectSection
 EndProject
