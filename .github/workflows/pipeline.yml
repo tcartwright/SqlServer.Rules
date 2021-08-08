@@ -91,14 +91,16 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         force: true
     
-    # BUMP THE PROJECT VERSION TAG    
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.34.0
+    - name:  'Automated Version Bump'
+      uses:  'phips28/gh-action-bump-version@master'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        WITH_V: true
-        #DEFAULT_BUMP: none
-        DRY_RUN: true
+      with:
+        minor-wording:  'add,Adds,new'
+        major-wording:  'MAJOR,cut-major'
+        patch-wording:  'patch,fixes'     # Providing patch-wording will override commits
+        rc-wording:     'RELEASE,alpha'
+        default: minor                    # defaulting to a minor bump.  
 
     # CREATE RELEASE 
     - name: Create Release
