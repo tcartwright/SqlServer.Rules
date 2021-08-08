@@ -27,7 +27,7 @@ if (!(Test-Path $releaseDir)) {
     New-Item $releaseDir -ItemType Directory | Out-Null
 }
 
-Copy-Item -path "$BuildDirectory\*.*" -Destination $rulesDir -Verbose
+Copy-Item -path "$BuildDirectory\*.*" -Destination $rulesDir
 
 $releaseName = "release.zip" # removing version until I can figure out how to get the version tags from master
 $compress = @{
