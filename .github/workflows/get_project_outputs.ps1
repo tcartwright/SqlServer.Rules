@@ -17,6 +17,19 @@ if ([string]::IsNullOrWhiteSpace($framework)) {
 }
 
 $releaseConfig = $csproj.Project.PropertyGroup | Where-Object { $_.Condition -ieq  " '`$(Configuration)|`$(Platform)' == '$Configuration|$Platform' " }
+
+if ($releaseConfig) {
+    $outputPath = $releaseConfig.OutputPath
+} else {
+    # attempt 2, maybe they moved the a global PropertyGroup
+    $outputPath = $csproj.Project.PropertyGroup.OutputPath
+}
+
+if ([string]::IsNullOrWhiteSpace($outputPath)) {
+    throw "Could not determine the outputpath."
+    exit 1
+}
+
 $assemblyName = $csproj.Project.PropertyGroup.AssemblyName | Select-Object -First 1
 
 if ([string]::IsNullOrWhiteSpace($assemblyName)) {
@@ -24,7 +37,7 @@ if ([string]::IsNullOrWhiteSpace($assemblyName)) {
     $assemblyName = [System.IO.Path]::GetFileNameWithoutExtension($ProjectPath) 
 }
 
-$outputPath = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($ProjectPath), $releaseConfig.OutputPath, $framework)
+$outputPath = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($ProjectPath), $outputPath, $framework)
 $outputDll = [System.IO.Path]::Combine($outputPath, "$assemblyName.dll")
 
 echo "GITHUB_BUILD_OUTPUT_PATH=$outputPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
