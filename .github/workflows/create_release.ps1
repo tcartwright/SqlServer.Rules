@@ -18,14 +18,16 @@ $releaseDir = [System.IO.Path]::Combine($temp, "release")
 $docsDir = [System.IO.Path]::Combine($ParentDirectory, "docs")
 
 if (!(Test-Path $rulesDir)) {
+    Write-Host "Creating $rulesDir"
     New-Item $rulesDir -ItemType Directory | Out-Null
 }
 
 if (!(Test-Path $releaseDir)) {
+    Write-Host "Creating $releaseDir"
     New-Item $releaseDir -ItemType Directory | Out-Null
 }
 
-Copy-Item -path "$BuildDirectory\*.*" -Destination $rulesDir
+Copy-Item -path "$BuildDirectory\*.*" -Destination $rulesDir -Verbose
 
 $releaseName = "release.zip" # removing version until I can figure out how to get the version tags from master
 $compress = @{
@@ -34,7 +36,7 @@ $compress = @{
   DestinationPath = "$releaseDir\$releaseName"
 }
 
-Compress-Archive @compress -Force -Verbose
+Compress-Archive @compress -Force -Verbose 
 
 Write-Host "Release written to: " -NoNewline
 Write-Host "$releaseDir\$releaseName" -ForegroundColor Yellow

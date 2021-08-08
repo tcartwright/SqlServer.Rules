@@ -106,5 +106,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: release-artifact
-        path: "${{ env.GITHUB_RELEASE_PATH }}"
+        path: |
+            "${{ env.GITHUB_RELEASE_PATH }}"
+            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\..\*.*"
+            .\docs\**\*.*
+            .\README.MD
         retention-days: 7
