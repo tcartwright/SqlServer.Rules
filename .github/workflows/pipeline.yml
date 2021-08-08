@@ -64,7 +64,7 @@ jobs:
       shell: powershell
       run: |
         .\.github\workflows\get_project_outputs.ps1 -ProjectPath "${{ github.workspace }}\SqlServer.Rules\SqlServer.Rules.csproj"
-        .\.github\workflows\generate_docs.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "$env:BUILD_OUTPUT_PATH"
+        .\.github\workflows\generate_docs.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "$BUILD_OUTPUT_PATH"
     
     # TREE DOCS - JUST TO GIVE A VISUAL OF THE FILES GENERATED FOR DEBUG PURPOSES
     - name: Write Docs Tree
