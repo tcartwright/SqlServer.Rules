@@ -108,7 +108,7 @@ jobs:
         name: release-artifact
         path: |
             "${{ env.GITHUB_RELEASE_PATH }}"
-            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\"
+            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\*.*"
             .\docs\**\*.*
             .\README.MD
         retention-days: 7
