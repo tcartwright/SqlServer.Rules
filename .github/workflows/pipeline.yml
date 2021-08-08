@@ -65,7 +65,7 @@ jobs:
     # EXTRACT BUILD INFO
     - name: Extract Build Info
       shell: powershell
-      run: .\.github\workflows\get_project_outputs.ps1 -ProjectPath "${{ github.workspace }}\SqlServer.Rules\SqlServer.Rules.csproj" -TargetFramework = "^net.*"
+      run: .\.github\workflows\get_project_outputs.ps1 -ProjectPath "${{ github.workspace }}\SqlServer.Rules\SqlServer.Rules.csproj" -TargetFramework "^net.*"
 
     # GENERATE DOCS 
     - name: Generate Docs
