@@ -27,5 +27,5 @@ if ([string]::IsNullOrWhiteSpace($assemblyName)) {
 $outputPath = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($ProjectPath), $releaseConfig.OutputPath, $framework)
 $outputDll = [System.IO.Path]::Combine($outputPath, "$assemblyName.dll")
 
-Write-Output "BUILD_OUTPUT_PATH='$outputPath'" >> $GITHUB_ENV
-Write-Output "BUILD_OUTPUT_DLL='$outputDll'" >> $GITHUB_ENV
+Write-Output "GITHUB_BUILD_OUTPUT_PATH=$outputPath" >> $GITHUB_ENV
+Write-Output "GITHUB_BUILD_OUTPUT_DLL=$outputDll" >> $GITHUB_ENV
