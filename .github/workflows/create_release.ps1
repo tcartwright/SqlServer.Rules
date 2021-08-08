@@ -27,13 +27,16 @@ if (!(Test-Path $releaseDir)) {
 
 Copy-Item -path "$BuildDirectory\*.*" -Destination $rulesDir
 
+$releaseName = "release.zip" # removing version until I can figure out how to get the version tags from master
 $compress = @{
   Path = $docsDir, $rulesDir, "$ParentDirectory\README.md"
   CompressionLevel = "Fastest"
-  DestinationPath = "$releaseDir\release.$version.zip"
+  DestinationPath = "$releaseDir\$releaseName"
 }
 
 Compress-Archive @compress -Force -Verbose
 
 Write-Host "Release written to: " -NoNewline
-Write-Host "$releaseDir\release.$version.zip" -ForegroundColor Yellow
+Write-Host "$releaseDir\$releaseName" -ForegroundColor Yellow
+
+echo "GITHUB_RELEASE_PATH=$releaseDir\$releaseName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
