@@ -58,11 +58,19 @@ jobs:
         git rm -rf ./docs/Performance/
         git rm -rf ./docs/Design/
         git rm -rf ./docs/Naming/
+    
+    # EXTRACT BUILD INFO
+    - name: Extract Build Info
+      shell: powershell
+      run: .\.github\workflows\get_project_outputs.ps1 -ProjectPath "${{ github.workspace }}\SqlServer.Rules\SqlServer.Rules.csproj"
 
     # GENERATE DOCS 
     - name: Generate Docs
       shell: powershell
-      run: .\.github\workflows\generate_docs.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ github.workspace }}\SqlServer.Rules\bin\Release\net472\"
+      run: |
+        echo GITHUB_BUILD_OUTPUT_PATH = ${{ env.GITHUB_BUILD_OUTPUT_PATH }}
+        echo GITHUB_BUILD_OUTPUT_DLL = ${{ env.GITHUB_BUILD_OUTPUT_DLL }}
+        .\.github\workflows\generate_docs.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\"
     
     # TREE DOCS - JUST TO GIVE A VISUAL OF THE FILES GENERATED FOR DEBUG PURPOSES
     - name: Write Docs Tree
