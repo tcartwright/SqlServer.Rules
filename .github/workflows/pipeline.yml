@@ -16,6 +16,8 @@ name: .NET Pipeline
 # Write Docs Tree - purely a debugging step to see what doc files were written by the powershell
 # Commit doc files - Commits any changes if there are any to the repo as the user Github Action
 # Push doc changes - pushes the commit if there is one to the repo
+# Create Release - creates a release zip, containing the docs and binaries 
+# Create Release Artifact - creates a release artifact from the zip that will be stored for 7 days
 
 on:
   push:
@@ -74,7 +76,9 @@ jobs:
     
     # TREE DOCS - JUST TO GIVE A VISUAL OF THE FILES GENERATED FOR DEBUG PURPOSES
     - name: Write Docs Tree
-      run: tree /f .\docs
+      run: |
+        git describe --tags
+        tree /f .\docs
 
     # COMMIT DOCS - ONLY IF THERE ARE FILE CHANGES
     - name: Commit doc files  
@@ -89,20 +93,22 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.HEAD_REF }}
         force: true
     
-    - name:  'Automated Version Bump'
-      uses:  'phips28/gh-action-bump-version@master'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        minor-wording:  'add,Adds,new'
-        major-wording:  'MAJOR,cut-major'
-        patch-wording:  'patch,fixes'     # Providing patch-wording will override commits
-        rc-wording:     'RELEASE,alpha'
-        default: minor                    # defaulting to a minor bump.  
-
     # CREATE RELEASE 
     - name: Create Release
       shell: powershell
       run: .\.github\workflows\create_release.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}"
+    
+    # CREATE RELEASE ARTIFACT
+    - name: Create Release Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: release-artifact
+        path: |
+            "${{ env.GITHUB_RELEASE_PATH }}"
+            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\"
+            .\docs\**\*.*
+            .\README.MD
+        retention-days: 7
