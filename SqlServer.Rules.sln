@@ -31,22 +31,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Dac", "SqlServer.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer.Rules.Tests", "SqlServer.Rules.Test\SqlServer.Rules.Tests.csproj", "{54816BB2-6952-4573-BA7C-B387D86D5425}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{92A87DE7-84CC-4565-A924-14B7E42CF980}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\generate_docs.ps1 = .github\workflows\generate_docs.ps1
-		.github\workflows\get_project_outputs.ps1 = .github\workflows\get_project_outputs.ps1
-		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin Scripts", "Admin Scripts", "{9B7DA20C-6191-4102-B2A9-F8100AD66FD9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{42637764-8B6D-4211-81AE-617833721BF8}"
 	ProjectSection(SolutionItems) = preProject
 		Admin Scripts\Windows\BuildSolution.bat = Admin Scripts\Windows\BuildSolution.bat
 		Admin Scripts\Windows\BuildSolution.ps1 = Admin Scripts\Windows\BuildSolution.ps1
-		Admin Scripts\Windows\Generate-MarkdownDocs.ps1 = Admin Scripts\Windows\Generate-MarkdownDocs.ps1
 		Admin Scripts\Windows\Install.bat = Admin Scripts\Windows\Install.bat
 		Admin Scripts\Windows\Install.ps1 = Admin Scripts\Windows\Install.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{A3CFDF6A-9D73-4814-BE43-DD223FE1C275}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{8FF2252D-599A-43EC-B907-AFFDDEAF0552}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\create_release.ps1 = .github\workflows\create_release.ps1
+		.github\workflows\generate_docs.ps1 = .github\workflows\generate_docs.ps1
+		.github\workflows\get_project_outputs.ps1 = .github\workflows\get_project_outputs.ps1
+		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
 	EndProjectSection
 EndProject
 Global
@@ -85,6 +87,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{42637764-8B6D-4211-81AE-617833721BF8} = {9B7DA20C-6191-4102-B2A9-F8100AD66FD9}
+		{8FF2252D-599A-43EC-B907-AFFDDEAF0552} = {A3CFDF6A-9D73-4814-BE43-DD223FE1C275}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67B59E89-8C35-419D-A49B-9C2C19584900}
