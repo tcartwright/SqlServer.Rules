@@ -93,7 +93,7 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.BRANCH }}
+        branch: ${{ github.HEAD_REF }}
         force: true
     
     # CREATE RELEASE 
