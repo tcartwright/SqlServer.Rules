@@ -100,20 +100,9 @@ jobs:
     - name: Create Artifacts
       shell: powershell
       run: .\.github\workflows\create_release.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}"
- 
-# TIM C: removed this step as the downloaded zip does not have any of the binaries      
-#    # CREATE RELEASE ARTIFACT
-#    - name: Create Release Artifact
-#      uses: actions/upload-artifact@v2
-#      with:
-#        name: release-artifact
-#        path: |
-#            "${{ env.GITHUB_RELEASE_PATH }}"
-#            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\*.bat"
-#            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\*.ps1"
-#            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\*.dll"
-#            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\*.pdb"
-#            "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\*.xml"
-#            .\docs\**\*.*
-#            .\README.MD
-#        retention-days: 7
+
+    - name: Create Release
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "${{ env.GITHUB_RELEASE_PATH }}"
+        token: "${{ secrets.GITHUB_TOKEN }}"
