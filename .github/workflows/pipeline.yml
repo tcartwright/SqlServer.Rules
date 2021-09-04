@@ -16,9 +16,9 @@ name: .NET Pipeline
 # Write Docs Tree - purely a debugging step to see what doc files were written by the powershell
 # Commit doc files - Commits any changes if there are any to the repo as the user Github Action
 # Push doc changes - pushes the commit if there is one to the repo
-# Create Release(IF BRANCH==MASTER) - creates a release zip, containing the docs and binaries
-# Tag Branch(IF BRANCH==MASTER) - semantic version tags branch
-# Create Release Artifact(IF BRANCH==MASTER) - creates a release from the zip with using the tag version
+# Create Release Zip(IF BRANCH==MASTER) - creates a release zip, containing the docs and binaries
+# Bump version and push tag(IF BRANCH==MASTER) - semantic version tags branch
+# Create Release(IF BRANCH==MASTER) - creates a release from the zip with using the tag version
 
 on:
   push:
@@ -98,12 +98,13 @@ jobs:
           force: true
 
       # CREATE RELEASE
-      - name: Create Artifacts
+      - name: Create Release Zip
         if: ${{ github.ref == 'refs/heads/master' }}
         shell: powershell
         run: .\.github\workflows\create_release.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}"
 
       - name: Bump version and push tag
+        id: tag_version
         uses: mathieudutour/github-tag-action@v5.6
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
