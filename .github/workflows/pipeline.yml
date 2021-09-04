@@ -96,11 +96,10 @@ jobs:
         branch: ${{ github.HEAD_REF }}
         force: true
 
-# TIM C: This step is propery creating the zip file, but I have yet to figure out how to save it the releases or artifacts     
-#    # CREATE RELEASE 
-#    - name: Create Release
-#      shell: powershell
-#      run: .\.github\workflows\create_release.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}"
+    # CREATE RELEASE 
+    - name: Create Artifacts
+      shell: powershell
+      run: .\.github\workflows\create_release.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}"
  
 # TIM C: removed this step as the downloaded zip does not have any of the binaries      
 #    # CREATE RELEASE ARTIFACT
