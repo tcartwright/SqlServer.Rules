@@ -102,7 +102,7 @@ jobs:
       run: .\.github\workflows\create_release.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}"
 
     - name: Create Release
-    - uses: ncipollo/release-action@v1
+      uses: ncipollo/release-action@v1
       with:
         artifacts: "${{ env.GITHUB_RELEASE_PATH }}"
         token: "${{ secrets.GITHUB_TOKEN }}"
