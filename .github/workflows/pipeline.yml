@@ -112,3 +112,4 @@ jobs:
       with:
         artifacts: "${{ env.GITHUB_RELEASE_PATH }}"
         token: "${{ secrets.GITHUB_TOKEN }}"
+        tag: "${{ steps.tag_version.outputs.new_tag }}"
