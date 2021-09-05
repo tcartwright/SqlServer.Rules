@@ -2,6 +2,7 @@ name: .NET Pipeline
 
 # Steps Information:
 
+# SplitRepoName - splits the repo name into two parts : name, owner
 # Setup .Net
 # Checkout
 # Install dotnet format - installs the dotnet format tool which will be used for the linting
@@ -30,6 +31,13 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+      - name: SplitRepoName
+        shell: powershell
+        run: |
+          $repoVals = "${{github.repository}}" -split '/', 2
+          echo "REPO_OWNER=$($repoVals[0])" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          echo "REPO_NAME=$($repoVals[1])" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
@@ -68,18 +76,22 @@ jobs:
       # EXTRACT BUILD INFO
       - name: Extract Build Info
         shell: powershell
-        run: .\.github\workflows\get_project_outputs.ps1 -ProjectPath "${{ github.workspace }}\SqlServer.Rules\SqlServer.Rules.csproj" -TargetFramework "^net.*"
+        run: |
+          .\.github\workflows\get_project_outputs.ps1 `
+            -ProjectPath "${{ github.workspace }}\SqlServer.Rules\SqlServer.Rules.csproj" `
+            -TargetFramework "^net.*"
 
       # GENERATE DOCS
       - name: Generate Docs
         shell: powershell
-        run: .\.github\workflows\generate_docs.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\"
+        run: |
+          .\.github\workflows\generate_docs.ps1 `
+            -ParentDirectory "${{ github.workspace }}" `
+            -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\"
 
       # TREE DOCS - JUST TO GIVE A VISUAL OF THE FILES GENERATED FOR DEBUG PURPOSES
       - name: Write Docs Tree
-        run: |
-          git describe --tags
-          tree /f .\docs
+        run: tree /f .\docs
 
       # COMMIT DOCS - ONLY IF THERE ARE FILE CHANGES
       - name: Commit doc files
@@ -101,7 +113,11 @@ jobs:
       - name: Create Release Zip
         if: ${{ github.ref == 'refs/heads/master' }}
         shell: powershell
-        run: .\.github\workflows\create_release.ps1 -ParentDirectory "${{ github.workspace }}" -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}"
+        run: |
+          .\.github\workflows\create_release.ps1 `
+            -ParentDirectory "${{ github.workspace }}" `
+            -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}" `
+            -releasePath "${{ github.workspace }}\\$($env:REPO_NAME).zip"
 
       - name: Bump version and push tag
         id: tag_version
@@ -114,6 +130,6 @@ jobs:
         uses: ncipollo/release-action@v1
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
-          artifacts: "${{ env.GITHUB_RELEASE_PATH }}"
+          artifacts: "${{ github.workspace }}\\${{ env.REPO_NAME }}.zip"
           token: "${{ secrets.GITHUB_TOKEN }}"
           tag: "${{ steps.tag_version.outputs.new_tag }}"
