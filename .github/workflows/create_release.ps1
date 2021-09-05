@@ -1,10 +1,12 @@
-﻿﻿Param(
+﻿Param (
     [Parameter(Mandatory=$true)]
-    [string] 
+    [string]
     $ParentDirectory,
+    
     [Parameter(Mandatory=$true)]
     [string] 
     $BuildDirectory,
+    
     [Parameter(Mandatory=$true)]
     [string]
     $releasePath
@@ -35,6 +37,6 @@ $compress = @{
   DestinationPath = $releasePath
 }
 
+Write-Output "Release written to: $releasePath" 
 Compress-Archive @compress -Force -Verbose 
 
-Write-Host "Release written to: $releasePath" 
