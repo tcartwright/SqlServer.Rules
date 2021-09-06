@@ -202,7 +202,7 @@ function New-TableOfContents {
         [void]$StringBuilder.AppendLine("|----|----|----|----|")
         foreach ($rule in ($category.Group | Sort-Object -Property RuleId )) {
             $friendlyName = "[$($Rule.FriendlyName)]($($category.Name)/$($Rule.RuleId).md)"
-            [void]$StringBuilder.AppendLine("| $($Rule.RuleId) | $friendlyName | $($Rule.IsIgnorable) | $($Rule.Description -replace "|", "&#124;") |")
+            [void]$StringBuilder.AppendLine("| $($Rule.RuleId) | $friendlyName | $($Rule.IsIgnorable) | $($Rule.Description -replace "\|", "&#124;") |")
         }
     }
 
