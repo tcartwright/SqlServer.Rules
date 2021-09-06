@@ -201,8 +201,8 @@ function New-TableOfContents {
         [void]$StringBuilder.AppendLine("| Rule Id | Friendly Name | Ignorable | Description |")
         [void]$StringBuilder.AppendLine("|----|----|----|----|")
         foreach ($rule in ($category.Group | Sort-Object -Property RuleId )) {
-            $friendlyName = "[$($Rule.FriendlyName)]($($category.Name)/$($Rule.RuleId).md)"
-            [void]$StringBuilder.AppendLine("| $($Rule.RuleId) | $friendlyName | $($Rule.IsIgnorable) | $($Rule.Description -replace "\|", "&#124;") |")
+            $ruleId = "[$($Rule.RuleId)]($($category.Name)/$($Rule.RuleId).md)"
+            [void]$StringBuilder.AppendLine("| $ruleId | $($Rule.FriendlyName -replace "\|", "&#124;") | $($Rule.IsIgnorable) | $($Rule.Description -replace "\|", "&#124;") |")
         }
     }
 

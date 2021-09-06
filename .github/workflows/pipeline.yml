@@ -68,6 +68,7 @@ jobs:
 
       # REMOVE DOCS - TO REMOVE DELETED RULES
       - name: Remove docs
+        if: ${{ github.ref == 'refs/heads/master' }}
         run: |
           git rm -rf ./docs/Performance/
           git rm -rf ./docs/Design/
@@ -83,6 +84,7 @@ jobs:
 
       # GENERATE DOCS
       - name: Generate Docs
+        if: ${{ github.ref == 'refs/heads/master' }}
         shell: powershell
         run: |
           .\.github\workflows\generate_docs.ps1 `
@@ -95,6 +97,7 @@ jobs:
 
       # COMMIT DOCS - ONLY IF THERE ARE FILE CHANGES
       - name: Commit doc files
+        if: ${{ github.ref == 'refs/heads/master' }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
