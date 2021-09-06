@@ -11,8 +11,8 @@ name: .NET Pipeline
 # Run Unit Tests - Runs the unit tests defined in the project
 # Remove Docs - Removes the docs folder in preparation for it to be regenerated. So any deleted rules have their markdown removed.
 # Extract Build Info - Extracts the build location, and assembly info from the csproj file, Extracts:
-#   - ${{ env.GITHUB_BUILD_OUTPUT_PATH }} - The directory path where the build output is placed
-#   - ${{ env.GITHUB_BUILD_OUTPUT_DLL }} - The fully qualified path to the build dll
+#   - ${{ env.BUILD_OUTPUT_PATH }} - The directory path where the build output is placed
+#   - ${{ env.BUILD_OUTPUT_DLL }} - The fully qualified path to the build dll
 # Generate Docs - generates the rules for the docs by extracting that information from the rule attribute, and the xml comments
 # Write Docs Tree - purely a debugging step to see what doc files were written by the powershell
 # Commit doc files - Commits any changes if there are any to the repo as the user Github Action
@@ -87,7 +87,7 @@ jobs:
         run: |
           .\.github\workflows\generate_docs.ps1 `
             -ParentDirectory "${{ github.workspace }}" `
-            -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}\"
+            -RulesDllPath "${{ env.BUILD_OUTPUT_DLL }}"
 
       # TREE DOCS - JUST TO GIVE A VISUAL OF THE FILES GENERATED FOR DEBUG PURPOSES
       - name: Write Docs Tree
@@ -104,6 +104,7 @@ jobs:
       # PUSH DOCS
       - name: Push doc changes
         uses: ad-m/github-push-action@master
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.HEAD_REF }}
@@ -123,7 +124,7 @@ jobs:
         run: |
           .\.github\workflows\create_release.ps1 `
             -ParentDirectory "${{ github.workspace }}" `
-            -BuildDirectory "${{ env.GITHUB_BUILD_OUTPUT_PATH }}" `
+            -BuildDirectory "${{ env.BUILD_OUTPUT_PATH }}" `
             -releasePath "${{ github.workspace }}\\$($env:REPO_NAME).${{ steps.tag_version.outputs.new_tag }}.zip"
 
       - name: Create Release
