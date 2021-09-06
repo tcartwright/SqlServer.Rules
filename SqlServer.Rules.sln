@@ -51,6 +51,103 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\pipeline.yml = .github\workflows\pipeline.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{596B2FD7-2684-4DC5-BD46-31EE223C49E4}"
+	ProjectSection(SolutionItems) = preProject
+		docs\TableOfContents.md = docs\TableOfContents.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{544D4AA6-CCA1-47A7-8155-9BC7673177CA}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Design\SRD0001.md = docs\Design\SRD0001.md
+		docs\Design\SRD0002.md = docs\Design\SRD0002.md
+		docs\Design\SRD0003.md = docs\Design\SRD0003.md
+		docs\Design\SRD0004.md = docs\Design\SRD0004.md
+		docs\Design\SRD0005.md = docs\Design\SRD0005.md
+		docs\Design\SRD0006.md = docs\Design\SRD0006.md
+		docs\Design\SRD0009.md = docs\Design\SRD0009.md
+		docs\Design\SRD0010.md = docs\Design\SRD0010.md
+		docs\Design\SRD0011.md = docs\Design\SRD0011.md
+		docs\Design\SRD0012.md = docs\Design\SRD0012.md
+		docs\Design\SRD0013.md = docs\Design\SRD0013.md
+		docs\Design\SRD0014.md = docs\Design\SRD0014.md
+		docs\Design\SRD0015.md = docs\Design\SRD0015.md
+		docs\Design\SRD0016.md = docs\Design\SRD0016.md
+		docs\Design\SRD0017.md = docs\Design\SRD0017.md
+		docs\Design\SRD0018.md = docs\Design\SRD0018.md
+		docs\Design\SRD0019.md = docs\Design\SRD0019.md
+		docs\Design\SRD0020.md = docs\Design\SRD0020.md
+		docs\Design\SRD0021.md = docs\Design\SRD0021.md
+		docs\Design\SRD0024.md = docs\Design\SRD0024.md
+		docs\Design\SRD0025.md = docs\Design\SRD0025.md
+		docs\Design\SRD0026.md = docs\Design\SRD0026.md
+		docs\Design\SRD0027.md = docs\Design\SRD0027.md
+		docs\Design\SRD0028.md = docs\Design\SRD0028.md
+		docs\Design\SRD0030.md = docs\Design\SRD0030.md
+		docs\Design\SRD0031.md = docs\Design\SRD0031.md
+		docs\Design\SRD0032.md = docs\Design\SRD0032.md
+		docs\Design\SRD0033.md = docs\Design\SRD0033.md
+		docs\Design\SRD0034.md = docs\Design\SRD0034.md
+		docs\Design\SRD0035.md = docs\Design\SRD0035.md
+		docs\Design\SRD0036.md = docs\Design\SRD0036.md
+		docs\Design\SRD0038.md = docs\Design\SRD0038.md
+		docs\Design\SRD0039.md = docs\Design\SRD0039.md
+		docs\Design\SRD0041.md = docs\Design\SRD0041.md
+		docs\Design\SRD0043.md = docs\Design\SRD0043.md
+		docs\Design\SRD0044.md = docs\Design\SRD0044.md
+		docs\Design\SRD0045.md = docs\Design\SRD0045.md
+		docs\Design\SRD0046.md = docs\Design\SRD0046.md
+		docs\Design\SRD0047.md = docs\Design\SRD0047.md
+		docs\Design\SRD0050.md = docs\Design\SRD0050.md
+		docs\Design\SRD0051.md = docs\Design\SRD0051.md
+		docs\Design\SRD0052.md = docs\Design\SRD0052.md
+		docs\Design\SRD0053.md = docs\Design\SRD0053.md
+		docs\Design\SRD0055.md = docs\Design\SRD0055.md
+		docs\Design\SRD0056.md = docs\Design\SRD0056.md
+		docs\Design\SRD0057.md = docs\Design\SRD0057.md
+		docs\Design\SRD0058.md = docs\Design\SRD0058.md
+		docs\Design\SRD0060.md = docs\Design\SRD0060.md
+		docs\Design\SRD0061.md = docs\Design\SRD0061.md
+		docs\Design\SRD0062.md = docs\Design\SRD0062.md
+		docs\Design\SRD0063.md = docs\Design\SRD0063.md
+		docs\Design\SRD0064.md = docs\Design\SRD0064.md
+		docs\Design\SRD0065.md = docs\Design\SRD0065.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Naming", "Naming", "{B1B0D9D0-3F3A-476A-A71A-58FFEC5A47FB}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Naming\SRN0001.md = docs\Naming\SRN0001.md
+		docs\Naming\SRN0002.md = docs\Naming\SRN0002.md
+		docs\Naming\SRN0006.md = docs\Naming\SRN0006.md
+		docs\Naming\SRN0007.md = docs\Naming\SRN0007.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Performance", "Performance", "{0A45C60B-D8D4-494C-823F-770EFC2444A7}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Performance\SRP0001.md = docs\Performance\SRP0001.md
+		docs\Performance\SRP0002.md = docs\Performance\SRP0002.md
+		docs\Performance\SRP0003.md = docs\Performance\SRP0003.md
+		docs\Performance\SRP0004.md = docs\Performance\SRP0004.md
+		docs\Performance\SRP0005.md = docs\Performance\SRP0005.md
+		docs\Performance\SRP0006.md = docs\Performance\SRP0006.md
+		docs\Performance\SRP0007.md = docs\Performance\SRP0007.md
+		docs\Performance\SRP0008.md = docs\Performance\SRP0008.md
+		docs\Performance\SRP0009.md = docs\Performance\SRP0009.md
+		docs\Performance\SRP0010.md = docs\Performance\SRP0010.md
+		docs\Performance\SRP0011.md = docs\Performance\SRP0011.md
+		docs\Performance\SRP0012.md = docs\Performance\SRP0012.md
+		docs\Performance\SRP0013.md = docs\Performance\SRP0013.md
+		docs\Performance\SRP0014.md = docs\Performance\SRP0014.md
+		docs\Performance\SRP0015.md = docs\Performance\SRP0015.md
+		docs\Performance\SRP0016.md = docs\Performance\SRP0016.md
+		docs\Performance\SRP0017.md = docs\Performance\SRP0017.md
+		docs\Performance\SRP0018.md = docs\Performance\SRP0018.md
+		docs\Performance\SRP0020.md = docs\Performance\SRP0020.md
+		docs\Performance\SRP0021.md = docs\Performance\SRP0021.md
+		docs\Performance\SRP0022.md = docs\Performance\SRP0022.md
+		docs\Performance\SRP0023.md = docs\Performance\SRP0023.md
+		docs\Performance\SRP0024.md = docs\Performance\SRP0024.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +185,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{42637764-8B6D-4211-81AE-617833721BF8} = {9B7DA20C-6191-4102-B2A9-F8100AD66FD9}
 		{8FF2252D-599A-43EC-B907-AFFDDEAF0552} = {A3CFDF6A-9D73-4814-BE43-DD223FE1C275}
+		{544D4AA6-CCA1-47A7-8155-9BC7673177CA} = {596B2FD7-2684-4DC5-BD46-31EE223C49E4}
+		{B1B0D9D0-3F3A-476A-A71A-58FFEC5A47FB} = {596B2FD7-2684-4DC5-BD46-31EE223C49E4}
+		{0A45C60B-D8D4-494C-823F-770EFC2444A7} = {596B2FD7-2684-4DC5-BD46-31EE223C49E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67B59E89-8C35-419D-A49B-9C2C19584900}

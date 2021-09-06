@@ -4,6 +4,8 @@
 
 Just what it says on the box: A library of SQL best practices as extended [database code analysis rules](https://docs.microsoft.com/en-us/sql/ssdt/overview-of-extensibility-for-database-code-analysis-rules?view=sql-server-ver15) checked at build.
 
+For a complete list of the current rules we have implemented see [here](docs/table_of_contents.md)
+
 For example code see [here](https://github.com/microsoft/DACExtensions/tree/master/RuleSamples)
 
 ## Organization
