@@ -52,9 +52,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{596B2FD7-2684-4DC5-BD46-31EE223C49E4}"
-	ProjectSection(SolutionItems) = preProject
-		docs\TableOfContents.md = docs\TableOfContents.md
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{544D4AA6-CCA1-47A7-8155-9BC7673177CA}"
 	ProjectSection(SolutionItems) = preProject
