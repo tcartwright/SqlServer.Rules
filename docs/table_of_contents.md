@@ -1,51 +1,100 @@
-  ਍嬀吀栀椀猀 搀漀挀甀洀攀渀琀 椀猀 愀甀琀漀洀愀琀椀挀愀氀氀礀 最攀渀攀爀愀琀攀搀⸀ 䄀氀氀 挀栀愀渀最攀搀 洀愀搀攀 琀漀 椀琀 圀䤀䰀䰀 戀攀 氀漀猀琀崀㨀 㰀㸀  ഀഀ
-  ਍⌀ 吀愀戀氀攀 漀昀 䌀漀渀琀攀渀琀猀  ഀഀ
-  ਍  ഀഀ
-## Design  ਍  ഀഀ
-| Rule Id | Friendly Name | Ignorable | Description |਍簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ഀഀ
-| [SRD0001](Design/SRD0001.md) | Missing natural key | false | Table does not have a natural key. |਍簀 嬀匀刀䐀　　　㈀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　　㈀⸀洀搀⤀ 簀 䴀椀猀猀椀渀最 瀀爀椀洀愀爀礀 欀攀礀 簀 昀愀氀猀攀 簀 吀愀戀氀攀 搀漀攀猀 渀漀琀 栀愀瘀攀 愀 瀀爀椀洀愀爀礀 欀攀礀⸀ 簀ഀഀ
-| [SRD0003](Design/SRD0003.md) | Avoid wide primary keys | false | Primary Keys should avoid using GUIDS or wide VARCHAR columns. |਍簀 嬀匀刀䐀　　　㐀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　　㐀⸀洀搀⤀ 簀 䤀渀搀攀砀 漀渀 䘀漀爀攀椀最渀 䬀攀礀 簀 昀愀氀猀攀 簀 䌀漀氀甀洀渀猀 漀渀 戀漀琀栀 猀椀搀攀猀 漀昀 愀 昀漀爀攀椀最渀 欀攀礀 猀栀漀甀氀搀 戀攀 椀渀搀攀砀攀搀⸀ 簀ഀഀ
-| [SRD0005](Design/SRD0005.md) | Avoid long CHAR types | true | Avoid the (n)char column type except for short static length data. |਍簀 嬀匀刀䐀　　　㘀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　　㘀⸀洀搀⤀ 簀 䄀瘀漀椀搀 匀䔀䰀䔀䌀吀 ⨀ 簀 琀爀甀攀 簀 䄀瘀漀椀搀 甀猀椀渀最 匀䔀䰀䔀䌀吀 ⨀⸀ 簀ഀഀ
-| [SRD0009](Design/SRD0009.md) | Non-transactional body | false | Wrap multiple action statements within a transaction. |਍簀 嬀匀刀䐀　　㄀　崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㄀　⸀洀搀⤀ 簀 䰀漀眀 椀搀攀渀琀椀琀礀 猀攀攀搀 瘀愀氀甀攀 簀 昀愀氀猀攀 簀 匀琀愀爀琀 椀搀攀渀琀椀琀礀 挀漀氀甀洀渀 甀猀攀搀 椀渀 愀 瀀爀椀洀愀爀礀 欀攀礀 眀椀琀栀 愀 猀攀攀搀 漀昀 ㄀　　　 漀爀 栀椀最栀攀爀⸀ 簀ഀഀ
-| [SRD0011](Design/SRD0011.md) | Equality Compare With NULL Rule | false | Equality and inequality comparisons involving a NULL constant found. Use IS NULL or IS NOT NULL. |਍簀 嬀匀刀䐀　　㄀㈀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㄀㈀⸀洀搀⤀ 簀 唀渀甀猀攀搀 瘀愀爀椀愀戀氀攀 簀 昀愀氀猀攀 簀 嘀愀爀椀愀戀氀攀 搀攀挀氀愀爀攀搀 戀甀琀 渀攀瘀攀爀 爀攀昀攀爀攀渀挀攀搀 漀爀 愀猀猀椀最渀攀搀⸀ 簀ഀഀ
-| [SRD0013](Design/SRD0013.md) | Expected error handeling | false | Wrap multiple action statements within a try catch. |਍簀 嬀匀刀䐀　　㄀㐀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㄀㐀⸀洀搀⤀ 簀 吀伀倀 眀椀琀栀漀甀琀 愀渀 伀刀䐀䔀刀 䈀夀 簀 昀愀氀猀攀 簀 吀伀倀 挀氀愀甀猀攀 甀猀攀搀 椀渀 愀 焀甀攀爀礀 眀椀琀栀漀甀琀 愀渀 伀刀䐀䔀刀 䈀夀 挀氀愀甀猀攀⸀ 簀ഀഀ
-| [SRD0015](Design/SRD0015.md) | Implicit column list | false | Always use a column list in INSERT statements. |਍簀 嬀匀刀䐀　　㄀㘀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㄀㘀⸀洀搀⤀ 簀 唀渀甀猀攀搀 椀渀瀀甀琀 瀀愀爀愀洀攀琀攀爀 簀 琀爀甀攀 簀 䤀渀瀀甀琀 瀀愀爀愀洀攀琀攀爀 渀攀瘀攀爀 甀猀攀搀⸀ 䌀漀渀猀椀搀攀爀 爀攀洀漀瘀椀渀最 琀栀攀 瀀愀爀愀洀攀琀攀爀 漀爀 甀猀椀渀最 椀琀⸀ 簀ഀഀ
-| [SRD0017](Design/SRD0017.md) | Avoid Deletes Without Where Rule | true | DELETE statement without row limiting conditions. |਍簀 嬀匀刀䐀　　㄀㠀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㄀㠀⸀洀搀⤀ 簀 唀渀戀漀甀渀搀攀搀 唀倀䐀䄀吀䔀 簀 琀爀甀攀 簀 唀倀䐀䄀吀䔀 猀琀愀琀攀洀攀渀琀 眀椀琀栀漀甀琀 爀漀眀 氀椀洀椀琀椀渀最 挀漀渀搀椀琀椀漀渀猀⸀ 簀ഀഀ
-| [SRD0019](Design/SRD0019.md) | Avoid joining tables with views | true | Avoid joining tables with views. |਍簀 嬀匀刀䐀　　㈀　崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㈀　⸀洀搀⤀ 簀 䤀渀挀漀洀瀀氀攀琀攀 漀爀 洀椀猀猀椀渀最 䨀伀䤀一 瀀爀攀搀椀挀愀琀攀 簀 昀愀氀猀攀 簀 吀栀攀 焀甀攀爀礀 栀愀猀 椀猀猀甀攀猀 眀椀琀栀 琀栀攀 樀漀椀渀 挀氀愀甀猀攀⸀ 䤀琀 椀猀 攀椀琀栀攀爀 洀椀猀猀椀渀最 愀 戀愀挀欀椀渀最 昀漀爀攀椀最渀 欀攀礀 漀爀 琀栀攀 樀漀椀渀 椀猀 洀椀猀猀椀渀最 漀渀攀 漀爀 洀漀爀攀 挀漀氀甀洀渀猀⸀ 簀ഀഀ
-| [SRD0021](Design/SRD0021.md) | Consider EXISTS Instead Of In Rule | true | Consider using EXISTS instead of IN when used with a subquery. |਍簀 嬀匀刀䐀　　㈀㐀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㈀㐀⸀洀搀⤀ 簀 䄀瘀漀椀搀 䔀堀䔀䌀 漀爀 䔀堀䔀䌀唀吀䔀 簀 琀爀甀攀 簀 䄀瘀漀椀搀 䔀堀䔀䌀 愀渀搀 䔀堀䔀䌀唀吀䔀 眀椀琀栀 猀琀爀椀渀最 氀椀琀攀爀愀氀猀⸀ 唀猀攀 瀀愀爀愀洀攀琀攀爀椀稀攀搀 猀瀀开攀砀攀挀甀琀攀猀焀氀 椀渀猀琀攀愀搀⸀ 簀ഀഀ
-| [SRD0025](Design/SRD0025.md) | Avoid ORDER BY with numbers | true | Avoid using column numbers in ORDER BY clause. |਍簀 嬀匀刀䐀　　㈀㘀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㈀㘀⸀洀搀⤀ 簀 唀渀猀瀀攀挀椀昀椀攀搀 琀礀瀀攀 氀攀渀最琀栀 簀 昀愀氀猀攀 簀 䐀漀 渀漀琀 甀猀攀 琀栀攀猀攀 搀愀琀愀 琀礀瀀攀猀 ⠀嘀䄀刀䌀䠀䄀刀Ⰰ 一嘀䄀刀䌀䠀䄀刀Ⰰ 䌀䠀䄀刀Ⰰ 一䌀䠀䄀刀⤀ 眀椀琀栀漀甀琀 猀瀀攀挀椀昀礀椀渀最 氀攀渀最琀栀⸀ 簀ഀഀ
-| [SRD0027](Design/SRD0027.md) | Unspecified precision or scale | false | Do not use DECIMAL or NUMERIC data types without specifying precision and scale. |਍簀 嬀匀刀䐀　　㈀㠀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㈀㠀⸀洀搀⤀ 簀 䌀漀渀猀椀搀攀爀 䌀漀氀甀洀渀 倀爀攀昀椀砀 刀甀氀攀 簀 琀爀甀攀 簀 䌀漀渀猀椀搀攀爀 瀀爀攀昀椀砀椀渀最 挀漀氀甀洀渀 渀愀洀攀猀 眀椀琀栀 琀愀戀氀攀 渀愀洀攀 漀爀 琀愀戀氀攀 愀氀椀愀猀⸀ 簀ഀഀ
-| [SRD0030](Design/SRD0030.md) | Avoid Use of HINTS | true | Avoid using Hints to force a particular behavior. |਍簀 嬀匀刀䐀　　㌀㄀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㌀㄀⸀洀搀⤀ 簀 䄀瘀漀椀搀 甀猀椀渀最 䌀䠀䄀刀䤀一䐀䔀堀 簀 琀爀甀攀 簀 䄀瘀漀椀搀 甀猀椀渀最 䌀䠀䄀刀䤀一䐀䔀堀 昀甀渀挀琀椀漀渀 椀渀 圀䠀䔀刀䔀 挀氀愀甀猀攀猀⸀ 簀ഀഀ
-| [SRD0032](Design/SRD0032.md) | Avoid use of OR in where clause | true | Try to avoid the OR operator in query where clauses if possible.  (Sargable) |਍簀 嬀匀刀䐀　　㌀㌀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㌀㌀⸀洀搀⤀ 簀 䄀瘀漀椀搀 䌀甀爀猀漀爀猀 簀 琀爀甀攀 簀 䄀瘀漀椀搀 甀猀椀渀最 挀甀爀猀漀爀猀⸀ 簀ഀഀ
-| [SRD0034](Design/SRD0034.md) | Use of NOLOCK | false | Do not use the NOLOCK clause. |਍簀 嬀匀刀䐀　　㌀㔀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㌀㔀⸀洀搀⤀ 簀 䘀漀爀挀攀搀 搀攀氀愀礀 簀 昀愀氀猀攀 簀 䐀漀 渀漀琀 甀猀攀 圀䄀䤀吀䘀伀刀 䐀䔀䰀䄀夀⼀吀䤀䴀䔀 猀琀愀琀攀洀攀渀琀 椀渀 猀琀漀爀攀搀 瀀爀漀挀攀搀甀爀攀猀Ⰰ 昀甀渀挀琀椀漀渀猀Ⰰ 愀渀搀 琀爀椀最最攀爀猀⸀ 簀ഀഀ
-| [SRD0036](Design/SRD0036.md) | Do not use SET ROWCOUNT | true | Do not use SET ROWCOUNT to restrict the number of rows. |਍簀 嬀匀刀䐀　　㌀㠀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㌀㠀⸀洀搀⤀ 簀 䄀氀椀愀猀 吀愀戀氀攀猀 刀甀氀攀 簀 琀爀甀攀 簀 䌀漀渀猀椀搀攀爀 愀氀椀愀猀椀渀最 愀氀氀 琀愀戀氀攀 猀漀甀爀挀攀猀 椀渀 琀栀攀 焀甀攀爀礀⸀ 簀ഀഀ
-| [SRD0039](Design/SRD0039.md) | Object not schema qualified | false | Use fully qualified object names in SELECT, UPDATE, DELETE, MERGE and EXECUTE statements. [schema].[name]. |਍簀 嬀匀刀䐀　　㐀㄀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㐀㄀⸀洀搀⤀ 簀 䄀瘀漀椀搀 匀䔀䰀䔀䌀吀 䤀一吀伀 琀攀洀瀀 漀爀 琀愀戀氀攀 瘀愀爀椀愀戀氀攀猀 簀 琀爀甀攀 簀 䄀瘀漀椀搀 甀猀攀 漀昀 琀栀攀 匀䔀䰀䔀䌀吀 䤀一吀伀 猀礀渀琀愀砀⸀ 簀ഀഀ
-| [SRD0043](Design/SRD0043.md) | Possible side-effects implicit cast | false | The arguments of the function '{0}' are not of the same datatype. |਍簀 嬀匀刀䐀　　㐀㐀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㐀㐀⸀洀搀⤀ 簀 䔀爀爀漀爀 栀愀渀搀氀椀渀最 爀攀焀甀椀爀攀猀 匀䄀 瀀攀爀洀椀猀猀椀漀渀猀 簀 昀愀氀猀攀 簀 吀栀攀 刀䄀䤀匀䔀刀刀伀刀 猀琀愀琀攀洀攀渀琀 眀椀琀栀 猀攀瘀攀爀椀琀礀 愀戀漀瘀攀 ㄀㠀 爀攀焀甀椀爀攀猀 琀栀攀 圀䤀吀䠀 䰀伀䜀 挀氀愀甀猀攀⸀ 簀ഀഀ
-| [SRD0045](Design/SRD0045.md) | Excessive indexes on table | false | Excessive number of indexes on table found on table. |਍簀 嬀匀刀䐀　　㐀㘀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㐀㘀⸀洀搀⤀ 簀 唀猀攀 漀昀 愀瀀瀀爀漀砀椀洀愀琀攀 搀愀琀愀 琀礀瀀攀 簀 昀愀氀猀攀 簀 䐀漀 渀漀琀 甀猀攀 琀栀攀 爀攀愀氀 漀爀 昀氀漀愀琀 搀愀琀愀 琀礀瀀攀猀 昀漀爀 瀀愀爀愀洀攀琀攀爀猀 漀爀 挀漀氀甀洀渀猀 愀猀 琀栀攀礀 愀爀攀 愀瀀瀀爀漀砀椀洀愀琀攀 瘀愀氀甀攀 搀愀琀愀 琀礀瀀攀猀⸀ 簀ഀഀ
-| [SRD0047](Design/SRD0047.md) | Ambiguous column name across design | true | Avoid using columns that match other columns by name, but are different in type or size. |਍簀 嬀匀刀䐀　　㔀　崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㔀　⸀洀搀⤀ 簀 䔀砀瀀爀攀猀猀椀漀渀 爀攀搀甀挀椀戀氀攀 琀漀 挀漀渀猀琀愀椀渀琀 簀 琀爀甀攀 簀 吀栀攀 挀漀洀瀀愀爀椀猀漀渀 攀砀瀀爀攀猀猀椀漀渀 愀氀眀愀礀猀 攀瘀愀氀甀愀琀攀猀 琀漀 吀刀唀䔀 漀爀 䘀䄀䰀匀䔀⸀ 簀ഀഀ
-| [SRD0051](Design/SRD0051.md) | Do Not Use Deprecated Types Rule | false | Don’t use deprecated TEXT, NTEXT and IMAGE data types. |਍簀 嬀匀刀䐀　　㔀㈀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㔀㈀⸀洀搀⤀ 簀 䐀甀瀀氀椀挀愀琀攀⼀伀瘀攀爀氀愀瀀瀀椀渀最 䤀渀搀攀砀 簀 昀愀氀猀攀 簀 䤀渀搀攀砀 栀愀猀 攀砀愀挀琀 搀甀瀀氀椀挀愀琀攀 漀爀 戀漀爀搀攀爀氀椀渀攀 漀瘀攀爀氀愀瀀瀀椀渀最 椀渀搀攀砀⸀ 簀ഀഀ
-| [SRD0053](Design/SRD0053.md) | Explicit collation other | true | Object has different collation than the rest of the database. Try to avoid using a different collation unless by design. |਍簀 嬀匀刀䐀　　㔀㔀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㔀㔀⸀洀搀⤀ 簀 伀戀樀攀挀琀 氀攀瘀攀氀 漀瀀琀椀漀渀 漀瘀攀爀爀椀搀攀 簀 昀愀氀猀攀 簀 吀栀攀 漀戀樀攀挀琀 眀愀猀 挀爀攀愀琀攀搀 眀椀琀栀 椀渀瘀愀氀椀搀 漀瀀琀椀漀渀猀⸀ 簀ഀഀ
-| [SRD0056](Design/SRD0056.md) | Unsafe identity retrieval | true | Use OUTPUT or SCOPE_IDENTITY() instead of @@IDENTITY. |਍簀 嬀匀刀䐀　　㔀㜀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㔀㜀⸀洀搀⤀ 簀 䐀漀 一漀琀 䴀椀砀 䐀䴀䰀 圀椀琀栀 䐀䐀䰀 刀甀氀攀 簀 昀愀氀猀攀 簀 䐀漀 渀漀琀 洀椀砀 䐀䴀䰀 眀椀琀栀 䐀䐀䰀 猀琀愀琀攀洀攀渀琀猀⸀ 䜀爀漀甀瀀 䐀䐀䰀 猀琀愀琀攀洀攀渀琀猀 愀琀 琀栀攀 戀攀最椀渀渀椀渀最 漀昀 瀀爀漀挀攀搀甀爀攀猀 昀漀氀氀漀眀攀搀 戀礀 䐀䴀䰀 猀琀愀琀攀洀攀渀琀猀⸀ 簀ഀഀ
-| [SRD0058](Design/SRD0058.md) | Ordinal parameters used | false | Always use parameter names when calling stored procedures. |਍簀 嬀匀刀䐀　　㘀　崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㘀　⸀洀搀⤀ 簀 倀攀爀洀椀猀猀椀漀渀 挀栀愀渀最攀 椀渀 猀琀漀爀攀搀 瀀爀漀挀攀搀甀爀攀 簀 昀愀氀猀攀 簀 吀栀攀 瀀爀漀挀攀搀甀爀攀 最爀愀渀琀猀 椀琀猀攀氀昀 瀀攀爀洀椀猀猀椀漀渀猀⸀ 倀漀猀猀椀戀氀攀 洀椀猀猀椀渀最 䜀伀 挀漀洀洀愀渀搀⸀ 簀ഀഀ
-| [SRD0061](Design/SRD0061.md) | Invalid database configured options | false | The database is configured with invalid options. |਍簀 嬀匀刀䐀　　㘀㈀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㘀㈀⸀洀搀⤀ 簀 䤀洀瀀氀椀挀椀琀 挀漀氀氀愀琀椀漀渀 簀 昀愀氀猀攀 簀 䌀爀攀愀琀攀 匀儀䰀 匀攀爀瘀攀爀 琀攀洀瀀漀爀愀爀礀 琀愀戀氀攀猀 眀椀琀栀 琀栀攀 挀漀爀爀攀挀琀 挀漀氀氀愀琀椀漀渀 漀爀 甀猀攀 搀愀琀愀戀愀猀攀 搀攀昀愀甀氀琀 愀猀 琀栀攀 琀攀洀瀀搀戀 栀愀瘀椀渀最 愀 搀椀昀昀攀爀攀渀琀 挀漀氀氀愀琀椀漀渀 琀栀愀渀 琀栀攀 搀愀琀愀戀愀猀攀 挀愀渀 挀愀甀猀攀 椀猀猀甀攀猀 愀渀搀 漀爀 搀愀琀愀 椀渀猀琀愀戀椀氀椀琀礀⸀ 簀ഀഀ
-| [SRD0063](Design/SRD0063.md) | Avoid wrapping SQL in IF statement | true | Do not use IF statements containing queries in stored procedures. |਍簀 嬀匀刀䐀　　㘀㐀崀⠀䐀攀猀椀最渀⼀匀刀䐀　　㘀㐀⸀洀搀⤀ 簀 䌀漀渀猀椀搀攀爀 䌀愀挀栀椀渀最 䜀攀琀 䐀愀琀攀 吀漀 嘀愀爀椀愀戀氀攀 簀 琀爀甀攀 簀 䌀愀挀栀攀 洀甀氀琀椀瀀氀攀 挀愀氀氀猀 琀漀 䜀䔀吀䐀䄀吀䔀 漀爀 匀夀匀䐀䄀吀䔀吀䤀䴀䔀 椀渀琀漀 愀 瘀愀爀椀愀戀氀攀⸀ 簀ഀഀ
-| [SRD0065](Design/SRD0065.md) | Avoid NOT FOR REPLICATION | false | Avoid 'NOT FOR REPLICATION' unless this is the desired behavior and replication is in use. |਍  ഀഀ
-## Performance  ਍  ഀഀ
-| Rule Id | Friendly Name | Ignorable | Description |਍簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ഀഀ
-| [SRP0001](Performance/SRP0001.md) | Nested Views | false | Views should not use other views as a data source. |਍簀 嬀匀刀倀　　　㈀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　　㈀⸀洀搀⤀ 簀 唀渀愀渀挀栀漀爀攀搀 猀琀爀椀渀最 瀀愀琀琀攀爀渀 簀 琀爀甀攀 簀 吀爀礀 琀漀 愀瘀漀椀搀 甀猀椀渀最 瀀愀琀琀攀爀渀猀 琀栀愀琀 猀琀愀爀琀 眀椀琀栀 ✀─✀ 眀栀攀渀 甀猀椀渀最 琀栀攀 䰀䤀䬀䔀 欀攀礀眀漀爀搀 椀昀 瀀漀猀猀椀戀氀攀⸀  ⠀匀愀爀最愀戀氀攀⤀ 簀ഀഀ
-| [SRP0003](Performance/SRP0003.md) | Aggregate of unique set | true | Avoid using DISTINCT keyword inside of aggregate functions. |਍簀 嬀匀刀倀　　　㐀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　　㐀⸀洀搀⤀ 簀 一漀椀猀礀 琀爀椀最最攀爀 簀 琀爀甀攀 簀 䄀瘀漀椀搀 爀攀琀甀爀渀椀渀最 爀攀猀甀氀琀猀 椀渀 琀爀椀最最攀爀猀⸀ 簀ഀഀ
-| [SRP0005](Performance/SRP0005.md) | Noisy trigger | true | SET NOCOUNT ON is recommended to be enabled in stored procedures and triggers. |਍簀 嬀匀刀倀　　　㘀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　　㘀⸀洀搀⤀ 簀 唀猀攀 漀昀 椀渀攀焀甀愀氀椀琀礀 簀 琀爀甀攀 簀 吀爀礀 琀漀 愀瘀漀椀搀 甀猀椀渀最 渀漀琀 攀焀甀愀氀 漀瀀攀爀愀琀漀爀 ⠀㰀㸀Ⰰ℀㴀⤀ 椀渀 琀栀攀 圀䠀䔀刀䔀 挀氀愀甀猀攀 椀昀 瀀漀猀猀椀戀氀攀⸀ ⠀匀愀爀最愀戀氀攀⤀ 簀ഀഀ
-| [SRP0007](Performance/SRP0007.md) | Dangling cursor | false | Local cursor not closed. |਍簀 嬀匀刀倀　　　㠀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　　㠀⸀洀搀⤀ 簀 唀渀昀爀攀攀搀 挀甀爀猀漀爀 簀 昀愀氀猀攀 簀 䰀漀挀愀氀 挀甀爀猀漀爀 渀漀琀 攀砀瀀氀椀挀椀琀氀礀 搀攀愀氀氀漀挀愀琀攀搀⸀ 簀ഀഀ
-| [SRP0009](Performance/SRP0009.md) | Filtering on calculated value | true | Avoid wrapping columns within a function in the WHERE clause. (Sargable) |਍簀 嬀匀刀倀　　㄀　崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　㄀　⸀洀搀⤀ 簀 䘀甀渀挀琀椀漀渀 椀渀 搀愀琀愀 洀漀搀椀昀椀挀愀琀椀漀渀 簀 琀爀甀攀 簀 䄀瘀漀椀搀 琀栀攀 甀猀攀 漀昀 甀猀攀爀 搀攀昀椀渀攀搀 昀甀渀挀琀椀漀渀猀 眀椀琀栀 唀倀䐀䄀吀䔀⼀䤀一匀䔀刀吀⼀䐀䔀䰀䔀吀䔀 猀琀愀琀攀洀攀渀琀猀⸀ ⠀䠀愀氀氀漀眀攀攀渀 倀爀漀琀攀挀琀椀漀渀⤀ 簀ഀഀ
-| [SRP0011](Performance/SRP0011.md) | Non-member test in predicate | true | Avoid using the NOT IN predicate in a WHERE clause. (Sargable) |਍簀 嬀匀刀倀　　㄀㈀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　㄀㈀⸀洀搀⤀ 簀 唀渀ⴀ椀渀搀攀砀攀搀 洀攀洀戀攀爀猀栀椀瀀 琀攀猀琀 簀 琀爀甀攀 簀 䌀漀渀猀椀搀攀爀 椀渀搀攀砀椀渀最 琀栀攀 挀漀氀甀洀渀猀 爀攀昀攀爀攀渀挀攀搀 戀礀 䤀一 瀀爀攀搀椀挀愀琀攀猀 椀渀 漀爀搀攀爀 琀漀 愀瘀漀椀搀 琀愀戀氀攀 猀挀愀渀猀⸀ 簀ഀഀ
-| [SRP0013](Performance/SRP0013.md) | Existence tested with JOIN | true | Consider replacing the OUTER JOIN with EXISTS. |਍簀 嬀匀刀倀　　㄀㐀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　㄀㐀⸀洀搀⤀ 簀 吀愀戀氀攀 瘀愀爀椀愀戀氀攀 椀渀 䨀伀䤀一 簀 琀爀甀攀 簀 䄀瘀漀椀搀 琀栀攀 甀猀攀 漀昀 琀愀戀氀攀 瘀愀爀椀愀戀氀攀猀 椀渀 樀漀椀渀 挀氀愀甀猀攀猀⸀ 簀ഀഀ
-| [SRP0015](Performance/SRP0015.md) | Avoid Column Calculations | true | Avoid the use of calculations on columns in the where clause. (Sargable) |਍簀 嬀匀刀倀　　㄀㘀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　㄀㘀⸀洀搀⤀ 簀 䔀焀甀愀氀椀琀礀 琀攀猀琀 眀椀琀栀 洀椀猀洀愀琀挀栀攀搀 琀礀瀀攀猀 簀 昀愀氀猀攀 簀 䐀愀琀愀 琀礀瀀攀猀 漀渀 戀漀琀栀 猀椀搀攀猀 漀昀 愀渀 攀焀甀愀氀椀琀礀 挀栀攀挀欀 猀栀漀甀氀搀 戀攀 琀栀攀 猀愀洀攀 椀渀 琀栀攀 眀栀攀爀攀 挀氀愀甀猀攀⸀ ⠀匀愀爀最愀戀氀攀⤀ 簀ഀഀ
-| [SRP0017](Performance/SRP0017.md) | Update of Primary key | true | Avoid updating columns that are part of the primary key.  (Halloween Protection) |਍簀 嬀匀刀倀　　㄀㠀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　㄀㠀⸀洀搀⤀ 簀 䠀椀最栀 樀漀椀渀 挀漀甀渀琀 簀 昀愀氀猀攀 簀 儀甀攀爀礀 甀猀攀猀 愀 栀椀最栀 渀甀洀戀攀爀 漀昀 樀漀椀渀猀⸀  簀ഀഀ
-| [SRP0020](Performance/SRP0020.md) | Missing Clustered index | false | Table does not have a clustered index. |਍簀 嬀匀刀倀　　㈀㄀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　㈀㄀⸀洀搀⤀ 簀 䴀愀渀椀瀀甀氀愀琀攀搀 瀀愀爀愀洀攀琀攀爀 瘀愀氀甀攀 簀 琀爀甀攀 簀 䄀瘀漀椀搀 洀漀搀椀昀椀挀愀琀椀漀渀 漀昀 瀀愀爀愀洀攀琀攀爀猀 椀渀 愀 猀琀漀爀攀搀 瀀爀漀挀攀搀甀爀攀 瀀爀椀漀爀 琀漀 甀猀攀 椀渀 愀 猀攀氀攀挀琀 焀甀攀爀礀⸀ 簀ഀഀ
-| [SRP0022](Performance/SRP0022.md) | Procedure level recompile option | true | Consider using RECOMPILE query hint instead of the WITH RECOMPILE option. |਍簀 嬀匀刀倀　　㈀㌀崀⠀倀攀爀昀漀爀洀愀渀挀攀⼀匀刀倀　　㈀㌀⸀洀搀⤀ 簀 䔀渀甀洀攀爀愀琀椀渀最 昀漀爀 攀砀椀猀琀攀渀挀攀 挀栀攀挀欀 簀 琀爀甀攀 簀 圀栀攀渀 挀栀攀挀欀椀渀最 昀漀爀 攀砀椀猀琀攀渀挀攀 甀猀攀 䔀堀䤀匀吀匀 椀渀猀琀攀愀搀 漀昀 䌀伀唀一吀 簀ഀഀ
-| [SRP0024](Performance/SRP0024.md) | Correlated subquery | true | Avoid the use of correlated subqueries except for very small tables. |਍  ഀഀ
-## Naming  ਍  ഀഀ
-| Rule Id | Friendly Name | Ignorable | Description |਍簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ⴀⴀⴀⴀ簀ഀഀ
-| [SRN0001](Naming/SRN0001.md) | UDF with System prefix | true | Avoid 'fn_' prefix when naming functions. |਍簀 嬀匀刀一　　　㈀崀⠀一愀洀椀渀最⼀匀刀一　　　㈀⸀洀搀⤀ 簀 倀爀漀挀攀搀甀爀攀 渀愀洀攀 洀愀礀 挀漀渀昀氀椀挀琀 猀礀猀琀攀洀 渀愀洀攀 簀 琀爀甀攀 簀 䄀瘀漀椀搀 ✀猀瀀开✀ 瀀爀攀昀椀砀 眀栀攀渀 渀愀洀椀渀最 猀琀漀爀攀搀 瀀爀漀挀攀搀甀爀攀猀⸀ 簀ഀഀ
-| [SRN0006](Naming/SRN0006.md) | Use of default schema | false | Two part naming on objects is required. |਍簀 嬀匀刀一　　　㜀崀⠀一愀洀椀渀最⼀匀刀一　　　㜀⸀洀搀⤀ 簀 一愀洀攀 猀琀愀渀搀愀爀搀 簀 昀愀氀猀攀 簀 䜀攀渀攀爀愀氀 渀愀洀椀渀最 爀甀氀攀猀⸀ 簀ഀഀ
-਍ 
+[This document is automatically generated. All changed made to it WILL be lost]: <>  
+  
+# Table of Contents  
+  
+  
+## Design  
+  
+| Rule Id | Friendly Name | Ignorable | Description |
+|----|----|----|----|
+| [SRD0001](Design/SRD0001.md) | Missing natural key | false | Table does not have a natural key. |
+| [SRD0002](Design/SRD0002.md) | Missing primary key | false | Table does not have a primary key. |
+| [SRD0003](Design/SRD0003.md) | Avoid wide primary keys | false | Primary Keys should avoid using GUIDS or wide VARCHAR columns. |
+| [SRD0004](Design/SRD0004.md) | Index on Foreign Key | false | Columns on both sides of a foreign key should be indexed. |
+| [SRD0005](Design/SRD0005.md) | Avoid long CHAR types | true | Avoid the (n)char column type except for short static length data. |
+| [SRD0006](Design/SRD0006.md) | Avoid SELECT * | true | Avoid using SELECT *. |
+| [SRD0009](Design/SRD0009.md) | Non-transactional body | false | Wrap multiple action statements within a transaction. |
+| [SRD0010](Design/SRD0010.md) | Low identity seed value | false | Start identity column used in a primary key with a seed of 1000 or higher. |
+| [SRD0011](Design/SRD0011.md) | Equality Compare With NULL Rule | false | Equality and inequality comparisons involving a NULL constant found. Use IS NULL or IS NOT NULL. |
+| [SRD0012](Design/SRD0012.md) | Unused variable | false | Variable declared but never referenced or assigned. |
+| [SRD0013](Design/SRD0013.md) | Expected error handeling | false | Wrap multiple action statements within a try catch. |
+| [SRD0014](Design/SRD0014.md) | TOP without an ORDER BY | false | TOP clause used in a query without an ORDER BY clause. |
+| [SRD0015](Design/SRD0015.md) | Implicit column list | false | Always use a column list in INSERT statements. |
+| [SRD0016](Design/SRD0016.md) | Unused input parameter | true | Input parameter never used. Consider removing the parameter or using it. |
+| [SRD0017](Design/SRD0017.md) | Avoid Deletes Without Where Rule | true | DELETE statement without row limiting conditions. |
+| [SRD0018](Design/SRD0018.md) | Unbounded UPDATE | true | UPDATE statement without row limiting conditions. |
+| [SRD0019](Design/SRD0019.md) | Avoid joining tables with views | true | Avoid joining tables with views. |
+| [SRD0020](Design/SRD0020.md) | Incomplete or missing JOIN predicate | false | The query has issues with the join clause. It is either missing a backing foreign key or the join is missing one or more columns. |
+| [SRD0021](Design/SRD0021.md) | Consider EXISTS Instead Of In Rule | true | Consider using EXISTS instead of IN when used with a subquery. |
+| [SRD0024](Design/SRD0024.md) | Avoid EXEC or EXECUTE | true | Avoid EXEC and EXECUTE with string literals. Use parameterized sp_executesql instead. |
+| [SRD0025](Design/SRD0025.md) | Avoid ORDER BY with numbers | true | Avoid using column numbers in ORDER BY clause. |
+| [SRD0026](Design/SRD0026.md) | Unspecified type length | false | Do not use these data types (VARCHAR, NVARCHAR, CHAR, NCHAR) without specifying length. |
+| [SRD0027](Design/SRD0027.md) | Unspecified precision or scale | false | Do not use DECIMAL or NUMERIC data types without specifying precision and scale. |
+| [SRD0028](Design/SRD0028.md) | Consider Column Prefix Rule | true | Consider prefixing column names with table name or table alias. |
+| [SRD0030](Design/SRD0030.md) | Avoid Use of HINTS | true | Avoid using Hints to force a particular behavior. |
+| [SRD0031](Design/SRD0031.md) | Avoid using CHARINDEX | true | Avoid using CHARINDEX function in WHERE clauses. |
+| [SRD0032](Design/SRD0032.md) | Avoid use of OR in where clause | true | Try to avoid the OR operator in query where clauses if possible.  (Sargable) |
+| [SRD0033](Design/SRD0033.md) | Avoid Cursors | true | Avoid using cursors. |
+| [SRD0034](Design/SRD0034.md) | Use of NOLOCK | false | Do not use the NOLOCK clause. |
+| [SRD0035](Design/SRD0035.md) | Forced delay | false | Do not use WAITFOR DELAY/TIME statement in stored procedures, functions, and triggers. |
+| [SRD0036](Design/SRD0036.md) | Do not use SET ROWCOUNT | true | Do not use SET ROWCOUNT to restrict the number of rows. |
+| [SRD0038](Design/SRD0038.md) | Alias Tables Rule | true | Consider aliasing all table sources in the query. |
+| [SRD0039](Design/SRD0039.md) | Object not schema qualified | false | Use fully qualified object names in SELECT, UPDATE, DELETE, MERGE and EXECUTE statements. [schema].[name]. |
+| [SRD0041](Design/SRD0041.md) | Avoid SELECT INTO temp or table variables | true | Avoid use of the SELECT INTO syntax. |
+| [SRD0043](Design/SRD0043.md) | Possible side-effects implicit cast | false | The arguments of the function '{0}' are not of the same datatype. |
+| [SRD0044](Design/SRD0044.md) | Error handling requires SA permissions | false | The RAISERROR statement with severity above 18 requires the WITH LOG clause. |
+| [SRD0045](Design/SRD0045.md) | Excessive indexes on table | false | Excessive number of indexes on table found on table. |
+| [SRD0046](Design/SRD0046.md) | Use of approximate data type | false | Do not use the real or float data types for parameters or columns as they are approximate value data types. |
+| [SRD0047](Design/SRD0047.md) | Ambiguous column name across design | true | Avoid using columns that match other columns by name, but are different in type or size. |
+| [SRD0050](Design/SRD0050.md) | Expression reducible to constaint | true | The comparison expression always evaluates to TRUE or FALSE. |
+| [SRD0051](Design/SRD0051.md) | Do Not Use Deprecated Types Rule | false | Don?t use deprecated TEXT, NTEXT and IMAGE data types. |
+| [SRD0052](Design/SRD0052.md) | Duplicate/Overlapping Index | false | Index has exact duplicate or borderline overlapping index. |
+| [SRD0053](Design/SRD0053.md) | Explicit collation other | true | Object has different collation than the rest of the database. Try to avoid using a different collation unless by design. |
+| [SRD0055](Design/SRD0055.md) | Object level option override | false | The object was created with invalid options. |
+| [SRD0056](Design/SRD0056.md) | Unsafe identity retrieval | true | Use OUTPUT or SCOPE_IDENTITY() instead of @@IDENTITY. |
+| [SRD0057](Design/SRD0057.md) | Do Not Mix DML With DDL Rule | false | Do not mix DML with DDL statements. Group DDL statements at the beginning of procedures followed by DML statements. |
+| [SRD0058](Design/SRD0058.md) | Ordinal parameters used | false | Always use parameter names when calling stored procedures. |
+| [SRD0060](Design/SRD0060.md) | Permission change in stored procedure | false | The procedure grants itself permissions. Possible missing GO command. |
+| [SRD0061](Design/SRD0061.md) | Invalid database configured options | false | The database is configured with invalid options. |
+| [SRD0062](Design/SRD0062.md) | Implicit collation | false | Create SQL Server temporary tables with the correct collation or use database default as the tempdb having a different collation than the database can cause issues and or data instability. |
+| [SRD0063](Design/SRD0063.md) | Avoid wrapping SQL in IF statement | true | Do not use IF statements containing queries in stored procedures. |
+| [SRD0064](Design/SRD0064.md) | Consider Caching Get Date To Variable | true | Cache multiple calls to GETDATE or SYSDATETIME into a variable. |
+| [SRD0065](Design/SRD0065.md) | Avoid NOT FOR REPLICATION | false | Avoid 'NOT FOR REPLICATION' unless this is the desired behavior and replication is in use. |
+  
+## Performance  
+  
+| Rule Id | Friendly Name | Ignorable | Description |
+|----|----|----|----|
+| [SRP0001](Performance/SRP0001.md) | Nested Views | false | Views should not use other views as a data source. |
+| [SRP0002](Performance/SRP0002.md) | Unanchored string pattern | true | Try to avoid using patterns that start with '%' when using the LIKE keyword if possible.  (Sargable) |
+| [SRP0003](Performance/SRP0003.md) | Aggregate of unique set | true | Avoid using DISTINCT keyword inside of aggregate functions. |
+| [SRP0004](Performance/SRP0004.md) | Noisy trigger | true | Avoid returning results in triggers. |
+| [SRP0005](Performance/SRP0005.md) | Noisy trigger | true | SET NOCOUNT ON is recommended to be enabled in stored procedures and triggers. |
+| [SRP0006](Performance/SRP0006.md) | Use of inequality | true | Try to avoid using not equal operator (<>,!=) in the WHERE clause if possible. (Sargable) |
+| [SRP0007](Performance/SRP0007.md) | Dangling cursor | false | Local cursor not closed. |
+| [SRP0008](Performance/SRP0008.md) | Unfreed cursor | false | Local cursor not explicitly deallocated. |
+| [SRP0009](Performance/SRP0009.md) | Filtering on calculated value | true | Avoid wrapping columns within a function in the WHERE clause. (Sargable) |
+| [SRP0010](Performance/SRP0010.md) | Function in data modification | true | Avoid the use of user defined functions with UPDATE/INSERT/DELETE statements. (Halloween Protection) |
+| [SRP0011](Performance/SRP0011.md) | Non-member test in predicate | true | Avoid using the NOT IN predicate in a WHERE clause. (Sargable) |
+| [SRP0012](Performance/SRP0012.md) | Un-indexed membership test | true | Consider indexing the columns referenced by IN predicates in order to avoid table scans. |
+| [SRP0013](Performance/SRP0013.md) | Existence tested with JOIN | true | Consider replacing the OUTER JOIN with EXISTS. |
+| [SRP0014](Performance/SRP0014.md) | Table variable in JOIN | true | Avoid the use of table variables in join clauses. |
+| [SRP0015](Performance/SRP0015.md) | Avoid Column Calculations | true | Avoid the use of calculations on columns in the where clause. (Sargable) |
+| [SRP0016](Performance/SRP0016.md) | Equality test with mismatched types | false | Data types on both sides of an equality check should be the same in the where clause. (Sargable) |
+| [SRP0017](Performance/SRP0017.md) | Update of Primary key | true | Avoid updating columns that are part of the primary key.  (Halloween Protection) |
+| [SRP0018](Performance/SRP0018.md) | High join count | false | Query uses a high number of joins.  |
+| [SRP0020](Performance/SRP0020.md) | Missing Clustered index | false | Table does not have a clustered index. |
+| [SRP0021](Performance/SRP0021.md) | Manipulated parameter value | true | Avoid modification of parameters in a stored procedure prior to use in a select query. |
+| [SRP0022](Performance/SRP0022.md) | Procedure level recompile option | true | Consider using RECOMPILE query hint instead of the WITH RECOMPILE option. |
+| [SRP0023](Performance/SRP0023.md) | Enumerating for existence check | true | When checking for existence use EXISTS instead of COUNT |
+| [SRP0024](Performance/SRP0024.md) | Correlated subquery | true | Avoid the use of correlated subqueries except for very small tables. |
+  
+## Naming  
+  
+| Rule Id | Friendly Name | Ignorable | Description |
+|----|----|----|----|
+| [SRN0001](Naming/SRN0001.md) | UDF with System prefix | true | Avoid 'fn_' prefix when naming functions. |
+| [SRN0002](Naming/SRN0002.md) | Procedure name may conflict system name | true | Avoid 'sp_' prefix when naming stored procedures. |
+| [SRN0006](Naming/SRN0006.md) | Use of default schema | false | Two part naming on objects is required. |
+| [SRN0007](Naming/SRN0007.md) | Name standard | false | General naming rules. |
+
