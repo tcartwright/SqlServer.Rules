@@ -2,11 +2,9 @@
 
 ## Overview
 
-Just what it says on the box: A library of SQL best practices as extended [database code analysis rules](https://docs.microsoft.com/en-us/sql/ssdt/overview-of-extensibility-for-database-code-analysis-rules?view=sql-server-ver15) checked at build.
+Just what it says on the box: A library of SQL best practices as extended [database code analysis rules](https://docs.microsoft.com/en-us/sql/ssdt/overview-of-extensibility-for-database-code-analysis-rules?view=sql-server-ver15) checked at build. The rules can be installed locally as well as on the build server.
 
-For a complete list of the current rules we have implemented see [here](docs/table_of_contents.md)
-
-For example code see [here](https://github.com/microsoft/DACExtensions/tree/master/RuleSamples)
+For a complete list of the current rules we have implemented see [here](docs/table_of_contents.md). For example code see [here](https://github.com/microsoft/DACExtensions/tree/master/RuleSamples)
 
 ## Organization
 
@@ -39,10 +37,12 @@ The build should be installed to the template path
 So for Visual Studio 2017 with DAC version 150 the path might be
 > `C:\Program Files (x86)\Microsoft Visual Studio\`***`2017`***`\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\`***`150`***`\Extensions\SqlServer.Rules`
 
+An Install.bat is provided that will copy out the rules to all of the appropriate folder destinations.
+
 **NOTES:**
 
 - You will need to copy the binaries to every permutation of Visual Studio version and dac version that you wish to use the rules for.  
-- When you have code analysis enabled and have compiled the project Visual Studio places a hard lock on the rule binaries. To updates them or remove them you will need to close Visual Studio.
+- When you have code analysis enabled and have compiled the project Visual Studio places a hard lock on the rule binaries. To update them or remove them you will need to close Visual Studio.
 
 ## Project Configuration
 
@@ -52,3 +52,4 @@ So for Visual Studio 2017 with DAC version 150 the path might be
 - You can also optionally:
   - Enable / disable rules.
   - Set certain rules as errors so they will actually throw build errors.
+  - Ignore rules in the sql files. [See](docs/ignoring_rules.md)

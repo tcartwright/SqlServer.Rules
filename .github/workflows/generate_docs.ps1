@@ -186,7 +186,6 @@ function New-TableOfContents {
     $categories = $RuleObjects | Group-Object { $_.Category } | Sort-Object -Property Key
 
     $StringBuilder = [System.Text.StringBuilder]::new()
-    [void]$StringBuilder.AppendLine("$spaces")
     [void]$StringBuilder.AppendLine("[This document is automatically generated. All changed made to it WILL be lost]: <>$spaces")
 
     [void]$StringBuilder.AppendLine("$spaces")
@@ -209,7 +208,7 @@ function New-TableOfContents {
     $FilePath = "$ParentDirectory\docs\"
     New-Item -Path $FilePath -Force -ItemType Directory | Out-Null
 
-    $StringBuilder.ToString() | Out-File "$FilePath\table_of_contents.md" -Force
+    $StringBuilder.ToString() | Out-File "$FilePath\table_of_contents.md" -Force -Encoding ascii
 }
 
 function New-MdFromRuleObject {
@@ -223,7 +222,6 @@ function New-MdFromRuleObject {
 
     # MD EOL - When you do want to insert a <br /> break tag using Markdown, you end a line with two or more spaces, then type return.
     $spaces = " " * 2
-    [void]$StringBuilder.AppendLine("$spaces")
     [void]$StringBuilder.AppendLine("[This document is automatically generated. All changed made to it WILL be lost]: <>$spaces")
 
     [void]$StringBuilder.AppendLine("$spaces")
@@ -273,7 +271,7 @@ function New-MdFromRuleObject {
     $FilePath = "$ParentDirectory\docs\$($RuleObject.Category)\"
     New-Item -Path $FilePath -Force -ItemType Directory | Out-Null
 
-    $StringBuilder.ToString() | Out-File "$FilePath\$($RuleObject.RuleId).md" -Force
+    $StringBuilder.ToString() | Out-File "$FilePath\$($RuleObject.RuleId).md" -Force -Encoding ascii
 }
 
 function Publish-Markdown {
