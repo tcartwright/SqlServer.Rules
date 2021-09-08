@@ -14,9 +14,9 @@ Ignores must be done in comment syntax using either of these formats:
 
 ## Examples
 
-For example, for us to ignore the rule [SRD0032](Design/SRD0032.md) (Avoid use of OR in where clause) we can this several ways. This is a very common rule to have to ignore.
+For example, we can ignore the rule [SRD0032](Design/SRD0032.md) (Avoid use of OR in where clause) in a couple of different ways. 
 
-To ignore just one of the rules:
+To ignore just one of the rules if there are multiple violations in the same file:
 
 ```sql
 CREATE PROCEDURE dbo.Example AS 

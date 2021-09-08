@@ -30,14 +30,14 @@ Note: if you need to debug the loading of the library see [here](/SqlServer.Rule
 
 ## Install
 
+An Install.bat is provided that will copy out the rules to all of the appropriate folder destinations. Or you can optionally follow these instructions:
+
 Follow the instructions on MS Docs [Install Static Code Analysis Rule](https://docs.microsoft.com/en-us/sql/ssdt/walkthrough-author-custom-static-code-analysis-rule-assembly?view=sql-server-ver15#install-a-static-code-analysis-rule).
 
 The build should be installed to the template path
 `%VSBIN%\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\{SqlEngine}\Extensions`
 So for Visual Studio 2017 with DAC version 150 the path might be
 > `C:\Program Files (x86)\Microsoft Visual Studio\`***`2017`***`\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\`***`150`***`\Extensions\SqlServer.Rules`
-
-An Install.bat is provided that will copy out the rules to all of the appropriate folder destinations.
 
 **NOTES:**
 
