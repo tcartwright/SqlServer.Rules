@@ -38,14 +38,14 @@ jobs:
           echo "REPO_OWNER=$($repoVals[0])" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           echo "REPO_NAME=$($repoVals[1])" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      - uses: dorny/paths-filter@v2 
+      - uses: dorny/paths-filter@v2
         id: changes_filter
         with:
-        filters: |
-          workflows:
-            - '.github/workflows\**'
-          rules:
-            - 'SqlServer.Rules\**'
+          filters: |
+            workflows:
+              - '.github/workflows\**'
+            rules:
+              - 'SqlServer.Rules\**'
 
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
