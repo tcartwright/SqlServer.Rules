@@ -31,6 +31,8 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v2
+
       - name: SplitRepoName
         shell: powershell
         run: |
@@ -51,7 +53,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: "5.0.x" # SDK Version to use; x will use the latest version of the 5.0 channel
-      - uses: actions/checkout@v2
 
       # LINTER
       # Format the output of dotnet format
