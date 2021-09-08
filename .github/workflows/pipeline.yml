@@ -38,6 +38,15 @@ jobs:
           echo "REPO_OWNER=$($repoVals[0])" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           echo "REPO_NAME=$($repoVals[1])" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
+      - uses: dorny/paths-filter@v2 
+        id: changes_filter
+        with:
+        filters: |
+          workflows:
+            - '.github/workflows\**'
+          rules:
+            - 'SqlServer.Rules\**'
+
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
@@ -68,7 +77,7 @@ jobs:
 
       # REMOVE DOCS - TO REMOVE DELETED RULES
       - name: Remove docs
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' && (steps.changes_filter.outputs.workflows == 'true' || steps.changes_filter.outputs.rules == 'true') }}
         run: |
           git rm -rf ./docs/Performance/
           git rm -rf ./docs/Design/
@@ -84,7 +93,7 @@ jobs:
 
       # GENERATE DOCS
       - name: Generate Docs
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' && (steps.changes_filter.outputs.workflows == 'true' || steps.changes_filter.outputs.rules == 'true') }}
         shell: powershell
         run: |
           .\.github\workflows\generate_docs.ps1 `
@@ -97,7 +106,7 @@ jobs:
 
       # COMMIT DOCS - ONLY IF THERE ARE FILE CHANGES
       - name: Commit doc files
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' && (steps.changes_filter.outputs.workflows == 'true' || steps.changes_filter.outputs.rules == 'true') }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -107,7 +116,7 @@ jobs:
       # PUSH DOCS
       - name: Push doc changes
         uses: ad-m/github-push-action@master
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' && (steps.changes_filter.outputs.workflows == 'true' || steps.changes_filter.outputs.rules == 'true') }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.HEAD_REF }}
@@ -116,13 +125,13 @@ jobs:
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v5.6
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' && (steps.changes_filter.outputs.workflows == 'true' || steps.changes_filter.outputs.rules == 'true') }}
         with:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
 
       # CREATE RELEASE
       - name: Create Release Zip
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' && (steps.changes_filter.outputs.workflows == 'true' || steps.changes_filter.outputs.rules == 'true') }}
         shell: powershell
         run: |
           .\.github\workflows\create_release.ps1 `
@@ -132,7 +141,7 @@ jobs:
 
       - name: Create Release
         uses: ncipollo/release-action@v1
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/master' && (steps.changes_filter.outputs.workflows == 'true' || steps.changes_filter.outputs.rules == 'true') }}
         with:
           artifacts: "${{ github.workspace }}\\${{ env.REPO_NAME }}.${{ steps.tag_version.outputs.new_tag }}.zip"
           token: "${{ secrets.GITHUB_TOKEN }}"
