@@ -12,7 +12,7 @@ For a complete list of the current rules we have implemented see [here](docs/tab
 - SqlServer.Rules - This holds the rules derived from `SqlCodeAnalysisRule`
 - SqlServer.Rules.Report - Library for evaluating a rule and serializing the result.
 - SqlServer.Rules.Generator - a quick console app to report on all rules in a Sql Project.
-- SqlServer.Rules.SolutionGenerator - a quick to do a build and evaluate the rules on a Sql Solution
+- SqlServer.Rules.SolutionGenerator - a quick to do a build and evaluate the rules on a Sql Solution. Will also output the violated rules in an html report.
 - TestDatabase - a small Sql Solution to test with
 
 ## Debug / Test
