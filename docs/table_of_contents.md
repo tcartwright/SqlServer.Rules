@@ -6,7 +6,7 @@
 ## Design  
   
 | Rule Id | Friendly Name | Ignorable | Description | Example? |
-|----|----|----|----|
+|----|----|----|----|----|
 | [SRD0001](Design/SRD0001.md) | Missing natural key | false | Table does not have a natural key. |   |
 | [SRD0002](Design/SRD0002.md) | Missing primary key | false | Table does not have a primary key. |   |
 | [SRD0003](Design/SRD0003.md) | Avoid wide primary keys | false | Primary Keys should avoid using GUIDS or wide VARCHAR columns. |   |
@@ -64,7 +64,7 @@
 ## Performance  
   
 | Rule Id | Friendly Name | Ignorable | Description | Example? |
-|----|----|----|----|
+|----|----|----|----|----|
 | [SRP0001](Performance/SRP0001.md) | Nested Views | false | Views should not use other views as a data source. |   |
 | [SRP0002](Performance/SRP0002.md) | Unanchored string pattern | true | Try to avoid using patterns that start with '%' when using the LIKE keyword if possible.  (Sargable) |   |
 | [SRP0003](Performance/SRP0003.md) | Aggregate of unique set | true | Avoid using DISTINCT keyword inside of aggregate functions. |   |
@@ -92,7 +92,7 @@
 ## Naming  
   
 | Rule Id | Friendly Name | Ignorable | Description | Example? |
-|----|----|----|----|
+|----|----|----|----|----|
 | [SRN0001](Naming/SRN0001.md) | UDF with System prefix | true | Avoid 'fn_' prefix when naming functions. |   |
 | [SRN0002](Naming/SRN0002.md) | Procedure name may conflict system name | true | Avoid 'sp_' prefix when naming stored procedures. |   |
 | [SRN0006](Naming/SRN0006.md) | Use of default schema | false | Two part naming on objects is required. |   |
