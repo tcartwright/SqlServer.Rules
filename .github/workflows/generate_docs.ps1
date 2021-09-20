@@ -198,7 +198,7 @@ function New-TableOfContents {
         [void]$StringBuilder.AppendLine("$spaces")
 
         [void]$StringBuilder.AppendLine("| Rule Id | Friendly Name | Ignorable | Description | Example? |")
-        [void]$StringBuilder.AppendLine("|----|----|----|----|")
+        [void]$StringBuilder.AppendLine("|----|----|----|----|----|")
         foreach ($rule in ($category.Group | Sort-Object -Property RuleId )) {
             $ruleId = "[$($Rule.RuleId)]($($category.Name)/$($Rule.RuleId).md)"
             [void]$StringBuilder.AppendLine("| $ruleId | $($Rule.FriendlyName -replace "\|", "&#124;") | $($Rule.IsIgnorable) | $($Rule.Description -replace "\|", "&#124;") | $(if ([string]::IsNullOrWhiteSpace($Rule.Example)) { " " } else { "Yes" }) |")
