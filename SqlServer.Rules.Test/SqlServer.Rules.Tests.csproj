@@ -27,6 +27,6 @@
     <PackageReference Include="Microsoft.SqlServer.DacFx.x64" Version="150.5164.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.5" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.5" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 </Project>
