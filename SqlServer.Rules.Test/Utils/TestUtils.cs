@@ -310,7 +310,7 @@ END
                     Environment.NewLine,
                     ex,
                     sql);
-                throw ex;
+                throw;
             }
         }
 
